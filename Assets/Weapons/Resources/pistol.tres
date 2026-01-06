@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=3 format=3 uid="uid://dwcpnogfbjkqv"]
+
+[ext_resource type="Script" uid="uid://b65ieh604l1b3" path="res://Assets/Weapons/Scripts/Weapon.gd" id="1_p136p"]
+[ext_resource type="PackedScene" uid="uid://bpdwo2k1jf276" path="res://Scenes/Weapons/pistol_weapon.tscn" id="2_rhsf5"]
+
+[resource]
+script = ExtResource("1_p136p")
+weapon_name = "pistol"
+damage = 1.0
+max_ammo = 12
+weapon_model = ExtResource("2_rhsf5")
+weapon_position = Vector3(0, 0, 0)
+metadata/_custom_type_script = "uid://b65ieh604l1b3"
