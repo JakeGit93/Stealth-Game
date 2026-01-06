@@ -1,2 +1,5 @@
 # Godot 4+ specific ignores
 .godot/
+
+Assets/Textures/stierberg_sunrise_4k.exr
+
