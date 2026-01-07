@@ -4,8 +4,10 @@ extends Node3D
 @export var grid_height := 4
 @export var grid_depth := 4
 @export var voxel_size := 1.0
-@export_range(1,32) var chunk_size := 128
+@export_range(1,128) var chunk_size := 128
 @export var debug := true
+
+@onready var grid_origin := self.global_position
 
 func _ready():
 	_generate_grid()
@@ -65,10 +67,44 @@ func _voxel_intersects_geometry(world_pos: Vector3) -> bool:
 	else:
 		return false
 
-func _write_grid_to_file() -> void:
-	var path := "/Users/jakejohnson/Documents/godotproject/third-person-controller/Assets/Volumes/TestVolume.vlx"
-	var file := FileAccess.open(path, FileAccess.READ_WRITE)
-	file.seek_end()
+func _write_header(file: FileAccess) -> void:
+	#this header is **not** for storing any chunk data or occupancy values!
+	file.seek(0)
 
+	# Magic
+	file.store_string("VXL")       
+	file.store_8(0)                # null terminator
+
+	# Version
+	file.store_8(1)
+
+	# Header size (fixed)
+	file.store_32(37)
+
+	# Voxel size
+	file.store_float(voxel_size)
+
+	# Grid origin (world-space)
+	file.store_float(grid_origin.x)
+	file.store_float(grid_origin.y)
+	file.store_float(grid_origin.z)
+
+	# Grid dimensions (total grid size)
+	file.store_32(grid_width)
+	file.store_32(grid_height)
+	file.store_32(grid_depth)
+
+func _write_grid_to_file() -> void:
+	var path := "res://Assets/Volumes/TestVolume.vlx"
+	var file := FileAccess.file_exists(path)
+
+	if file:
+		pass
+	else:
+		#write the header because the file doesn't exist yet
+		_write_header(FileAccess.open(path, FileAccess.WRITE))
+
+		#write the rest of the data down here eventually...
+		
 func _bake_chunk() -> void:
-	pass
+	_write_grid_to_file()
