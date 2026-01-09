@@ -1,10 +1,10 @@
 extends Node3D
 
-@export var grid_width := 4
-@export var grid_height := 4
-@export var grid_depth := 4
-@export var voxel_size := 1.0
-@export_range(1,128) var chunk_size := 128
+@export var grid_width := 128
+@export var grid_height := 128
+@export var grid_depth := 128
+@export var voxel_size := 0.5
+@export_range(1,64) var chunk_size := 64
 @export var debug := true
 
 @onready var grid_origin := self.global_position
@@ -12,6 +12,8 @@ extends Node3D
 func _ready():
 	_generate_grid()
 
+#we need to export a chunk as a PackedByteArray to write to file
+#also need to make the loop only generate one chunk at a time, and then remove it from memory (after writing it)
 func _generate_grid():
 	var shared_mesh := BoxMesh.new()
 	
@@ -94,7 +96,7 @@ func _write_header(file: FileAccess) -> void:
 	file.store_32(grid_height)
 	file.store_32(grid_depth)
 
-func _write_grid_to_file() -> void:
+func _write_grid_to_file(chunk: PackedByteArray) -> void:
 	var path := "res://Assets/Volumes/TestVolume.vlx"
 	var file := FileAccess.file_exists(path)
 
@@ -106,5 +108,5 @@ func _write_grid_to_file() -> void:
 
 		#write the rest of the data down here eventually...
 		
-func _bake_chunk() -> void:
-	_write_grid_to_file()
+func _bake_chunk(chunk: PackedByteArray) -> void:
+	_write_grid_to_file(chunk)
