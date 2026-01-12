@@ -41,7 +41,6 @@ script = ExtResource("1_n5fav")
 grid_width = 80
 grid_height = 80
 grid_depth = 80
-voxel_size = 0.5
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-0.33175, 0.710216, -0.620915, 0, 0.65819, 0.752852, 0.943367, 0.249758, -0.218354, -7.07654, 8.2014, -2.92603)

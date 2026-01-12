@@ -12,11 +12,15 @@ extends Node3D
 func _ready():
 	_generate_grid()
 
-#we need to export a chunk as a PackedByteArray to write to file
-#also need to make the loop only generate one chunk at a time, and then remove it from memory (after writing it)
-func _generate_grid():
+#Need to export a chunk as a PackedByteArray to write to file
+#Need to make the loop only generate one chunk at a time, and then remove it from memory (after writing it)
+#Need to rewrite the function to export the X axis entirely first, and then Y and then Z
+#This makes it so we can just append the data to the file and access the data based on file position
+func _generate_grid(chunk_size) -> PackedByteArray:
 	var shared_mesh := BoxMesh.new()
+	var chunk_array := PackedByteArray()
 	
+	#Get the center point of each voxel
 	var half_extent_x := (grid_width * voxel_size) * 0.5
 	var half_extent_y := (grid_height * voxel_size) * 0.5
 	var half_extent_z := (grid_depth * voxel_size) * 0.5
@@ -33,7 +37,7 @@ func _generate_grid():
 				var world_pos := global_transform * local_pos
 				var occupied : bool = _voxel_intersects_geometry(world_pos)
 				
-					
+				#visualization for occupied voxels
 				if occupied && debug == true:
 					var shared_cube := MeshInstance3D.new()
 					shared_cube.mesh = shared_mesh
@@ -49,6 +53,8 @@ func _generate_grid():
 					# Global wireframe debug mode
 					#RenderingServer.set_debug_generate_wireframes(true)
 					#get_viewport().debug_draw = Viewport.DEBUG_DRAW_WIREFRAME
+
+	return chunk_array
 
 func _voxel_intersects_geometry(world_pos: Vector3) -> bool:
 	var space_state := get_world_3d().direct_space_state
