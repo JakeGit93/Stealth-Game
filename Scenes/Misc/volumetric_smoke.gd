@@ -9,7 +9,6 @@ extends Node3D
 @export var grid_height := 128
 @export var grid_depth := 128
 @export var voxel_size := 0.5
-@export_range(1,64) var chunk_size := 64
 @export var debug := true
 
 @onready var grid_origin := self.global_position
