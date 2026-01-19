@@ -2,6 +2,11 @@
 #This is generally bad.
 #We need to also define a custom resource so .vxl files can be recognized in the Godot editor.
 #Also need to add a **loader** for these grids to move them into the GPU compute shader pipeline (later)
+#May want to compress the data on disk (lossless because we need to recover it
+
+#For the loader, we will need to handle the header independently in its own function
+#Then ensure the grid data is readable in the format we end up using
+#Extend per-voxel values for lighting system?
 
 extends Node3D
 
