@@ -1,3 +1,8 @@
+#This entire thing needs to be rewritten as a class, where functions aren't calling each other right and left.
+#This is generally bad.
+#We need to also define a custom resource so .vxl files can be recognized in the Godot editor.
+#Also need to add a **loader** for these grids to move them into the GPU compute shader pipeline (later)
+
 extends Node3D
 
 @export var grid_width := 128
@@ -10,24 +15,21 @@ extends Node3D
 @onready var grid_origin := self.global_position
 
 func _ready():
-	_generate_grid()
+	var grid := _generate_grid()
+	_write_grid_to_file(grid)
 
-#Need to export a chunk as a PackedByteArray to write to file
-#Need to make the loop only generate one chunk at a time, and then remove it from memory (after writing it)
-#Need to rewrite the function to export the X axis entirely first, and then Y and then Z
-#This makes it so we can just append the data to the file and access the data based on file position
-func _generate_grid(chunk_size) -> PackedByteArray:
+func _generate_grid() -> PackedByteArray:
 	var shared_mesh := BoxMesh.new()
-	var chunk_array := PackedByteArray()
+	var grid_array := PackedByteArray()
 	
 	#Get the center point of each voxel
 	var half_extent_x := (grid_width * voxel_size) * 0.5
 	var half_extent_y := (grid_height * voxel_size) * 0.5
 	var half_extent_z := (grid_depth * voxel_size) * 0.5
 
-	for x in grid_width:
+	for z in grid_depth:
 		for y in grid_height:
-			for z in grid_depth:
+			for x in grid_width:
 				var local_pos := Vector3(
 					x * voxel_size - half_extent_x + voxel_size * 0.5,
 					y * voxel_size - half_extent_y + voxel_size * 0.5,
@@ -36,8 +38,16 @@ func _generate_grid(chunk_size) -> PackedByteArray:
 				
 				var world_pos := global_transform * local_pos
 				var occupied : bool = _voxel_intersects_geometry(world_pos)
+
+				#creating the array of occupied values
+				if occupied == true:
+					print("occupied at: ", world_pos)
+					grid_array.append(1)
+				else:
+					grid_array.append(0)
+	
 				
-				#visualization for occupied voxels
+				#visualization for occupied voxels (we should make this its own function later)
 				if occupied && debug == true:
 					var shared_cube := MeshInstance3D.new()
 					shared_cube.mesh = shared_mesh
@@ -47,6 +57,8 @@ func _generate_grid(chunk_size) -> PackedByteArray:
 					shared_cube.position = local_pos
 					shared_cube.set_surface_override_material(0, mat)
 					add_child(shared_cube)
+
+	
 					
 				#un-comment this if you want the debug vis
 				#if use_wireframe_debug:
@@ -54,7 +66,7 @@ func _generate_grid(chunk_size) -> PackedByteArray:
 					#RenderingServer.set_debug_generate_wireframes(true)
 					#get_viewport().debug_draw = Viewport.DEBUG_DRAW_WIREFRAME
 
-	return chunk_array
+	return grid_array
 
 func _voxel_intersects_geometry(world_pos: Vector3) -> bool:
 	var space_state := get_world_3d().direct_space_state
@@ -66,7 +78,7 @@ func _voxel_intersects_geometry(world_pos: Vector3) -> bool:
 	query.transform = Transform3D(Basis.IDENTITY, world_pos)
 	query.collide_with_bodies = true
 	query.collide_with_areas = false
-	query.collision_mask = 0xFFFFFFFF
+	query.collision_mask = 0xFFFFFFFF #maybe we don't want to set this manually just in case there are objects not on this layer
 
 	
 	var result := space_state.intersect_shape(query, 1)
@@ -102,17 +114,16 @@ func _write_header(file: FileAccess) -> void:
 	file.store_32(grid_height)
 	file.store_32(grid_depth)
 
-func _write_grid_to_file(chunk: PackedByteArray) -> void:
-	var path := "res://Assets/Volumes/TestVolume.vlx"
-	var file := FileAccess.file_exists(path)
+	file.close()
 
-	if file:
-		pass
+func _write_grid_to_file(grid: PackedByteArray) -> void:
+	var path := "res://Assets/Volumes/TestVolume.vxl"
+
+	if FileAccess.file_exists(path) == false:
+		var file := FileAccess.open(path, FileAccess.WRITE_READ)
+		_write_header(file)
+
 	else:
-		#write the header because the file doesn't exist yet
-		_write_header(FileAccess.open(path, FileAccess.WRITE))
-
-		#write the rest of the data down here eventually...
-		
-func _bake_chunk(chunk: PackedByteArray) -> void:
-	_write_grid_to_file(chunk)
+		var file := FileAccess.open(path, FileAccess.READ_WRITE)
+		file.store_buffer(grid)
+		file.close()
