@@ -1,11 +1,7 @@
 #This entire thing needs to be rewritten as a class, where functions aren't calling each other right and left.
-#This is generally bad.
-#We need to also define a custom resource so .vxl files can be recognized in the Godot editor.
-#Also need to add a **loader** for these grids to move them into the GPU compute shader pipeline (later)
-#May want to compress the data on disk (lossless because we need to recover it
 
-#For the loader, we will need to handle the header independently in its own function
-#Then ensure the grid data is readable in the format we end up using
+#We need to also define a custom resource so .vxl files can be recognized in the Godot editor.
+
 #Extend per-voxel values for lighting system?
 
 extends Node3D
@@ -21,6 +17,8 @@ extends Node3D
 func _ready():
 	var grid := _generate_grid()
 	_write_grid_to_file(grid)
+
+	_read_file("res://Assets/Volumes/TestVolume.vxl")
 
 func _generate_grid() -> PackedByteArray:
 	var shared_mesh := BoxMesh.new()
@@ -45,7 +43,6 @@ func _generate_grid() -> PackedByteArray:
 
 				#creating the array of occupied values
 				if occupied == true:
-					print("occupied at: ", world_pos)
 					grid_array.append(1)
 				else:
 					grid_array.append(0)
@@ -96,14 +93,10 @@ func _write_header(file: FileAccess) -> void:
 	file.seek(0)
 
 	# Magic
-	file.store_string("VXL")       
-	file.store_8(0)                # null terminator
+	file.store_pascal_string("vxl")       
 
 	# Version
 	file.store_8(1)
-
-	# Header size (fixed)
-	file.store_32(37)
 
 	# Voxel size
 	file.store_float(voxel_size)
@@ -118,16 +111,58 @@ func _write_header(file: FileAccess) -> void:
 	file.store_32(grid_height)
 	file.store_32(grid_depth)
 
-	file.close()
-
 func _write_grid_to_file(grid: PackedByteArray) -> void:
 	var path := "res://Assets/Volumes/TestVolume.vxl"
 
-	if FileAccess.file_exists(path) == false:
-		var file := FileAccess.open(path, FileAccess.WRITE_READ)
-		_write_header(file)
+	var file := FileAccess.open(path, FileAccess.WRITE_READ)
+	_write_header(file)
+	file.store_buffer(grid)
+	file.close()
 
+func _read_file(path: String):
+	var file := FileAccess.open(path, FileAccess.READ)
+	var file_type := file.get_pascal_string()
+	var grid_data: PackedByteArray
+
+	print("read file has started")
+
+	if file_type != "vxl":
+		assert(file_type == "vxl", "file type incorrect")
+		return null
 	else:
-		var file := FileAccess.open(path, FileAccess.READ_WRITE)
-		file.store_buffer(grid)
-		file.close()
+		print("vxl")
+
+		var version := file.get_8()
+		print("version: ", version)
+
+		var voxel_size_temp := file.get_float()
+		print("voxel size: ", voxel_size_temp)
+
+		var grid_origin_x := file.get_float()
+		print("grid origin x: ", grid_origin_x)
+
+		var grid_origin_y := file.get_float()
+		print("grid origin y: ", grid_origin_y)
+
+		var grid_origin_z := file.get_float()
+		print("grid origin z: ", grid_origin_z)
+
+		var grid_size_x_temp := file.get_32()
+		print("grid size x: ", grid_size_x_temp)
+
+		var grid_size_y_temp := file.get_32()
+		print("grid size y: ", grid_size_y_temp)
+
+		var grid_size_z_temp := file.get_32()
+		print("grid size z: ", grid_size_z_temp)
+
+		#the data after the header gets returned as a packedbytearray
+		var remaining_data := file.get_length() - file.get_position()
+		grid_data = file.get_buffer(remaining_data)
+		return grid_data
+
+#need a function for converting from world space to voxel space, to determine where objects are in the grid....
+
+func _smoke_grenade(grid : PackedByteArray) -> PackedByteArray:
+	var smoke := PackedByteArray()
+	return smoke
