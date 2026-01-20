@@ -1,9 +1,11 @@
-#This entire thing needs to be rewritten as a class, where functions aren't calling each other right and left.
-
-#We need to also define a custom resource so .vxl files can be recognized in the Godot editor.
-
+#TODO
+#Functions are calling each other too much, we should provide the functions with the class agnostically 
+#Make vxl files their own resource type in a different script so we can pass them into Volume3D objects
+#Require a vxl resource per Volume3D object
+#3D noise textures (etc) should be resources of objects that interface with Volume3D
 #Extend per-voxel values for lighting system?
 
+class_name Volume3D
 extends Node3D
 
 @export var grid_width := 128
@@ -15,12 +17,12 @@ extends Node3D
 @onready var grid_origin := self.global_position
 
 func _ready():
-	var grid := _generate_grid()
-	_write_grid_to_file(grid)
+	var grid := generate_grid()
+	write_grid_to_file(grid)
 
-	_read_file("res://Assets/Volumes/TestVolume.vxl")
+	read_file("res://Assets/Volumes/TestVolume.vxl")
 
-func _generate_grid() -> PackedByteArray:
+func generate_grid() -> PackedByteArray:
 	var shared_mesh := BoxMesh.new()
 	var grid_array := PackedByteArray()
 	
@@ -39,7 +41,7 @@ func _generate_grid() -> PackedByteArray:
 				)
 				
 				var world_pos := global_transform * local_pos
-				var occupied : bool = _voxel_intersects_geometry(world_pos)
+				var occupied : bool = voxel_intersects_geometry(world_pos)
 
 				#creating the array of occupied values
 				if occupied == true:
@@ -69,7 +71,7 @@ func _generate_grid() -> PackedByteArray:
 
 	return grid_array
 
-func _voxel_intersects_geometry(world_pos: Vector3) -> bool:
+func voxel_intersects_geometry(world_pos: Vector3) -> bool:
 	var space_state := get_world_3d().direct_space_state
 	var shape := BoxShape3D.new()
 	shape.size = Vector3.ONE * voxel_size
@@ -88,7 +90,7 @@ func _voxel_intersects_geometry(world_pos: Vector3) -> bool:
 	else:
 		return false
 
-func _write_header(file: FileAccess) -> void:
+func write_header(file: FileAccess) -> void:
 	#this header is **not** for storing any chunk data or occupancy values!
 	file.seek(0)
 
@@ -111,15 +113,15 @@ func _write_header(file: FileAccess) -> void:
 	file.store_32(grid_height)
 	file.store_32(grid_depth)
 
-func _write_grid_to_file(grid: PackedByteArray) -> void:
+func write_grid_to_file(grid: PackedByteArray) -> void:
 	var path := "res://Assets/Volumes/TestVolume.vxl"
 
 	var file := FileAccess.open(path, FileAccess.WRITE_READ)
-	_write_header(file)
+	write_header(file)
 	file.store_buffer(grid)
 	file.close()
 
-func _read_file(path: String):
+func read_file(path: String):
 	var file := FileAccess.open(path, FileAccess.READ)
 	var file_type := file.get_pascal_string()
 	var grid_data: PackedByteArray
@@ -160,9 +162,3 @@ func _read_file(path: String):
 		var remaining_data := file.get_length() - file.get_position()
 		grid_data = file.get_buffer(remaining_data)
 		return grid_data
-
-#need a function for converting from world space to voxel space, to determine where objects are in the grid....
-
-func _smoke_grenade(grid : PackedByteArray) -> PackedByteArray:
-	var smoke := PackedByteArray()
-	return smoke
