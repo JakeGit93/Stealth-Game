@@ -4,15 +4,16 @@
 #Require a vxl resource per Volume3D object
 #3D noise textures (etc) should be resources of objects that interface with Volume3D
 #Extend per-voxel values for lighting system?
+#Add greedy mesher
+#Add noise3D support
 
-class_name Volume3D
-extends Node3D
+class_name Volume3D extends Node3D
 
 @export var grid_width := 128
 @export var grid_height := 128
 @export var grid_depth := 128
 @export var voxel_size := 0.5
-@export var debug := true
+@export var debug := false
 
 @onready var grid_origin := self.global_position
 
@@ -162,3 +163,9 @@ func read_file(path: String):
 		var remaining_data := file.get_length() - file.get_position()
 		grid_data = file.get_buffer(remaining_data)
 		return grid_data
+
+#not finished...
+func worldspace_to_voxelspace(pos: Vector3, grid_width: int, grid_height: int, grid_depth: int) -> Vector3i:
+	var origin_voxel = Vector3(grid_width/2, grid_height/2,grid_depth/2)
+	var world_space := Vector3i.ZERO
+	return world_space
