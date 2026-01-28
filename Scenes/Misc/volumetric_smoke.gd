@@ -27,7 +27,7 @@ func generate_grid() -> PackedByteArray:
 	var shared_mesh := BoxMesh.new()
 	var grid_array := PackedByteArray()
 	
-	#Get the center point of each voxel
+	#find the center of the grid
 	var half_extent_x := (grid_width * voxel_size) * 0.5
 	var half_extent_y := (grid_height * voxel_size) * 0.5
 	var half_extent_z := (grid_depth * voxel_size) * 0.5
@@ -50,7 +50,12 @@ func generate_grid() -> PackedByteArray:
 				else:
 					grid_array.append(0)
 	
-				
+				#
+				#
+				#
+
+				#debug visuals
+				#~~~~~~~~~~~~~~
 				#visualization for occupied voxels (we should make this its own function later)
 				if occupied && debug == true:
 					var shared_cube := MeshInstance3D.new()
@@ -61,14 +66,15 @@ func generate_grid() -> PackedByteArray:
 					shared_cube.position = local_pos
 					shared_cube.set_surface_override_material(0, mat)
 					add_child(shared_cube)
-
-	
 					
-				#un-comment this if you want the debug vis
+				#wireframe visuals
+				#~~~~~~~~~~~~~~
 				#if use_wireframe_debug:
-					# Global wireframe debug mode
 					#RenderingServer.set_debug_generate_wireframes(true)
 					#get_viewport().debug_draw = Viewport.DEBUG_DRAW_WIREFRAME
+				#
+				#
+				#
 
 	return grid_array
 
@@ -165,7 +171,8 @@ func read_file(path: String):
 		return grid_data
 
 #not finished...
-func worldspace_to_voxelspace(pos: Vector3, grid_width: int, grid_height: int, grid_depth: int) -> Vector3i:
-	var origin_voxel = Vector3(grid_width/2, grid_height/2,grid_depth/2)
-	var world_space := Vector3i.ZERO
-	return world_space
+#func worldspace_to_voxelspace(pos: Vector3, grid_width: int, grid_height: int, grid_depth: int) -> Vector3i:
+	#var origin := self.position 
+	#var center_voxel = Vector3(grid_width/2, grid_height/2, grid_depth/2) #this might be off by 1 if one of the dimensions is even
+	#var object := Vector3i.ZERO
+	#return Vector3.ZERO

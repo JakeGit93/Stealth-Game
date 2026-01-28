@@ -5,7 +5,8 @@ extends Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	assert(grid != null)
+	#assert(grid != null)
+	pass
 
 func _spawn_grenade():
 	pass
