@@ -169,5 +169,5 @@ func read_file(path: String):
 #not finished...
 func worldspace_to_voxelspace(pos: Vector3, grid_width: int, grid_height: int, grid_depth: int) -> Vector3i:
 	var origin := self.position 
-	var object_voxel_position : Vector3i = abs(pos - origin)
-	return object_voxel_position
+	var object_voxel_position : Vector3i = pos - origin / voxel_size
+	return floor(object_voxel_position)
