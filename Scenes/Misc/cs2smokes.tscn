@@ -38,15 +38,16 @@ shape = SubResource("ConcavePolygonShape3D_o5yv6")
 disabled = true
 
 [node name="VolumetricSmoke" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.88005, 0, -5.18398)
 script = ExtResource("1_n5fav")
 grid_width = 28
 grid_height = 28
 grid_depth = 28
-voxel_size = 0.3
+voxel_size = 1.0
 debug = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.33175, 0.710216, -0.620915, 0, 0.65819, 0.752852, 0.943367, 0.249758, -0.218354, -7.07654, 8.2014, -2.92603)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.402289, 3.73908, -15.3738)
 current = true
 fov = 50.4
 

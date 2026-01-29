@@ -27,18 +27,14 @@ func generate_grid() -> PackedByteArray:
 	var shared_mesh := BoxMesh.new()
 	var grid_array := PackedByteArray()
 	
-	#find the center of the grid
-	var half_extent_x := (grid_width * voxel_size) * 0.5
-	var half_extent_y := (grid_height * voxel_size) * 0.5
-	var half_extent_z := (grid_depth * voxel_size) * 0.5
 
 	for z in grid_depth:
 		for y in grid_height:
 			for x in grid_width:
 				var local_pos := Vector3(
-					x * voxel_size - half_extent_x + voxel_size * 0.5,
-					y * voxel_size - half_extent_y + voxel_size * 0.5,
-					z * voxel_size - half_extent_z + voxel_size * 0.5
+					x * voxel_size,
+					y * voxel_size,
+					z * voxel_size
 				)
 				
 				var world_pos := global_transform * local_pos
@@ -171,8 +167,7 @@ func read_file(path: String):
 		return grid_data
 
 #not finished...
-#func worldspace_to_voxelspace(pos: Vector3, grid_width: int, grid_height: int, grid_depth: int) -> Vector3i:
-	#var origin := self.position 
-	#var center_voxel = Vector3(grid_width/2, grid_height/2, grid_depth/2) #this might be off by 1 if one of the dimensions is even
-	#var object := Vector3i.ZERO
-	#return Vector3.ZERO
+func worldspace_to_voxelspace(pos: Vector3, grid_width: int, grid_height: int, grid_depth: int) -> Vector3i:
+	var origin := self.position 
+	var object_voxel_position : Vector3i = abs(pos - origin)
+	return object_voxel_position
