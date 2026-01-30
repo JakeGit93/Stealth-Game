@@ -44,7 +44,6 @@ grid_width = 28
 grid_height = 28
 grid_depth = 28
 voxel_size = 1.0
-debug = true
 test_object = NodePath("../Level/RigidBody3D")
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -55,7 +54,7 @@ fov = 50.4
 [node name="Level" type="Node3D" parent="."]
 
 [node name="RigidBody3D" type="StaticBody3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2535, 2.0253, -1.19478)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.28968, 2.00512, -0.98384)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/RigidBody3D"]
 shape = SubResource("CapsuleShape3D_n5fav")
