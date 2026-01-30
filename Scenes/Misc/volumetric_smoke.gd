@@ -14,8 +14,10 @@ class_name Volume3D extends Node3D
 @export var grid_depth := 128
 @export var voxel_size := 0.5
 @export var debug := false
+@export var test_object : Node3D
 
 @onready var grid_origin := self.global_position
+@onready var shared_mesh := BoxMesh.new()
 
 func _ready():
 	var grid := generate_grid()
@@ -23,8 +25,10 @@ func _ready():
 
 	read_file("res://Assets/Volumes/TestVolume.vxl")
 
+func _physics_process(delta: float) -> void:
+	worldspace_to_voxelspace(test_object.position)
+
 func generate_grid() -> PackedByteArray:
-	var shared_mesh := BoxMesh.new()
 	var grid_array := PackedByteArray()
 	
 
@@ -45,32 +49,10 @@ func generate_grid() -> PackedByteArray:
 					grid_array.append(1)
 				else:
 					grid_array.append(0)
-	
-				#
-				#
-				#
 
 				#debug visuals
-				#~~~~~~~~~~~~~~
-				#visualization for occupied voxels (we should make this its own function later)
 				if occupied && debug == true:
-					var shared_cube := MeshInstance3D.new()
-					shared_cube.mesh = shared_mesh
-					var mat := StandardMaterial3D.new()
-					shared_cube.scale = Vector3.ONE * voxel_size * 0.99
-					mat.albedo_color = Color(randf_range(0,1),randf_range(0,1),randf_range(0,1),1.0)
-					shared_cube.position = local_pos
-					shared_cube.set_surface_override_material(0, mat)
-					add_child(shared_cube)
-					
-				#wireframe visuals
-				#~~~~~~~~~~~~~~
-				#if use_wireframe_debug:
-					#RenderingServer.set_debug_generate_wireframes(true)
-					#get_viewport().debug_draw = Viewport.DEBUG_DRAW_WIREFRAME
-				#
-				#
-				#
+					visualizer(local_pos)
 
 	return grid_array
 
@@ -166,8 +148,25 @@ func read_file(path: String):
 		grid_data = file.get_buffer(remaining_data)
 		return grid_data
 
-#not finished...
-func worldspace_to_voxelspace(pos: Vector3, grid_width: int, grid_height: int, grid_depth: int) -> Vector3i:
+func worldspace_to_voxelspace(pos: Vector3) -> Vector3i:
 	var origin := self.position 
-	var object_voxel_position : Vector3i = pos - origin / voxel_size
-	return floor(object_voxel_position)
+	var object_voxel_position : Vector3i = floor(pos - origin / voxel_size)
+	print(object_voxel_position)
+	return object_voxel_position
+
+func visualizer(pos: Vector3) -> void:
+	var shared_cube := MeshInstance3D.new()
+	shared_cube.mesh = shared_mesh
+	var mat := StandardMaterial3D.new()
+	shared_cube.scale = Vector3.ONE * voxel_size * 0.99
+	mat.albedo_color = Color(randf_range(0,1),randf_range(0,1),randf_range(0,1),1.0)
+	shared_cube.position = pos
+	shared_cube.set_surface_override_material(0, mat)
+	add_child(shared_cube)
+					
+	#wireframe visuals
+	#~~~~~~~~~~~~~~
+	#if use_wireframe_debug:
+		#RenderingServer.set_debug_generate_wireframes(true)
+		#get_viewport().debug_draw = Viewport.DEBUG_DRAW_WIREFRAME
+	
