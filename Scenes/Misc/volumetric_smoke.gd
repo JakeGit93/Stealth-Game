@@ -33,14 +33,13 @@ func _ready():
 	var grid := generate_grid()
 	write_grid_to_file(grid)
 
-	var voxel_voxelspace := worldspace_to_voxelspace(test_object.position)
-	var voxel_pos := get_voxel_position(voxel_voxelspace)
-	visualize_voxel(voxel_pos)
 
 	#read_file("res://Assets/Volumes/TestVolume.vxl")
 
 func _physics_process(_delta: float) -> void:
-	pass
+	var voxel_voxelspace := worldspace_to_voxelspace(test_object.position)
+	var voxel_pos := get_voxel_position(voxel_voxelspace)
+	visualize_voxel(voxel_pos)
 
 func generate_grid() -> PackedByteArray:
 	var grid_array := PackedByteArray()
@@ -196,8 +195,7 @@ func visualize_occupied(pos: Vector3) -> void:
 	#if use_wireframe_debug:
 		#RenderingServer.set_debug_generate_wireframes(true)
 		#get_viewport().debug_draw = Viewport.DEBUG_DRAW_WIREFRAME
-
-#we need to query the grid, and insert the mesh that aligns with the voxel position.	
+	
 func visualize_voxel(pos: Vector3i) -> void:
 	var cube := MeshInstance3D.new()
 	cube.mesh = shared_mesh
