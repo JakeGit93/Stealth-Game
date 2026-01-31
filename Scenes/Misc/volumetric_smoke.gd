@@ -38,7 +38,7 @@ func _ready():
 
 func _physics_process(_delta: float) -> void:
 	var voxel_voxelspace := worldspace_to_voxelspace(test_object.position)
-	var voxel_pos := get_voxel_position(voxel_voxelspace)
+	var voxel_pos := voxelspace_to_worldspace(voxel_voxelspace)
 	visualize_voxel(voxel_pos)
 
 func generate_grid() -> PackedByteArray:
@@ -168,7 +168,7 @@ func worldspace_to_voxelspace(pos: Vector3) -> Vector3i:
 	var object_voxel_position : Vector3i = floor(pos - origin / voxel_size)
 	return object_voxel_position
 
-func get_voxel_position(index: Vector3i) -> Vector3:
+func voxelspace_to_worldspace(index: Vector3i) -> Vector3:
 	var current_pos := grid_origin
 	for z in index.z:
 		current_pos.z += voxel_size
@@ -202,6 +202,27 @@ func visualize_voxel(pos: Vector3i) -> void:
 	cube.scale = Vector3.ONE * voxel_size * 0.99
 	shared_mat.albedo_color = Color(255,0,0)
 	cube.position = worldspace_to_voxelspace(pos)
-	print("voxel grid position: ", pos)
-	#cube.set_surface_override_material(0, shared_mat)
+	cube.set_surface_override_material(0, shared_mat)
 	add_child(cube)
+
+#need to be spawning this AABB in grid space, not world space
+func generate_nade(pos: Vector3) -> void:
+	#radius of the smoke shape (we're doing a sphere for starters)
+	var radius := 3
+	#voxels inside this bounding box are checked for distance to spawn position (pos). If they are within the radius, they are shaded
+	var bounding_box := AABB()
+	#bounding box is definitely larger than the smoke radius in all directions
+	bounding_box.size = Vector3i(radius, radius, radius) * 2 #integer values to avoid half-voxels
+	#centers the box around the origin
+	bounding_box.position = pos - ceil(bounding_box.size * 0.5) #ceil to avoid half-voxels
+	#aligning the box to gridspace
+	bounding_box.position = worldspace_to_voxelspace(bounding_box.position)
+
+	#we now know the AABB is aligned to gridspace, so we should be looping over voxel indices, not worldspace positions.
+	#
+	for z in bounding_box.size.z:
+		for y in bounding_box.size.y:
+			for x in bounding_box.size.x:
+				pass
+
+
