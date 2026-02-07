@@ -1,27 +1,21 @@
 # TODO
 
-# Functions are calling each other too much, we should provide the functions with the class agnostically
-# and let the class instance do the logic.
-
-# Require a vxl resource per Volume3D object?
-
-# 3D noise textures (etc) should be resources of objects that interface with Volume3D
-
-# Extend per-voxel values for lighting system?
-
-# Add greedy mesher
-
-# Add noise3D support
+#A Huge amount of stuff much of which isn't covered here.
+#Focus should be on bug testing
+#Several functions have not been evaulated properly
+#We're not converting from worldspace to voxelspace correctly, I don't think
+#We're not snapping to grid correctly either
+#We should be dealing mostly in voxelspace for as much as possible
+#Conversions to and from worldspace/voxelspace should only happen when absolutely necessary
+#Not sure if the snap/align functions are working correctly, for now I'm assuming they are
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-@tool
-
 class_name Volume3D extends Node3D
 
-@export var grid_width := 128
-@export var grid_height := 128
-@export var grid_depth := 128
-@export var voxel_size := 0.5
+@export var grid_width := 256
+@export var grid_height := 256
+@export var grid_depth := 256
+@export var voxel_size := 1.0
 @export var debug := false
 @export var test_object : Node3D
 
@@ -33,14 +27,17 @@ func _ready():
 	var grid := generate_grid()
 	write_grid_to_file(grid)
 
+	generate_nade(Vector3(0.1,1.6,0.9))
+
 
 	#read_file("res://Assets/Volumes/TestVolume.vxl")
 
 func _physics_process(_delta: float) -> void:
-	var voxel_voxelspace := worldspace_to_voxelspace(test_object.position)
-	var voxel_pos := voxelspace_to_worldspace(voxel_voxelspace)
-	visualize_voxel(voxel_pos)
-
+	#var voxel_voxelspace := worldspace_to_voxelspace(test_object.position)
+	#var voxel_pos := voxelspace_to_worldspace(voxel_voxelspace)
+	#visualize_voxel(voxel_pos)
+	pass
+	
 func generate_grid() -> PackedByteArray:
 	var grid_array := PackedByteArray()
 	
@@ -177,7 +174,7 @@ func voxelspace_to_worldspace(index: Vector3i) -> Vector3:
 	for x in index.x:
 		current_pos.x += voxel_size
 
-	print("voxel world position: ", current_pos)
+	#print("voxel world position: ", current_pos)
 	return current_pos
 
 func visualize_occupied(pos: Vector3) -> void:
@@ -196,33 +193,50 @@ func visualize_occupied(pos: Vector3) -> void:
 		#RenderingServer.set_debug_generate_wireframes(true)
 		#get_viewport().debug_draw = Viewport.DEBUG_DRAW_WIREFRAME
 	
-func visualize_voxel(pos: Vector3i) -> void:
+func visualize_voxel(pos: Vector3) -> void:
 	var cube := MeshInstance3D.new()
 	cube.mesh = shared_mesh
 	cube.scale = Vector3.ONE * voxel_size * 0.99
-	shared_mat.albedo_color = Color(255,0,0)
-	cube.position = worldspace_to_voxelspace(pos)
+	shared_mat.albedo_color = Color(randf_range(0,1),randf_range(0,1),randf_range(0,1),1.0)
+	cube.position = pos
 	cube.set_surface_override_material(0, shared_mat)
 	add_child(cube)
 
-#need to be spawning this AABB in grid space, not world space
+#this whole AABB approach is bad and wrong.
+#what really should be happening is:
+#I find the voxel at the grenade spawn location
+#From this center voxel, I find all voxels within a cube
+#I check each voxel if it's within the radius of a sphere
+#If it is, I add that voxel to the array (which can be passed into the mesher)
 func generate_nade(pos: Vector3) -> void:
-	#radius of the smoke shape (we're doing a sphere for starters)
-	var radius := 3
-	#voxels inside this bounding box are checked for distance to spawn position (pos). If they are within the radius, they are shaded
+	var radius := 1.0
 	var bounding_box := AABB()
-	#bounding box is definitely larger than the smoke radius in all directions
-	bounding_box.size = Vector3i(radius, radius, radius) * 2 #integer values to avoid half-voxels
-	#centers the box around the origin
-	bounding_box.position = pos - ceil(bounding_box.size * 0.5) #ceil to avoid half-voxels
-	#aligning the box to gridspace
-	bounding_box.position = worldspace_to_voxelspace(bounding_box.position)
+	var bounding_size = Vector3(radius*2,radius*2,radius*2)
+	bounding_box.position = to_local(pos)
+	bounding_box.size.x = snapped(bounding_size.x, voxel_size)
+	bounding_box.size.y = snapped(bounding_size.y, voxel_size)
+	bounding_box.size.z = snapped(bounding_size.z, voxel_size)
+	bounding_box.position.x = snapped(bounding_box.position.x, voxel_size)
+	bounding_box.position.y = snapped(bounding_box.position.y, voxel_size)
+	bounding_box.position.z = snapped(bounding_box.position.z, voxel_size)
 
-	#we now know the AABB is aligned to gridspace, so we should be looping over voxel indices, not worldspace positions.
-	#
-	for z in bounding_box.size.z:
-		for y in bounding_box.size.y:
-			for x in bounding_box.size.x:
-				pass
+	print("AABB size: ", bounding_box.size)
+	print("global AABB position: ", to_global(bounding_box.position))
+	print("local AABB position: ", bounding_box.position)
 
+	#visualizing the AABB itself, delete later
+	var cube := MeshInstance3D.new()
+	cube.mesh = shared_mesh
+	shared_mesh.size = bounding_box.size
+	shared_mat.albedo_color = Color(255,0,0)
+	cube.position = bounding_box.position
+	cube.set_surface_override_material(0, shared_mat)
+	add_child(cube)
+	print("cube position", to_global(cube.position))
 
+	var num_voxels = bounding_box.size / ceil(voxel_size)
+	var center_voxel = worldspace_to_voxelspace(pos)
+	var AABB_voxels = []
+	for voxels in num_voxels:
+		pass
+		

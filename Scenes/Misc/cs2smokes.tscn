@@ -38,29 +38,28 @@ shape = SubResource("ConcavePolygonShape3D_o5yv6")
 disabled = true
 
 [node name="VolumetricSmoke" type="Node3D" parent="." node_paths=PackedStringArray("test_object")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.88005, 0, -5.18398)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -5)
 script = ExtResource("1_n5fav")
-grid_width = 28
-grid_height = 28
-grid_depth = 28
-voxel_size = 1.0
+grid_width = 128
+grid_height = 128
+grid_depth = 128
+voxel_size = 0.5
 test_object = NodePath("../Level/RigidBody3D")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, 8.92782e-15, -8.74228e-08, -6.7659e-08, 0.633273, 0.773929, 5.53625e-08, 0.773929, -0.633273, -0.402289, 8.52453, -8.67213)
+transform = Transform3D(-0.482732, -0.677782, 0.5546, -8.61202e-08, 0.633273, 0.773929, -0.875768, 0.3736, -0.305701, 17.7816, 26.8113, -16.045)
 current = true
 fov = 50.4
 
 [node name="Level" type="Node3D" parent="."]
+visible = false
 
 [node name="RigidBody3D" type="StaticBody3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.71114, 2.00512, -5.06305)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/RigidBody3D"]
 shape = SubResource("CapsuleShape3D_n5fav")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Level/RigidBody3D"]
-visible = false
 mesh = SubResource("CapsuleMesh_n5fav")
 
 [node name="SmokeGrenade" type="Node3D" parent="."]
