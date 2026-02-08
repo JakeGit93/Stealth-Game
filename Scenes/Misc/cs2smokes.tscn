@@ -43,11 +43,10 @@ script = ExtResource("1_n5fav")
 grid_width = 128
 grid_height = 128
 grid_depth = 128
-voxel_size = 0.5
 test_object = NodePath("../Level/RigidBody3D")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.482732, -0.677782, 0.5546, -8.61202e-08, 0.633273, 0.773929, -0.875768, 0.3736, -0.305701, 17.7816, 26.8113, -16.045)
+transform = Transform3D(-0.738208, 0.522071, -0.427189, -5.73471e-08, 0.633273, 0.773928, 0.674573, 0.57132, -0.467487, -12.789, 26.9177, -15.1189)
 current = true
 fov = 50.4
 

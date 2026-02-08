@@ -4,10 +4,8 @@
 #Focus should be on bug testing
 #Several functions have not been evaulated properly
 #We're not converting from worldspace to voxelspace correctly, I don't think
-#We're not snapping to grid correctly either
 #We should be dealing mostly in voxelspace for as much as possible
 #Conversions to and from worldspace/voxelspace should only happen when absolutely necessary
-#Not sure if the snap/align functions are working correctly, for now I'm assuming they are
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 class_name Volume3D extends Node3D
@@ -27,7 +25,7 @@ func _ready():
 	var grid := generate_grid()
 	write_grid_to_file(grid)
 
-	generate_nade(Vector3(0.1,1.6,0.9))
+	generate_nade(Vector3(0,0,0))
 
 
 	#read_file("res://Assets/Volumes/TestVolume.vxl")
@@ -108,7 +106,6 @@ func write_header(file: FileAccess) -> void:
 	file.store_32(grid_height)
 	file.store_32(grid_depth)
 
-#gonna have to redo this potentially?
 func write_grid_to_file(grid: PackedByteArray) -> void:
 	var path := "res://Assets/Volumes/TestVolume.vxl"
 
@@ -117,7 +114,6 @@ func write_grid_to_file(grid: PackedByteArray) -> void:
 	file.store_buffer(grid)
 	file.close()
 
-#and this?
 func read_file(path: String):
 	var file := FileAccess.open(path, FileAccess.READ)
 	var file_type := file.get_pascal_string()
@@ -160,11 +156,14 @@ func read_file(path: String):
 		grid_data = file.get_buffer(remaining_data)
 		return grid_data
 
-func worldspace_to_voxelspace(pos: Vector3) -> Vector3i:
-	var origin := self.position 
-	var object_voxel_position : Vector3i = floor(pos - origin / voxel_size)
-	return object_voxel_position
+func worldspace_to_voxelspace(pos: Vector3):
+	if pos.x < grid_origin.x or pos.y < grid_origin.y or pos.z < grid_origin.z:
+		push_error("Position outside voxel grid: ", pos)
+	else:
+		var object_voxel_position : Vector3i = floor(pos - grid_origin * voxel_size)
+		return object_voxel_position
 
+#rewrite this dogshit!
 func voxelspace_to_worldspace(index: Vector3i) -> Vector3:
 	var current_pos := grid_origin
 	for z in index.z:
@@ -202,41 +201,19 @@ func visualize_voxel(pos: Vector3) -> void:
 	cube.set_surface_override_material(0, shared_mat)
 	add_child(cube)
 
-#this whole AABB approach is bad and wrong.
-#what really should be happening is:
-#I find the voxel at the grenade spawn location
-#From this center voxel, I find all voxels within a cube
-#I check each voxel if it's within the radius of a sphere
-#If it is, I add that voxel to the array (which can be passed into the mesher)
 func generate_nade(pos: Vector3) -> void:
-	var radius := 1.0
-	var bounding_box := AABB()
-	var bounding_size = Vector3(radius*2,radius*2,radius*2)
-	bounding_box.position = to_local(pos)
-	bounding_box.size.x = snapped(bounding_size.x, voxel_size)
-	bounding_box.size.y = snapped(bounding_size.y, voxel_size)
-	bounding_box.size.z = snapped(bounding_size.z, voxel_size)
-	bounding_box.position.x = snapped(bounding_box.position.x, voxel_size)
-	bounding_box.position.y = snapped(bounding_box.position.y, voxel_size)
-	bounding_box.position.z = snapped(bounding_box.position.z, voxel_size)
+	var radius := 5.0
+	var half := radius / 2
+	var true_pos = pos - grid_origin
+	var center_voxel = worldspace_to_voxelspace(true_pos)
+	var bounds_voxels: Array[Vector3i] = []
+	for x in range(-half, half):
+		for y in range(-half, half):
+			for z in range(-half, half):
+				bounds_voxels.append(center_voxel + Vector3i(x, y, z))
+	print(bounds_voxels)
 
-	print("AABB size: ", bounding_box.size)
-	print("global AABB position: ", to_global(bounding_box.position))
-	print("local AABB position: ", bounding_box.position)
-
-	#visualizing the AABB itself, delete later
-	var cube := MeshInstance3D.new()
-	cube.mesh = shared_mesh
-	shared_mesh.size = bounding_box.size
-	shared_mat.albedo_color = Color(255,0,0)
-	cube.position = bounding_box.position
-	cube.set_surface_override_material(0, shared_mat)
-	add_child(cube)
-	print("cube position", to_global(cube.position))
-
-	var num_voxels = bounding_box.size / ceil(voxel_size)
-	var center_voxel = worldspace_to_voxelspace(pos)
-	var AABB_voxels = []
-	for voxels in num_voxels:
-		pass
+	for i in range(bounds_voxels.size()):
+		var vox = voxelspace_to_worldspace(bounds_voxels[i])
+		visualize_voxel(vox)
 		
