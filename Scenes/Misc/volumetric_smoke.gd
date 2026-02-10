@@ -1,12 +1,11 @@
 # TODO
 
-#A Huge amount of stuff much of which isn't covered here.
-#Focus should be on bug testing
-#Several functions have not been evaulated properly
-#We're not converting from worldspace to voxelspace correctly, I don't think
-#We should be dealing mostly in voxelspace for as much as possible
-#Conversions to and from worldspace/voxelspace should only happen when absolutely necessary
-
+#In generate_nade(), diameter values below a certain point break the sphere generation
+#Voxel size below 1.0 also breaks sphere generation
+#Need to read from vxl file correctly for occupancy values
+#Shouldn't need to generate grid every time, should be able to infer positions from grid origin and grid dimensions
+#Need to move generate_nade() into its own file so it can be a node that retrieves voxel grid data from volume node in the scene tree
+#Need to add floodfill propagation for smoke shape, will do this in the grenade file 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 class_name Volume3D extends Node3D
 
@@ -20,21 +19,19 @@ class_name Volume3D extends Node3D
 @onready var grid_origin := self.global_position
 @onready var shared_mesh := BoxMesh.new()
 @onready var shared_mat := StandardMaterial3D.new()
+@onready var is_grenade := false
 
 func _ready():
 	var grid := generate_grid()
 	write_grid_to_file(grid)
 
-	generate_nade(Vector3(0,0,0))
-
 
 	#read_file("res://Assets/Volumes/TestVolume.vxl")
 
 func _physics_process(_delta: float) -> void:
-	#var voxel_voxelspace := worldspace_to_voxelspace(test_object.position)
-	#var voxel_pos := voxelspace_to_worldspace(voxel_voxelspace)
-	#visualize_voxel(voxel_pos)
-	pass
+	if is_grenade == false:
+		generate_nade(Vector3(0,0,0))
+		is_grenade = true
 	
 func generate_grid() -> PackedByteArray:
 	var grid_array := PackedByteArray()
@@ -160,21 +157,17 @@ func worldspace_to_voxelspace(pos: Vector3):
 	if pos.x < grid_origin.x or pos.y < grid_origin.y or pos.z < grid_origin.z:
 		push_error("Position outside voxel grid: ", pos)
 	else:
-		var object_voxel_position : Vector3i = floor(pos - grid_origin * voxel_size)
+		var object_voxel_position : Vector3i = floor((pos - grid_origin) / voxel_size) 
 		return object_voxel_position
 
-#rewrite this dogshit!
 func voxelspace_to_worldspace(index: Vector3i) -> Vector3:
-	var current_pos := grid_origin
-	for z in index.z:
-		current_pos.z += voxel_size
-	for y in index.y:
-		current_pos.y += voxel_size
-	for x in index.x:
-		current_pos.x += voxel_size
+	var true_pos := Vector3(
+		grid_origin.x + (index.x * voxel_size),
+		grid_origin.y + (index.y * voxel_size),
+		grid_origin.z + (index.z * voxel_size)
+		)
 
-	#print("voxel world position: ", current_pos)
-	return current_pos
+	return true_pos
 
 func visualize_occupied(pos: Vector3) -> void:
 	var shared_cube := MeshInstance3D.new()
@@ -196,24 +189,26 @@ func visualize_voxel(pos: Vector3) -> void:
 	var cube := MeshInstance3D.new()
 	cube.mesh = shared_mesh
 	cube.scale = Vector3.ONE * voxel_size * 0.99
-	shared_mat.albedo_color = Color(randf_range(0,1),randf_range(0,1),randf_range(0,1),1.0)
+	shared_mat.albedo_color = Color(randf_range(0,1),randf_range(0,1),randf_range(0,1))
 	cube.position = pos
-	cube.set_surface_override_material(0, shared_mat)
+	cube.set_material_override(shared_mat)
 	add_child(cube)
 
+#some stuff still broken
 func generate_nade(pos: Vector3) -> void:
-	var radius := 5.0
-	var half := radius / 2
-	var true_pos = pos - grid_origin
-	var center_voxel = worldspace_to_voxelspace(true_pos)
+	var diameter := 10.0 / voxel_size
+	var radius = floor(diameter / 2)
+	var center_voxel = worldspace_to_voxelspace(to_local(pos))
 	var bounds_voxels: Array[Vector3i] = []
-	for x in range(-half, half):
-		for y in range(-half, half):
-			for z in range(-half, half):
-				bounds_voxels.append(center_voxel + Vector3i(x, y, z))
-	print(bounds_voxels)
+	for x in range(-radius, radius):
+		for y in range(-radius, radius):
+			for z in range(-radius, radius):
+					bounds_voxels.append(center_voxel + Vector3i(x,y,z))
 
+	print("number of voxels: ",bounds_voxels.size())	
 	for i in range(bounds_voxels.size()):
 		var vox = voxelspace_to_worldspace(bounds_voxels[i])
-		visualize_voxel(vox)
+		var dist = vox - to_local(pos)
+		if dist.length_squared() <= radius * radius:
+			visualize_voxel(vox)
 		

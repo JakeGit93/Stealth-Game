@@ -27,8 +27,12 @@ data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_n5fav")
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 0.385552, 0.922686, 0, -0.922686, 0.385552, 0, 12.2655, 10.4966)
+
 [node name="Floor" type="MeshInstance3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+visible = false
 mesh = SubResource("PlaneMesh_n5fav")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
@@ -46,7 +50,7 @@ grid_depth = 128
 test_object = NodePath("../Level/RigidBody3D")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.738208, 0.522071, -0.427189, -5.73471e-08, 0.633273, 0.773928, 0.674573, 0.57132, -0.467487, -12.789, 26.9177, -15.1189)
+transform = Transform3D(-0.0490703, -0.315334, 0.947711, -0.0163054, 0.948981, 0.314913, -0.998662, 9.3257e-10, -0.0517084, 46.1203, 16.7199, 0.261658)
 current = true
 fov = 50.4
 
