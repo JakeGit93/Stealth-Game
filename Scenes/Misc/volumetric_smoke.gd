@@ -22,16 +22,13 @@ class_name Volume3D extends Node3D
 @onready var is_grenade := false
 
 func _ready():
-	var grid := generate_grid()
-	write_grid_to_file(grid)
-
-
+	#var grid := generate_grid()
+	#write_grid_to_file(grid)
 	#read_file("res://Assets/Volumes/TestVolume.vxl")
+	pass
 
 func _physics_process(_delta: float) -> void:
-	if is_grenade == false:
-		generate_nade(Vector3(0,0,0))
-		is_grenade = true
+	pass
 	
 func generate_grid() -> PackedByteArray:
 	var grid_array := PackedByteArray()
@@ -166,7 +163,7 @@ func voxelspace_to_worldspace(index: Vector3i) -> Vector3:
 		grid_origin.y + (index.y * voxel_size),
 		grid_origin.z + (index.z * voxel_size)
 		)
-
+	
 	return true_pos
 
 func visualize_occupied(pos: Vector3) -> void:
@@ -193,22 +190,3 @@ func visualize_voxel(pos: Vector3) -> void:
 	cube.position = pos
 	cube.set_material_override(shared_mat)
 	add_child(cube)
-
-#some stuff still broken
-func generate_nade(pos: Vector3) -> void:
-	var diameter := 10.0 / voxel_size
-	var radius = floor(diameter / 2)
-	var center_voxel = worldspace_to_voxelspace(to_local(pos))
-	var bounds_voxels: Array[Vector3i] = []
-	for x in range(-radius, radius):
-		for y in range(-radius, radius):
-			for z in range(-radius, radius):
-					bounds_voxels.append(center_voxel + Vector3i(x,y,z))
-
-	print("number of voxels: ",bounds_voxels.size())	
-	for i in range(bounds_voxels.size()):
-		var vox = voxelspace_to_worldspace(bounds_voxels[i])
-		var dist = vox - to_local(pos)
-		if dist.length_squared() <= radius * radius:
-			visualize_voxel(vox)
-		

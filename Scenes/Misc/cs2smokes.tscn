@@ -32,7 +32,6 @@ transform = Transform3D(1, 0, 0, 0, 0.385552, 0.922686, 0, -0.922686, 0.385552, 
 
 [node name="Floor" type="MeshInstance3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
-visible = false
 mesh = SubResource("PlaneMesh_n5fav")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
@@ -44,13 +43,18 @@ disabled = true
 [node name="VolumetricSmoke" type="Node3D" parent="." node_paths=PackedStringArray("test_object")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -5)
 script = ExtResource("1_n5fav")
-grid_width = 128
-grid_height = 128
-grid_depth = 128
+grid_width = 1000
+grid_height = 1000
+grid_depth = 1000
+voxel_size = 0.5
 test_object = NodePath("../Level/RigidBody3D")
 
+[node name="SmokeGrenade" type="Node3D" parent="." node_paths=PackedStringArray("grid")]
+script = ExtResource("2_o5yv6")
+grid = NodePath("../VolumetricSmoke")
+
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.0490703, -0.315334, 0.947711, -0.0163054, 0.948981, 0.314913, -0.998662, 9.3257e-10, -0.0517084, 46.1203, 16.7199, 0.261658)
+transform = Transform3D(-0.0490703, -0.315334, 0.947711, -0.0163054, 0.948981, 0.314913, -0.998662, 9.3257e-10, -0.0517084, 61.6944, 16.7199, 0.261658)
 current = true
 fov = 50.4
 
@@ -64,6 +68,3 @@ shape = SubResource("CapsuleShape3D_n5fav")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Level/RigidBody3D"]
 mesh = SubResource("CapsuleMesh_n5fav")
-
-[node name="SmokeGrenade" type="Node3D" parent="."]
-script = ExtResource("2_o5yv6")
