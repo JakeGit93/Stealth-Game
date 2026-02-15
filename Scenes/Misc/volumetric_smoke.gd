@@ -187,6 +187,6 @@ func visualize_voxel(pos: Vector3) -> void:
 	cube.mesh = shared_mesh
 	cube.scale = Vector3.ONE * voxel_size * 0.99
 	shared_mat.albedo_color = Color(0.5,0.5,0.5)
-	cube.position = pos
+	cube.position = pos - grid_origin
 	cube.set_material_override(shared_mat)
 	add_child(cube)

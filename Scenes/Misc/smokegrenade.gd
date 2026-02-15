@@ -1,16 +1,20 @@
 #TODO:
-#add setters/getters for the radius property so we can access them with the tween to expand the smoke radius
+#Set up a raycast from camera to spawn the nade
+#Implement the flood fil algorithm
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 class_name SmokeGrenade extends Node3D
 
 @export var grid : Volume3D
+#this will be used for a custom smoke expansion at some point
+@export var curve : Curve
 
 @onready var radius : float:
 	set(value):
 		radius = value
 		expand_smoke(bounds_voxels, pos)
 
+var smoke_tween : Tween
 var bounds_voxels : Array[Vector3i]
 var pos : Vector3
 
@@ -21,12 +25,11 @@ func _ready() -> void:
 		return
 
 	generate_nade(Vector3(0,0,0))
-	create_tween().tween_property(self, "radius", 5.0, 2.0).set_trans(Tween.TRANS_EXPO)
-
-func _process(delta: float) -> void:
-	pass
+	smoke_tween = create_tween()
+	smoke_tween.set_trans(Tween.TRANS_EXPO)
+	smoke_tween.set_ease(Tween.EASE_OUT)
+	smoke_tween.tween_property(self, "radius", 5.0, 1.0)
 	
-
 func generate_nade(posi : Vector3) -> Array[Vector3i]:
 	var full_size = 100
 	var diameter = full_size * 0.1
@@ -48,3 +51,9 @@ func expand_smoke(arr : Array[Vector3i], posi : Vector3) -> void:
 			smoke_array.append(vox)
 			grid.visualize_voxel(vox)
 	
+func flood_fill():
+	pass
+
+#this will cast a ray from the screen to the world so we can place the grenade
+func screen_to_world():
+	pass
