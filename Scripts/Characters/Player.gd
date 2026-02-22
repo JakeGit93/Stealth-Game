@@ -18,7 +18,6 @@ const ANIMATION_BLEND : float = 5.0
 @onready var spring_arm_pivot : Node3D = $SpringArmPivot
 @onready var animator : AnimationTree = $AnimationTree
 @onready var crosshair : Control = $SpringArmPivot/SpringArm3D/Camera3D/CrosshairUI/Crosshair
-@onready var use_computer : CanvasLayer = $SpringArmPivot/SpringArm3D/Camera3D/PromptUI
 @onready var security_camera_audio : AudioStreamPlayer = $"../SecurityCamera/AudioStreamPlayer"
 
 func _physics_process(delta):
@@ -80,14 +79,16 @@ func animate(delta):
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body == self:
-		use_computer.visible = true
-		print(use_computer.visible)
+		#use_computer.visible = true
+		#print(use_computer.visible)
+		pass
 
 
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	if body == self:
-		use_computer.visible = false
-		print(use_computer.visible)
+		#use_computer.visible = false
+		#print(use_computer.visible)
+		pass
 
 
 func player_entered_camera(body: Node3D) -> void:

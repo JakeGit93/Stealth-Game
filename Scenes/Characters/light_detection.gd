@@ -10,8 +10,6 @@ extends Node3D
 @onready var bot_lum : float
 @onready var player : CharacterBody3D = $".."
 @onready var progress_bar : ProgressBar = $"../SpringArmPivot/SpringArm3D/Camera3D/LightViewer/Control2/ProgressBar"
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass

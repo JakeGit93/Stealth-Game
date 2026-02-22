@@ -1,11 +1,7 @@
 # TODO
 
-#In generate_nade(), diameter values below a certain point break the sphere generation
-#Voxel size below 1.0 also breaks sphere generation
-#Need to read from vxl file correctly for occupancy values
-#Shouldn't need to generate grid every time, should be able to infer positions from grid origin and grid dimensions
-#Need to move generate_nade() into its own file so it can be a node that retrieves voxel grid data from volume node in the scene tree
-#Need to add floodfill propagation for smoke shape, will do this in the grenade file 
+#I feel we have drastically over-engineered the occupancy map file.
+#Realistically, we don't need a header or anything else, just straight values
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 class_name Volume3D extends Node3D
 
@@ -77,34 +73,10 @@ func voxel_intersects_geometry(world_pos: Vector3) -> bool:
 	else:
 		return false
 
-func write_header(file: FileAccess) -> void:
-	#this header is **not** for storing any chunk data or occupancy values!
-	file.seek(0)
-
-	# Magic
-	file.store_pascal_string("vxl")       
-
-	# Version
-	file.store_8(1)
-
-	# Voxel size
-	file.store_float(voxel_size)
-
-	# Grid origin (world-space)
-	file.store_float(grid_origin.x)
-	file.store_float(grid_origin.y)
-	file.store_float(grid_origin.z)
-
-	# Grid dimensions (total grid size)
-	file.store_32(grid_width)
-	file.store_32(grid_height)
-	file.store_32(grid_depth)
-
 func write_grid_to_file(grid: PackedByteArray) -> void:
 	var path := "res://Assets/Volumes/TestVolume.vxl"
 
 	var file := FileAccess.open(path, FileAccess.WRITE_READ)
-	write_header(file)
 	file.store_buffer(grid)
 	file.close()
 
@@ -190,3 +162,6 @@ func visualize_voxel(pos: Vector3) -> void:
 	cube.position = pos - grid_origin
 	cube.set_material_override(shared_mat)
 	add_child(cube)
+
+func check_occupancy(index: Vector3i) -> bool:
+	return true

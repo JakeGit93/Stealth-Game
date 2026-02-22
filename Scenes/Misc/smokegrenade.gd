@@ -25,10 +25,14 @@ func _ready() -> void:
 		return
 
 	generate_nade(Vector3(0,0,0))
-	smoke_tween = create_tween()
-	smoke_tween.set_trans(Tween.TRANS_EXPO)
-	smoke_tween.set_ease(Tween.EASE_OUT)
-	smoke_tween.tween_property(self, "radius", 5.0, 1.0)
+
+	if smoke_tween:
+		smoke_tween.kill()
+	else:
+		smoke_tween = create_tween()
+		smoke_tween.set_trans(Tween.TRANS_EXPO)
+		smoke_tween.set_ease(Tween.EASE_OUT)
+		smoke_tween.tween_property(self, "radius", 5.0, 10.0)
 	
 func generate_nade(posi : Vector3) -> Array[Vector3i]:
 	var full_size = 100
