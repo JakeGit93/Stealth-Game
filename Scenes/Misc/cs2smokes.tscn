@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://2pxctrir7jjg"]
+[gd_scene format=3 uid="uid://2pxctrir7jjg"]
 
 [ext_resource type="Script" uid="uid://bfuuw1im3q1dx" path="res://Scenes/Misc/volumetric_smoke.gd" id="1_n5fav"]
-[ext_resource type="Script" uid="uid://dycbfa1aony63" path="res://Scenes/Misc/smokegrenade.gd" id="2_o5yv6"]
+[ext_resource type="Script" uid="uid://c6wnr2bajbl2s" path="res://Scenes/Misc/orbit.gd" id="3_yb1ll"]
 
 [sub_resource type="Environment" id="Environment_n5fav"]
 background_mode = 1
@@ -18,58 +18,49 @@ material = SubResource("StandardMaterial3D_y4dqh")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_o5yv6"]
 data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
 
-[sub_resource type="Curve" id="Curve_o5yv6"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.19726, 0.925029), 0.277499, 0.277499, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 3
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n5fav"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_n5fav"]
 
-[node name="Root" type="Node3D"]
+[node name="Root" type="Node3D" unique_id=1207446438]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=792152646]
 environment = SubResource("Environment_n5fav")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment" unique_id=1066368312]
 transform = Transform3D(1, 0, 0, 0, 0.385552, 0.922686, 0, -0.922686, 0.385552, 0, 12.2655, 10.4966)
 
-[node name="Floor" type="MeshInstance3D" parent="."]
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=381876911]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 mesh = SubResource("PlaneMesh_n5fav")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor" unique_id=852496334]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D" unique_id=1937818166]
 shape = SubResource("ConcavePolygonShape3D_o5yv6")
 disabled = true
 
-[node name="VolumetricSmoke" type="Node3D" parent="." node_paths=PackedStringArray("test_object")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -5)
+[node name="VolumetricSmoke" type="Node3D" parent="." unique_id=1743078270 node_paths=PackedStringArray("test_object")]
 script = ExtResource("1_n5fav")
-grid_width = 1000
-grid_height = 1000
-grid_depth = 1000
+grid_width = 32
+grid_height = 32
+grid_depth = 32
 voxel_size = 0.5
 test_object = NodePath("../Level/RigidBody3D")
 
-[node name="SmokeGrenade" type="Node3D" parent="." node_paths=PackedStringArray("grid")]
-script = ExtResource("2_o5yv6")
-grid = NodePath("../VolumetricSmoke")
-curve = SubResource("Curve_o5yv6")
-
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1378662726]
 transform = Transform3D(-0.0490703, -0.315334, 0.947711, -0.0163054, 0.948981, 0.314913, -0.998662, 9.3257e-10, -0.0517084, 61.6944, 16.7199, 0.261658)
 current = true
 fov = 50.4
+script = ExtResource("3_yb1ll")
 
-[node name="Level" type="Node3D" parent="."]
+[node name="Level" type="Node3D" parent="." unique_id=1251786357]
 visible = false
 
-[node name="RigidBody3D" type="StaticBody3D" parent="Level"]
+[node name="RigidBody3D" type="StaticBody3D" parent="Level" unique_id=253572463]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/RigidBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/RigidBody3D" unique_id=58505662]
 shape = SubResource("CapsuleShape3D_n5fav")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/RigidBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/RigidBody3D" unique_id=2052266813]
 mesh = SubResource("CapsuleMesh_n5fav")

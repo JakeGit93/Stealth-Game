@@ -5,10 +5,7 @@ void vertex() {
 }
 
 void fragment() {
-	// Called for every pixel the material is visible on.
+	vec3 world_pos = (INV_VIEW_MATRIX * vec4(VERTEX, 1.0)).xyz;
+	vec3 ray_dir = normalize(world_pos - CAMERA_POSITION_WORLD);
+	ALBEDO = vec3(ray_dir * 0.5 + 0.5);
 }
-
-//void light() {
-//	// Called for every pixel for every light affecting the material.
-//	// Uncomment to replace the default light processing function with this one.
-//}

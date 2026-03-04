@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://fth7k22bwk01"]
+
+[ext_resource type="Script" uid="uid://wvlvox6or42f" path="res://surfaceToolTest.gd" id="1_16m3e"]
+
+[node name="Node3D" type="Node3D" unique_id=1725404875]
+script = ExtResource("1_16m3e")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=984794952]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.201927)

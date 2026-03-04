@@ -1,7 +1,8 @@
 # TODO
 
-#I feel we have drastically over-engineered the occupancy map file.
-#Realistically, we don't need a header or anything else, just straight values
+#fix all the errors with combining smokegrenade.gd into this file
+#change from generating meshes per voxel to surface tool
+#change the grid generation so it flood fills, and delete flood fill function
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 class_name Volume3D extends Node3D
 
@@ -9,23 +10,33 @@ class_name Volume3D extends Node3D
 @export var grid_height := 256
 @export var grid_depth := 256
 @export var voxel_size := 1.0
-@export var debug := false
-@export var test_object : Node3D
+@export var curve : Curve
 
 @onready var grid_origin := self.global_position
 @onready var shared_mesh := BoxMesh.new()
 @onready var shared_mat := StandardMaterial3D.new()
-@onready var is_grenade := false
+@onready var mesh := BoxMesh.new()
+@onready var radius : float:
+	set(value):
+		radius = value
+		expand_smoke(bounds_voxels, pos)
 
-func _ready():
-	#var grid := generate_grid()
-	#write_grid_to_file(grid)
-	#read_file("res://Assets/Volumes/TestVolume.vxl")
-	pass
+var smoke_tween : Tween
+var bounds_voxels : Array[Vector3i]
+var pos : Vector3
 
-func _physics_process(_delta: float) -> void:
-	pass
-	
+func _ready() -> void:
+	generate_nade(Vector3(0,0,0))
+
+	if smoke_tween:
+		smoke_tween.kill()
+	else:
+		smoke_tween = create_tween()
+		smoke_tween.set_trans(Tween.TRANS_EXPO)
+		smoke_tween.set_ease(Tween.EASE_OUT)
+		smoke_tween.tween_property(self, "radius", 5.0, 10.0)
+
+
 func generate_grid() -> PackedByteArray:
 	var grid_array := PackedByteArray()
 	
@@ -47,11 +58,6 @@ func generate_grid() -> PackedByteArray:
 					grid_array.append(1)
 				else:
 					grid_array.append(0)
-
-				#debug visuals
-				if occupied && debug == true:
-					visualize_occupied(local_pos)
-
 	return grid_array
 
 func voxel_intersects_geometry(world_pos: Vector3) -> bool:
@@ -73,61 +79,10 @@ func voxel_intersects_geometry(world_pos: Vector3) -> bool:
 	else:
 		return false
 
-func write_grid_to_file(grid: PackedByteArray) -> void:
-	var path := "res://Assets/Volumes/TestVolume.vxl"
-
-	var file := FileAccess.open(path, FileAccess.WRITE_READ)
-	file.store_buffer(grid)
-	file.close()
-
-func read_file(path: String):
-	var file := FileAccess.open(path, FileAccess.READ)
-	var file_type := file.get_pascal_string()
-	var grid_data: PackedByteArray
-
-	print("read file has started")
-
-	if file_type != "vxl":
-		assert(file_type == "vxl", "file type incorrect")
-		return null
-	else:
-		print("vxl")
-
-		var version := file.get_8()
-		print("version: ", version)
-
-		var voxel_size_temp := file.get_float()
-		print("voxel size: ", voxel_size_temp)
-
-		var grid_origin_x := file.get_float()
-		print("grid origin x: ", grid_origin_x)
-
-		var grid_origin_y := file.get_float()
-		print("grid origin y: ", grid_origin_y)
-
-		var grid_origin_z := file.get_float()
-		print("grid origin z: ", grid_origin_z)
-
-		var grid_size_x_temp := file.get_32()
-		print("grid size x: ", grid_size_x_temp)
-
-		var grid_size_y_temp := file.get_32()
-		print("grid size y: ", grid_size_y_temp)
-
-		var grid_size_z_temp := file.get_32()
-		print("grid size z: ", grid_size_z_temp)
-
-		#the data after the header gets returned as a packedbytearray
-		var remaining_data := file.get_length() - file.get_position()
-		grid_data = file.get_buffer(remaining_data)
-		return grid_data
 
 func worldspace_to_voxelspace(pos: Vector3):
-	if pos.x < grid_origin.x or pos.y < grid_origin.y or pos.z < grid_origin.z:
-		push_error("Position outside voxel grid: ", pos)
-	else:
-		var object_voxel_position : Vector3i = floor((pos - grid_origin) / voxel_size) 
-		return object_voxel_position
+	var object_voxel_position : Vector3i = floor((pos - grid_origin) / voxel_size) 
+	return object_voxel_position
 
 func voxelspace_to_worldspace(index: Vector3i) -> Vector3:
 	var true_pos := Vector3(
@@ -137,22 +92,6 @@ func voxelspace_to_worldspace(index: Vector3i) -> Vector3:
 		)
 	
 	return true_pos
-
-func visualize_occupied(pos: Vector3) -> void:
-	var shared_cube := MeshInstance3D.new()
-	shared_cube.mesh = shared_mesh
-	var mat := StandardMaterial3D.new()
-	shared_cube.scale = Vector3.ONE * voxel_size * 0.99
-	mat.albedo_color = Color(randf_range(0,1),randf_range(0,1),randf_range(0,1),1.0)
-	shared_cube.position = pos
-	shared_cube.set_surface_override_material(0, mat)
-	add_child(shared_cube)
-					
-	#wireframe visuals
-	#~~~~~~~~~~~~~~
-	#if use_wireframe_debug:
-		#RenderingServer.set_debug_generate_wireframes(true)
-		#get_viewport().debug_draw = Viewport.DEBUG_DRAW_WIREFRAME
 	
 func visualize_voxel(pos: Vector3) -> void:
 	var cube := MeshInstance3D.new()
@@ -165,3 +104,32 @@ func visualize_voxel(pos: Vector3) -> void:
 
 func check_occupancy(index: Vector3i) -> bool:
 	return true
+	
+func generate_nade(posi : Vector3) -> Array[Vector3i]:
+	var full_size = 100
+	var diameter = full_size * 0.1
+	var center_voxel = worldspace_to_voxelspace(posi)
+
+	for x in range(-diameter, diameter):
+		for y in range(-diameter, diameter):
+			for z in range(-diameter, diameter):
+					bounds_voxels.append(center_voxel + Vector3i(x,y,z))
+		
+	return bounds_voxels
+
+func expand_smoke(arr : Array[Vector3i], posi : Vector3) -> void:
+	var smoke_array: Array[Vector3] = []
+	for i in range(arr.size()):
+		var vox = voxelspace_to_worldspace(arr[i])
+		var dist = vox - posi
+		if dist.length_squared() <= radius * radius:
+			smoke_array.append(vox)
+			visualize_voxel(vox)
+			#multi.instance_count = smoke_array.size()
+	
+func flood_fill():
+	pass
+
+#this will cast a ray from the screen to the world so we can place the grenade
+func screen_to_world():
+	pass
