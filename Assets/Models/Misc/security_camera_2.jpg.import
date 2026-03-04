@@ -9,7 +9,7 @@ metadata={
 "vram_texture": true
 }
 generator_parameters={
-"md5": "46c17ab831f3bdcfa6194567ce804508"
+"md5": "e0b957e54d19990ff8cc13c80d358360"
 }
 
 [deps]
@@ -22,6 +22,8 @@ dest_files=["res://.godot/imported/security_camera_2.jpg-f00f1744e0dc55a8a9926de
 compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=1
 compress/channel_pack=0
@@ -29,6 +31,10 @@ mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
 roughness/src_normal="res://Assets/Models/Misc/security_camera_2.jpg"
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
