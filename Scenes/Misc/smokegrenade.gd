@@ -9,6 +9,9 @@ class_name SmokeGrenade extends Node3D
 #this will be used for a custom smoke expansion at some point
 @export var curve : Curve
 
+@onready var multi := MultiMeshInstance3D.new()
+@onready var mesh := BoxMesh.new()
+
 @onready var radius : float:
 	set(value):
 		radius = value
@@ -24,6 +27,7 @@ func _ready() -> void:
 		set_process(false)
 		return
 
+	multi.mesh = mesh
 	generate_nade(Vector3(0,0,0))
 
 	if smoke_tween:
@@ -54,6 +58,7 @@ func expand_smoke(arr : Array[Vector3i], posi : Vector3) -> void:
 		if dist.length_squared() <= radius * radius:
 			smoke_array.append(vox)
 			grid.visualize_voxel(vox)
+			#multi.instance_count = smoke_array.size()
 	
 func flood_fill():
 	pass
