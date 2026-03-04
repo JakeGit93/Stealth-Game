@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dm8bv7423880j"]
+
+[ext_resource type="Shader" uid="uid://erfg1rrxb5uv" path="res://raymarchedvolume.gdshader" id="1_1mbht"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m7v0u"]
+render_priority = 0
+shader = ExtResource("1_1mbht")
+
+[sub_resource type="BoxMesh" id="BoxMesh_55b3q"]
+material = SubResource("ShaderMaterial_m7v0u")
+
+[node name="Node3D" type="MeshInstance3D" unique_id=353483907]
+mesh = SubResource("BoxMesh_55b3q")
