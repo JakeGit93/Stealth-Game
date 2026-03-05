@@ -2,8 +2,25 @@
 
 [ext_resource type="Script" uid="uid://wvlvox6or42f" path="res://surfaceToolTest.gd" id="1_16m3e"]
 
-[node name="Node3D" type="Node3D" unique_id=1725404875]
-script = ExtResource("1_16m3e")
+[sub_resource type="Environment" id="Environment_16m3e"]
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_16m3e"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" unique_id=1166667308]
+environment = SubResource("Environment_16m3e")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=984794952]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.201927)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49864364, 5.016702, 30.141537)
+current = true
+fov = 50.0
+
+[node name="Node3D" type="MeshInstance3D" parent="." unique_id=1576303535]
+script = ExtResource("1_16m3e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=25432085]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.131818, 0)
+mesh = SubResource("CapsuleMesh_16m3e")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1449117890]
