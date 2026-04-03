@@ -14,7 +14,6 @@ class_name Volume3D extends Node3D
 
 @onready var grid_origin := self.global_position
 @onready var shared_mesh := BoxMesh.new()
-@onready var shared_mat := StandardMaterial3D.new()
 @onready var mesh := BoxMesh.new()
 @onready var radius : float:
 	set(value):
@@ -93,13 +92,17 @@ func voxelspace_to_worldspace(index: Vector3i) -> Vector3:
 	
 	return true_pos
 	
+#this is completely broken, I was trying to load a shader programatically in code
+#however, there aren't any good built in methods for applying a shader material to a MeshInstance3D
+#so instead, I will apply the shader after I've implemented the ArrayMesh method of constructing the volume
 func visualize_voxel(pos: Vector3) -> void:
+	var shared_mat := Material.new()
+	var shared_shader := preload("res://Scenes/Misc/smokegrenadeshader.gdshader")
 	var cube := MeshInstance3D.new()
 	cube.mesh = shared_mesh
 	cube.scale = Vector3.ONE * voxel_size * 0.99
-	shared_mat.albedo_color = Color(0.5,0.5,0.5)
 	cube.position = pos - grid_origin
-	cube.set_material_override(shared_mat)
+	cube.set_surface_override_material(0,shared_shader)
 	add_child(cube)
 
 func check_occupancy(index: Vector3i) -> bool:

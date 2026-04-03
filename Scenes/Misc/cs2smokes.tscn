@@ -40,13 +40,12 @@ mesh = SubResource("PlaneMesh_n5fav")
 shape = SubResource("ConcavePolygonShape3D_o5yv6")
 disabled = true
 
-[node name="VolumetricSmoke" type="Node3D" parent="." unique_id=1743078270 node_paths=PackedStringArray("test_object")]
+[node name="VolumetricSmoke" type="Node3D" parent="." unique_id=1743078270]
 script = ExtResource("1_n5fav")
 grid_width = 32
 grid_height = 32
 grid_depth = 32
 voxel_size = 0.5
-test_object = NodePath("../Level/RigidBody3D")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1378662726]
 transform = Transform3D(-0.0490703, -0.315334, 0.947711, -0.0163054, 0.948981, 0.314913, -0.998662, 9.3257e-10, -0.0517084, 61.6944, 16.7199, 0.261658)

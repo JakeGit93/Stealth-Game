@@ -74,29 +74,7 @@ func animate(delta):
 		animator.set("parameters/ground_air_transition/transition_request", "air")
 
 
-
-
-
-func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body == self:
-		#use_computer.visible = true
-		#print(use_computer.visible)
-		pass
-
-
-func _on_area_3d_body_exited(body: Node3D) -> void:
-	if body == self:
-		#use_computer.visible = false
-		#print(use_computer.visible)
-		pass
-
-
-func player_entered_camera(body: Node3D) -> void:
-	if body == self:
-		print("caught!")
-		security_camera_audio.play()
-
-
-func player_exit_camera(body: Node3D) -> void:
-	if body == self:
-		print("not caught")
+func _input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			%AudioStreamPlayer3D.play()

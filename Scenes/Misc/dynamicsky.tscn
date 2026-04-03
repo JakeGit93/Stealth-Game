@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://b37v3jpny4ka5"]
+
+[ext_resource type="Shader" uid="uid://bcfotsvp2e2xg" path="res://dynamicsky.gdshader" id="1_hy05d"]
+[ext_resource type="Texture2D" uid="uid://cq65ljadawc2p" path="res://Assets/Textures/vecteezy_glowing-fiery-solar-orb-in-the-cosmic-universe-shining_58272351.png" id="2_2802h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0fii8"]
+render_priority = 0
+shader = ExtResource("1_hy05d")
+shader_parameter/sun_direction = Vector3(0, 1, 0)
+
+[sub_resource type="SphereMesh" id="SphereMesh_q6rw4"]
+material = SubResource("ShaderMaterial_0fii8")
+flip_faces = true
+
+[node name="Node3D" type="MeshInstance3D" unique_id=1811809216]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+cast_shadow = 0
+mesh = SubResource("SphereMesh_q6rw4")
+
+[node name="Sun" type="Sprite3D" parent="." unique_id=857400234]
+transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0.03133271, 0, 0.002881086)
+billboard = 1
+double_sided = false
+texture = ExtResource("2_2802h")

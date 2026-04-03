@@ -29,7 +29,6 @@ func _process(delta: float) -> void:
 	top_lum = _get_col(current_top_frame).get_luminance()
 	bot_lum = _get_col(current_bot_frame).get_luminance()
 	var combined_values = (bot_lum + top_lum) * 0.5
-	print(combined_values)
 	
 	var tween := create_tween()
 	tween.tween_property(progress_bar, "value", combined_values, 0.1)

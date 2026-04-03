@@ -1,0 +1,154 @@
+[gd_scene format=3 uid="uid://cwmvvsiuxcld0"]
+
+[ext_resource type="FontFile" uid="uid://bgteukutbtmjg" path="res://Scenes/Fonts/Oswald-VariableFont_wght.ttf" id="1_7ddki"]
+[ext_resource type="Script" uid="uid://c85jhlyaa11dh" path="res://Scenes/Misc/line_2d.gd" id="1_hisk1"]
+[ext_resource type="Script" uid="uid://pxtbhk75jg08" path="res://Scenes/Misc/text_edit.gd" id="2_xlfih"]
+[ext_resource type="Script" uid="uid://bj8tv52530leb" path="res://Scenes/Misc/rich_text_label.gd" id="3_bxj3x"]
+[ext_resource type="FontFile" uid="uid://doaxbejdfvuv8" path="res://Scenes/Fonts/Perfect DOS VGA 437.ttf" id="3_gdn46"]
+[ext_resource type="AudioStream" uid="uid://ce824wy1e2sgx" path="res://Assets/Audio/computer_ambience.mp3" id="5_15dof"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7ddki"]
+
+[sub_resource type="Theme" id="Theme_hisk1"]
+
+[sub_resource type="Theme" id="Theme_0brct"]
+TextEdit/colors/background_color = Color(0, 0.6431373, 0, 1)
+TextEdit/colors/caret_color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control" unique_id=84674571]
+material = SubResource("ShaderMaterial_7ddki")
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1566174573]
+custom_minimum_size = Vector2(0, 900)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=1017040169]
+custom_minimum_size = Vector2(100, 900)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("Theme_hisk1")
+
+[node name="Panel" type="Panel" parent="ScrollContainer/VBoxContainer" unique_id=707338737]
+custom_minimum_size = Vector2(100, 900)
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_0brct")
+
+[node name="TextEdit" type="LineEdit" parent="ScrollContainer/VBoxContainer/Panel" unique_id=222202826]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.003
+anchor_top = 0.80200005
+anchor_right = 0.9990001
+anchor_bottom = 0.98600006
+offset_left = 0.10400009
+offset_top = 0.19995117
+offset_right = -0.39916992
+offset_bottom = 6.5999756
+theme_override_fonts/font = ExtResource("1_7ddki")
+theme_override_font_sizes/font_size = 32
+caret_blink = true
+caret_blink_interval = 0.2
+script = ExtResource("2_xlfih")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/Panel" unique_id=2041142271]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_right = 1200.0
+offset_bottom = 1000.47
+size_flags_horizontal = 0
+theme_override_colors/default_color = Color(0, 0.8666667, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_gdn46")
+theme_override_font_sizes/normal_font_size = 32
+script = ExtResource("3_bxj3x")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ScrollContainer/VBoxContainer/Panel" unique_id=1002985278]
+unique_name_in_owner = true
+stream = ExtResource("5_15dof")
+volume_db = 5.0
+
+[node name="Line2D" type="Line2D" parent="." unique_id=973535160]
+position = Vector2(1700, 600)
+width = 2.0
+script = ExtResource("1_hisk1")
+
+[node name="Line2D2" type="Line2D" parent="." unique_id=2124498697]
+position = Vector2(1700, 590)
+width = 2.0
+default_color = Color(1, 1, 1, 0.8627451)
+script = ExtResource("1_hisk1")
+
+[node name="Line2D3" type="Line2D" parent="." unique_id=357638282]
+position = Vector2(1700, 580)
+width = 2.0
+default_color = Color(1, 1, 1, 0.8235294)
+script = ExtResource("1_hisk1")
+
+[node name="Line2D4" type="Line2D" parent="." unique_id=182330308]
+position = Vector2(1700, 570)
+width = 2.0
+default_color = Color(1, 1, 1, 0.78431374)
+script = ExtResource("1_hisk1")
+
+[node name="Line2D5" type="Line2D" parent="." unique_id=1272934672]
+position = Vector2(1700, 560)
+width = 2.0
+default_color = Color(1, 1, 1, 0.74509805)
+script = ExtResource("1_hisk1")
+
+[node name="Line2D6" type="Line2D" parent="." unique_id=1672008958]
+position = Vector2(1700, 550)
+width = 2.0
+default_color = Color(1, 1, 1, 0.7058824)
+script = ExtResource("1_hisk1")
+
+[node name="Line2D7" type="Line2D" parent="." unique_id=1452500768]
+position = Vector2(1700, 540)
+width = 2.0
+default_color = Color(1, 1, 1, 0.6666667)
+script = ExtResource("1_hisk1")
+
+[node name="Line2D8" type="Line2D" parent="." unique_id=110306402]
+position = Vector2(1700, 530)
+width = 2.0
+default_color = Color(1, 1, 1, 0.627451)
+script = ExtResource("1_hisk1")
+
+[node name="Line2D9" type="Line2D" parent="." unique_id=784034294]
+position = Vector2(1700, 520)
+width = 2.0
+default_color = Color(1, 1, 1, 0.5882353)
+script = ExtResource("1_hisk1")
+
+[node name="Line2D10" type="Line2D" parent="." unique_id=1125749262]
+position = Vector2(1700, 510)
+width = 2.0
+default_color = Color(1, 1, 1, 0.54901963)
+script = ExtResource("1_hisk1")
+
+[node name="Line2D11" type="Line2D" parent="." unique_id=896134027]
+position = Vector2(1700, 500)
+width = 2.0
+default_color = Color(1, 1, 1, 0.50980395)
+script = ExtResource("1_hisk1")
+
+[node name="Line2D12" type="Line2D" parent="." unique_id=242980732]
+position = Vector2(1700, 490)
+width = 2.0
+default_color = Color(1, 1, 1, 0.47058824)
+script = ExtResource("1_hisk1")
+
+[connection signal="text_submitted" from="ScrollContainer/VBoxContainer/Panel/TextEdit" to="ScrollContainer/VBoxContainer/Panel/TextEdit" method="_on_text_submitted"]
+[connection signal="ready" from="ScrollContainer/VBoxContainer/Panel/AudioStreamPlayer" to="ScrollContainer/VBoxContainer/Panel/RichTextLabel" method="_on_audio_stream_player_2d_ready"]
