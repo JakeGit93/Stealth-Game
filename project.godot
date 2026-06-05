@@ -16,7 +16,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="Third Person Controller"
 config/tags=PackedStringArray("templates")
-run/main_scene="uid://ewu4op3lattf"
+run/main_scene="uid://60ku4wmsxdt8"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -72,6 +72,7 @@ swap_shoulder={
 [physics]
 
 3d/physics_engine="Jolt Physics"
+3d/default_gravity=9.799999999999997
 
 [rendering]
 
