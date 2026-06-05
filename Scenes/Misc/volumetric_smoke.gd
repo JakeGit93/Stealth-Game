@@ -97,12 +97,11 @@ func voxelspace_to_worldspace(index: Vector3i) -> Vector3:
 #so instead, I will apply the shader after I've implemented the ArrayMesh method of constructing the volume
 func visualize_voxel(pos: Vector3) -> void:
 	var shared_mat := Material.new()
-	var shared_shader := preload("res://Scenes/Misc/smokegrenadeshader.gdshader")
 	var cube := MeshInstance3D.new()
 	cube.mesh = shared_mesh
 	cube.scale = Vector3.ONE * voxel_size * 0.99
 	cube.position = pos - grid_origin
-	cube.set_surface_override_material(0,shared_shader)
+	cube.set_surface_override_material(0,shared_mat)
 	add_child(cube)
 
 func check_occupancy(index: Vector3i) -> bool:
