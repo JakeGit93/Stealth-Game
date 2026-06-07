@@ -16,7 +16,6 @@ func physics_update(delta: float) -> void:
         state_machine.transition_to(state_machine.get_node("Idle_State"))
     else:
         character.velocity.z = 100 * delta
-        print(character.position.z)
     
     character.move_and_slide()
         

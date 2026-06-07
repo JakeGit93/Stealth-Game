@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://jndhuvsei84o" path="res://Scenes/Levels/idle_state.gd" id="3_q1p36"]
 [ext_resource type="Script" uid="uid://d20aucgbjnjt6" path="res://Scenes/Levels/walk_state.gd" id="4_x0mv3"]
 [ext_resource type="Script" uid="uid://bff0p3gxh54wp" path="res://Scenes/Levels/fall_state.gd" id="5_x0mv3"]
+[ext_resource type="Script" uid="uid://d2stqw38ra7jn" path="res://Scripts/Characters/SpringArmPivot.gd" id="6_pgtsq"]
 
 [sub_resource type="Environment" id="Environment_4te2q"]
 ambient_light_source = 2
@@ -19638,15 +19639,23 @@ skin = SubResource("Skin_yaitv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.81176543, 0)
 shape = SubResource("CapsuleShape3D_bwlui")
 
-[node name="Camera3D" type="Camera3D" parent="Player" unique_id=423055329]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.6634421, -5.9018493)
-current = true
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Player" unique_id=2091603299]
 transform = Transform3D(1, 0, 0, 0, 0.70277417, 0.711413, 0, -0.711413, 0.70277417, 0, 2.124577, 1.1904505)
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Player" unique_id=407194978]
 transform = Transform3D(1, 0, 0, 0, -0.8077533, 0.58952063, 0, -0.58952063, -0.8077533, 0, 2.124577, -1.952624)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="Player" unique_id=1790106472 node_paths=PackedStringArray("spring_arm", "camera")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.1963956, 0)
+spring_length = 5.0
+margin = 0.05
+script = ExtResource("6_pgtsq")
+spring_arm = NodePath(".")
+camera = NodePath("Camera3D")
+
+[node name="Camera3D" type="Camera3D" parent="Player/SpringArm3D" unique_id=423055329]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5004578e-07, 0.8196087, 2.5252786)
+current = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2127951417]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8467169, 4.268565)
