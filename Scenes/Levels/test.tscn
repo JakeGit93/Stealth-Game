@@ -19149,10 +19149,12 @@ character = NodePath("../..")
 animation_tree = NodePath("../../AnimationTree")
 metadata/_custom_type_script = "uid://bk4mf5tajg1fd"
 
-[node name="Walk_State" type="Node" parent="Player/State Machine" unique_id=1809395860 node_paths=PackedStringArray("character", "animation_tree")]
+[node name="Walk_State" type="Node" parent="Player/State Machine" unique_id=1809395860 node_paths=PackedStringArray("character", "animation_tree", "camera", "spring_arm_pivot")]
 script = ExtResource("4_x0mv3")
 character = NodePath("../..")
 animation_tree = NodePath("../../AnimationTree")
+camera = NodePath("../../SpringArm3D/Camera3D")
+spring_arm_pivot = NodePath("../../SpringArm3D")
 metadata/_custom_type_script = "uid://bk4mf5tajg1fd"
 
 [node name="Fall_State" type="Node" parent="Player/State Machine" unique_id=1490302451 node_paths=PackedStringArray("character", "animation_tree")]

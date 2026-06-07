@@ -1,10 +1,11 @@
 class_name StateMachine
 extends Node
 
-
+@export_group("State variables")
 @export var animation_tree : AnimationTree
 @export var initial_state : State
 @export var character : CharacterBody3D
+
 var current_state: State
 
 func _ready() -> void:
@@ -27,8 +28,3 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	current_state.physics_update(delta)
-
-	var root_motion = animation_tree.get_root_motion_position()
-	var motion = character.global_transform.basis * root_motion
-	character.velocity = motion / delta
-	character.move_and_slide()
