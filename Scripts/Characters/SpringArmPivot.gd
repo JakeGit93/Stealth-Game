@@ -41,12 +41,12 @@ func _unhandled_input(event):
 		spring_arm.rotate_object_local(Vector3.RIGHT, -event.relative.y * 0.005)
 		spring_arm.rotation.x = clamp(spring_arm.rotation.x, -PI/4, PI/4)
 
-func _physics_process(delta):
+func _process(delta: float) -> void:
 	global_position = target.global_position
-	spring_arm.rotation.z = 0
-
 	spring_arm.spring_length = lerp(spring_arm.spring_length, target_length, delta * 10.0)
-	
+
+func _physics_process(delta):
+	spring_arm.rotation.z = 0
 	if Input.is_action_just_pressed("swap_shoulder"):
 		target_x = spring_pos2 if !spring_bool else spring_pos1
 		spring_bool = !spring_bool

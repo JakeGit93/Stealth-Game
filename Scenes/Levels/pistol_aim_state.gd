@@ -19,10 +19,10 @@ func enter() -> void:
 	playback = animation_tree.get("parameters/playback")
 	playback.travel("Pistol_Aim_Neutral")
 	camera_pivot.set_aiming(true)
-	camera.attributes.dof_blur_far_enabled = false
-	camera.attributes.dof_blur_near_enabled = true
-	camera.attributes.dof_blur_near_distance = 4.0
-	camera.attributes.dof_blur_amount = 0.1
+	#camera.attributes.dof_blur_far_enabled = false
+	#camera.attributes.dof_blur_near_enabled = true
+	#camera.attributes.dof_blur_near_distance = 4.0
+	#camera.attributes.dof_blur_amount = 0.1
 	crosshair.visible = true
 
 func exit() -> void:
