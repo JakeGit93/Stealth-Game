@@ -7,6 +7,8 @@ extends State
 @export var spring_arm: SpringArm3D
 @export var camera: Camera3D
 @export var crosshair: Control
+@export var look_at : LookAtModifier3D
+@export var look_at_target : Marker3D
 
 @export_group("Movement variables")
 @export var walk_speed : float = 2.0
@@ -19,13 +21,11 @@ func enter() -> void:
 	playback = animation_tree.get("parameters/playback")
 	playback.travel("Pistol_Aim_Neutral")
 	camera_pivot.set_aiming(true)
-	#camera.attributes.dof_blur_far_enabled = false
-	#camera.attributes.dof_blur_near_enabled = true
-	#camera.attributes.dof_blur_near_distance = 4.0
-	#camera.attributes.dof_blur_amount = 0.1
 	crosshair.visible = true
+	look_at.active = true
 
 func exit() -> void:
+	look_at.active = false
 	camera.attributes.dof_blur_near_distance = 0.0
 	camera.attributes.dof_blur_amount = 0.0
 	crosshair.visible = false
@@ -76,6 +76,8 @@ func physics_update(delta: float) -> void:
 
 	if not character.is_on_floor():
 		character.velocity.y -= gravity * delta
+
+	
 
 	character.move_and_slide()
 		

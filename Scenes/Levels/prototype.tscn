@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://lmypqseiavpm" path="res://Assets/Models/Misc/security_camera_0.jpg" id="17_amwc4"]
 [ext_resource type="Texture2D" uid="uid://bwm84604n7vo2" path="res://Assets/Models/Misc/security_camera_1.png" id="18_o05ag"]
 [ext_resource type="Texture2D" uid="uid://c6romhojeynl2" path="res://Assets/Models/Misc/security_camera_2.jpg" id="19_uxjys"]
-[ext_resource type="PackedScene" uid="uid://bnxu775mgngp0" path="res://Scenes/Characters/newplayer.tscn" id="22_amwc4"]
+[ext_resource type="PackedScene" uid="uid://60ku4wmsxdt8" path="res://Scenes/Levels/test.tscn" id="22_amwc4"]
 [ext_resource type="AudioStream" uid="uid://b66hxrpr7np6l" path="res://Assets/Audio/klaxon.mp3" id="23_o05ag"]
 [ext_resource type="PackedScene" uid="uid://dta56wg7lv63f" path="res://Scenes/Characters/enemy.tscn" id="24_uxjys"]
 [ext_resource type="Shader" uid="uid://v0b2kfrgays1" path="res://Scenes/Levels/glint.gdshader" id="27_gcujf"]
@@ -317,7 +317,7 @@ omni_range = 21.639
 navigation_mesh = SubResource("NavigationMesh_uxjys")
 
 [node name="Floor" type="MeshInstance3D" parent="NavigationRegion3D" unique_id=840797999]
-transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
+transform = Transform3D(100, 0, 0, 0, 5, 0, 0, 0, 100, 0, 0, 0)
 mesh = SubResource("PlaneMesh_mmup0")
 skeleton = NodePath("../..")
 
@@ -530,9 +530,8 @@ stream = ExtResource("23_o05ag")
 volume_db = -20.0
 parameters/looping = false
 
-[node name="Enemy" parent="." unique_id=808339735 node_paths=PackedStringArray("player") instance=ExtResource("24_uxjys")]
+[node name="Enemy" parent="." unique_id=808339735 instance=ExtResource("24_uxjys")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
-player = NodePath("")
 
 [node name="Test Mesh" type="Node3D" parent="." unique_id=963424793]
 
@@ -552,4 +551,4 @@ material_overlay = SubResource("ShaderMaterial_gcujf")
 mesh = SubResource("PlaneMesh_gcujf")
 
 [node name="Root" parent="." unique_id=1317407140 instance=ExtResource("22_amwc4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.0035949)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 3)

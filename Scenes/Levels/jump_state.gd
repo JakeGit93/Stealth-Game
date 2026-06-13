@@ -5,7 +5,7 @@ extends State
 @export var animation_tree: AnimationTree
 
 func enter() -> void:
-    animation_tree.set("parameters/playback", "Jump")
+    animation_tree.set("parameters/Jump/playback", "Jump_Start")
 
 func physics_update(delta: float) -> void:
 # Apply gravity even while idle

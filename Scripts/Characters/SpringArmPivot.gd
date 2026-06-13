@@ -50,7 +50,6 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("swap_shoulder"):
 		target_x = spring_pos2 if !spring_bool else spring_pos1
 		spring_bool = !spring_bool
-		skeleton.scale.x = -1 if spring_bool else 1
 
 		var t := create_tween()
 		t.tween_property(spring_arm, "position:x", target_x, 0.25)\
