@@ -7,7 +7,7 @@ extends State
 
 @export_group("Movement variables")
 @export var walk_speed : float = 2.0
-@export var run_speed : float = 5.0
+@export var run_speed : float = 8.0
 @export var jump_strength : float = 12.0
 @export var gravity : float = 50.0
 
