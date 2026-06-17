@@ -1,6 +1,8 @@
-[gd_scene load_steps=37 format=4 uid="uid://bpdwo2k1jf276"]
+[gd_scene format=4 uid="uid://bpdwo2k1jf276"]
 
 [ext_resource type="Texture2D" uid="uid://pdu5vcsd13is" path="res://Assets/Models/Weapons/pistol_concept(1)_0.png" id="1_25o4k"]
+[ext_resource type="Script" uid="uid://dmqoipdo8h0m7" path="res://Scenes/Weapons/pistol_weapon.gd" id="1_qjq33"]
+[ext_resource type="AudioStream" uid="uid://bqxwyqn1qi545" path="res://Assets/Audio/pistol.mp3" id="2_3f3mc"]
 [ext_resource type="Texture2D" uid="uid://k2vaobvw16jb" path="res://Assets/Models/Weapons/pistol_concept(1)_1.png" id="2_qjq33"]
 [ext_resource type="Texture2D" uid="uid://dhi8poje7voo7" path="res://Assets/Models/Weapons/pistol_concept(1)_2.png" id="3_3f3mc"]
 [ext_resource type="Texture2D" uid="uid://4apmoyhydn73" path="res://Assets/Models/Weapons/pistol_concept(1)_3.png" id="4_ql3dr"]
@@ -295,40 +297,45 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_mj3na")
 
-[node name="PistolWeapon" type="Node3D"]
-transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 0, 0, 0)
+[node name="PistolWeapon" type="Node3D" unique_id=80177126]
+transform = Transform3D(0.009659258, 0, -0.0025881904, 0, 0.01, 0, 0.0025881904, 0, 0.009659258, 0.5, -0.4, 0)
+script = ExtResource("1_qjq33")
+weapon_name = "Pistol"
+damage = 1.0
+max_ammo = 12
+sound = ExtResource("2_3f3mc")
 
-[node name="SPP_SPP_Upper_0" type="MeshInstance3D" parent="."]
+[node name="SPP_SPP_Upper_0" type="MeshInstance3D" parent="." unique_id=1420914585]
 transform = Transform3D(34.202, 93.9693, 4.37114e-06, -1.49502e-06, -4.10753e-06, 100, 93.9693, -34.202, 1.67037e-20, 2, -2.1202e-07, 7)
 layers = 511
 mesh = SubResource("ArrayMesh_averq")
 skeleton = NodePath("")
 
-[node name="SPP_SPP_Lower_0" type="MeshInstance3D" parent="."]
+[node name="SPP_SPP_Lower_0" type="MeshInstance3D" parent="." unique_id=671712658]
 transform = Transform3D(34.202, 93.9693, 4.37114e-06, -1.49502e-06, -4.10753e-06, 100, 93.9693, -34.202, 1.67037e-20, 2, -2.1202e-07, 7)
 layers = 511
 mesh = SubResource("ArrayMesh_ttmh5")
 skeleton = NodePath("")
 
-[node name="SPP_SPP_Silencer_0" type="MeshInstance3D" parent="."]
+[node name="SPP_SPP_Silencer_0" type="MeshInstance3D" parent="." unique_id=695289964]
 transform = Transform3D(34.202, 93.9693, 4.37114e-06, -1.49502e-06, -4.10753e-06, 100, 93.9693, -34.202, 1.67037e-20, 2, -2.1202e-07, 7)
 layers = 511
 mesh = SubResource("ArrayMesh_q4wy2")
 skeleton = NodePath("")
 
-[node name="SPP_SPP_Magazine_0" type="MeshInstance3D" parent="."]
+[node name="SPP_SPP_Magazine_0" type="MeshInstance3D" parent="." unique_id=195616599]
 transform = Transform3D(34.202, 93.9693, 4.37114e-06, -1.49502e-06, -4.10753e-06, 100, 93.9693, -34.202, 1.67037e-20, 2, -2.1202e-07, 7)
 layers = 511
 mesh = SubResource("ArrayMesh_s1hf2")
 skeleton = NodePath("")
 
-[node name="SPP_SPP_Laser_0" type="MeshInstance3D" parent="."]
+[node name="SPP_SPP_Laser_0" type="MeshInstance3D" parent="." unique_id=1131228175]
 transform = Transform3D(34.202, 93.9693, 4.37114e-06, -1.49502e-06, -4.10753e-06, 100, 93.9693, -34.202, 1.67037e-20, 2, -2.1202e-07, 7)
 layers = 511
 mesh = SubResource("ArrayMesh_6lw8v")
 skeleton = NodePath("")
 
-[node name="SPP_SPP_Bullet_0" type="MeshInstance3D" parent="."]
+[node name="SPP_SPP_Bullet_0" type="MeshInstance3D" parent="." unique_id=1266314071]
 transform = Transform3D(34.202, 93.9693, 4.37114e-06, -1.49502e-06, -4.10753e-06, 100, 93.9693, -34.202, 1.67037e-20, 2, -2.1202e-07, 7)
 layers = 511
 mesh = SubResource("ArrayMesh_k0oj1")
