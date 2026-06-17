@@ -18,6 +18,8 @@ const CAMERA_BLEND : float = 0.05
 @export var model : MeshInstance3D
 @export var normal_length: float = 5.0
 @export var aim_length: float = 2.5
+@export var spine_rotator: LookAtModifier3D
+@export var IK_target: Marker3D
 var target_length: float
 var target_x: float
 
@@ -45,6 +47,7 @@ func _process(delta: float) -> void:
 	global_position = target.global_position
 	spring_arm.spring_length = lerp(spring_arm.spring_length, target_length, delta * 10.0)
 
+
 func _physics_process(delta):
 	spring_arm.rotation.z = 0
 	if Input.is_action_just_pressed("swap_shoulder"):
@@ -55,3 +58,10 @@ func _physics_process(delta):
 		t.tween_property(spring_arm, "position:x", target_x, 0.25)\
 		.set_trans(Tween.TRANS_QUAD)\
 		.set_ease(Tween.EASE_IN_OUT)
+
+
+func _on_spine_rotator_modification_processed() -> void:
+	if spine_rotator.is_target_within_limitation():
+		spine_rotator.influence = lerp(spine_rotator.influence, 1.0, get_physics_process_delta_time() * 5.0)
+	else:
+		spine_rotator.influence = lerp(spine_rotator.influence, 0.0, get_physics_process_delta_time() * 5.0)
