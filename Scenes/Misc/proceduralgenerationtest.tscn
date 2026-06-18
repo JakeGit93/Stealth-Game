@@ -1,9 +1,10 @@
-[gd_scene format=3 uid="uid://b7lmmjfodbd2n"]
+[gd_scene format=3 uid="uid://dwvijo8pqkbfg"]
 
 [ext_resource type="Script" uid="uid://cqv3vn0jerbp2" path="res://procgentest.gd" id="1_t5yvb"]
 [ext_resource type="Script" uid="uid://c6wnr2bajbl2s" path="res://Scenes/Misc/orbit.gd" id="2_0b8e2"]
 
 [sub_resource type="Environment" id="Environment_t5yvb"]
+background_mode = 1
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_0b8e2"]
 
@@ -23,7 +24,5 @@ script = ExtResource("2_0b8e2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3034432, 4.8914332, 2.441761)
 omni_range = 37.372
 
-[node name="VolumeTest" type="Node3D" parent="." unique_id=1019094156]
+[node name="VolumeTest" type="MeshInstance3D" parent="." unique_id=2139047308]
 script = ExtResource("1_t5yvb")
-energy = null
-voxel_size = null
