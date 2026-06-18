@@ -18,6 +18,17 @@ albedo_color = Color(0.25882354, 0.68235296, 1, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gp1mj"]
 albedo_color = Color(0.8392157, 0.49019608, 0.32156864, 1)
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2qtxk"]
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_r5xhu"]
+noise = SubResource("FastNoiseLite_2qtxk")
+seamless = true
+
+[sub_resource type="FogMaterial" id="FogMaterial_spsxx"]
+height_falloff = 0.1
+edge_fade = 0.565685
+density_texture = SubResource("NoiseTexture3D_r5xhu")
+
 [node name="Node3D" type="WorldEnvironment" unique_id=1163581822]
 environment = SubResource("Environment_r5xhu")
 
@@ -92,9 +103,10 @@ transform = Transform3D(0.023527248, -0.4874178, 0.8728519, 0.013133312, 0.87316
 shadow_enabled = true
 spot_range = 19.247
 
-[node name="Pistol" parent="." unique_id=1317407140 instance=ExtResource("1_2qtxk")]
+[node name="Player" parent="." unique_id=1317407140 instance=ExtResource("1_2qtxk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.03268, 0, 0)
 
 [node name="FogVolume" type="FogVolume" parent="." unique_id=906882972]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 57.57861, 0, 0)
 shape = 0
+material = SubResource("FogMaterial_spsxx")
