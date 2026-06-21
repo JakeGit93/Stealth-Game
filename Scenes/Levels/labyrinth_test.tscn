@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d1mn2cleojrc8"]
 
 [ext_resource type="PackedScene" uid="uid://60ku4wmsxdt8" path="res://Scenes/Levels/test.tscn" id="1_2qtxk"]
+[ext_resource type="Texture2D" uid="uid://cq65ljadawc2p" path="res://Assets/Textures/vecteezy_glowing-fiery-solar-orb-in-the-cosmic-universe-shining_58272351.png" id="1_r5xhu"]
 
 [sub_resource type="Environment" id="Environment_r5xhu"]
 ambient_light_color = Color(0.3019608, 0.5568628, 1, 1)
@@ -58,6 +59,13 @@ omni_range = 125.379
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -359.0625, 10.060993, -2.9768372)
 shadow_enabled = true
 omni_range = 125.379
+
+[node name="AreaLight3D" type="AreaLight3D" parent="Lights" unique_id=680966695]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 2.2209117, 0)
+light_size = 0.0
+shadow_enabled = true
+area_range = 10.0
+area_texture = ExtResource("1_r5xhu")
 
 [node name="Level Geometry" type="Node3D" parent="." unique_id=1237627614]
 

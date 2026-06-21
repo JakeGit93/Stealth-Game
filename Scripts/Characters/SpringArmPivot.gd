@@ -49,6 +49,7 @@ func _process(delta: float) -> void:
 
 
 func _physics_process(delta):
+
 	spring_arm.rotation.z = 0
 	if Input.is_action_just_pressed("swap_shoulder"):
 		target_x = spring_pos2 if !spring_bool else spring_pos1

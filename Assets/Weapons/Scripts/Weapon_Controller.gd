@@ -2,6 +2,7 @@ class_name WeaponController extends Node
 
 @export var weapon_handler: Node3D
 @export var weapon: PackedScene
+@export var bone_attach: BoneAttachment3D
 
 var current_weapon
 
@@ -16,7 +17,6 @@ func equip(scene: PackedScene) -> void:
 	current_weapon = scene.instantiate()
 	weapon_handler.add_child(current_weapon)
 
-
-
-
-
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("fire"):
+		current_weapon.fire()
