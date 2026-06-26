@@ -303,7 +303,7 @@ transform = Transform3D(0.009999999, 0, 0, 0, 0.01, 0, 0, 0, 0.009999999, 0, 0, 
 script = ExtResource("1_qjq33")
 bullet_scene = ExtResource("2_ql3dr")
 muzzle = NodePath("Muzzle")
-bullet_speed = 20
+bullet_speed = 20000
 audio_stream = NodePath("AudioStreamPlayer3D")
 weapon_name = "Pistol"
 damage = 1.0
@@ -313,43 +313,43 @@ sound = ExtResource("2_3f3mc")
 [node name="Mesh" type="Node3D" parent="." unique_id=2110456254]
 
 [node name="SPP_SPP_Silencer_0" type="MeshInstance3D" parent="Mesh" unique_id=695289964]
-transform = Transform3D(1.9106861e-13, 4.3711398e-06, 99.99999, 100.00002, -4.37114e-06, 0, 4.3711398e-06, 100.00003, -4.371139e-06, 0, 0, 0)
+transform = Transform3D(-7.5497924e-06, 100.00003, -1.5099576e-05, 100.00003, 7.5497924e-06, 0, 1.139987e-12, -1.5099585e-05, -99.99997, 0, 0, 0)
 layers = 511
 mesh = SubResource("ArrayMesh_q4wy2")
 skeleton = NodePath("")
 
 [node name="SPP_SPP_Magazine_0" type="MeshInstance3D" parent="Mesh" unique_id=195616599]
-transform = Transform3D(1.9106861e-13, 4.3711398e-06, 99.99999, 100.00002, -4.37114e-06, 0, 4.3711398e-06, 100.00003, -4.371139e-06, 0, 0, 0)
+transform = Transform3D(-7.5497924e-06, 100.00003, -1.5099576e-05, 100.00003, 7.5497924e-06, 0, 1.139987e-12, -1.5099585e-05, -99.99997, 0, 0, 0)
 layers = 511
 mesh = SubResource("ArrayMesh_s1hf2")
 skeleton = NodePath("")
 
 [node name="SPP_SPP_Laser_0" type="MeshInstance3D" parent="Mesh" unique_id=1131228175]
-transform = Transform3D(1.9106861e-13, 4.3711398e-06, 99.99999, 100.00002, -4.37114e-06, 0, 4.3711398e-06, 100.00003, -4.371139e-06, 0, 0, 0)
+transform = Transform3D(-7.5497924e-06, 100.00003, -1.5099576e-05, 100.00003, 7.5497924e-06, 0, 1.139987e-12, -1.5099585e-05, -99.99997, 0, 0, 0)
 layers = 511
 mesh = SubResource("ArrayMesh_6lw8v")
 skeleton = NodePath("")
 
 [node name="SPP_SPP_Bullet_0" type="MeshInstance3D" parent="Mesh" unique_id=1266314071]
-transform = Transform3D(1.9106861e-13, 4.3711398e-06, 99.99999, 100.00002, -4.37114e-06, 0, 4.3711398e-06, 100.00003, -4.371139e-06, 0, 0, 0)
+transform = Transform3D(-7.5497924e-06, 100.00003, -1.5099576e-05, 100.00003, 7.5497924e-06, 0, 1.139987e-12, -1.5099585e-05, -99.99997, 0, 0, 0)
 layers = 511
 mesh = SubResource("ArrayMesh_k0oj1")
 skeleton = NodePath("")
 
 [node name="SPP_SPP_Upper_0" type="MeshInstance3D" parent="Mesh" unique_id=1420914585]
-transform = Transform3D(1.9106861e-13, 4.3711398e-06, 99.99999, 100.00002, -4.37114e-06, 0, 4.3711398e-06, 100.00003, -4.371139e-06, 0, 0, 0)
+transform = Transform3D(-7.5497924e-06, 100.00003, -1.5099576e-05, 100.00003, 7.5497924e-06, 0, 1.139987e-12, -1.5099585e-05, -99.99997, 0, 0, 0)
 layers = 511
 mesh = SubResource("ArrayMesh_averq")
 skeleton = NodePath("")
 
 [node name="SPP_SPP_Lower_0" type="MeshInstance3D" parent="Mesh" unique_id=671712658]
-transform = Transform3D(1.9106861e-13, 4.3711398e-06, 99.99999, 100.00002, -4.37114e-06, 0, 4.3711398e-06, 100.00003, -4.371139e-06, 0, 0, 0)
+transform = Transform3D(-7.5497924e-06, 100.00003, -1.5099576e-05, 100.00003, 7.5497924e-06, 0, 1.139987e-12, -1.5099585e-05, -99.99997, 0, 0, 0)
 layers = 511
 mesh = SubResource("ArrayMesh_ttmh5")
 skeleton = NodePath("")
 
 [node name="Muzzle" type="Node3D" parent="." unique_id=1094100580]
-transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 4.256119, 34.596336, 0)
+transform = Transform3D(0.9999997, 0, 0, 0, 1, 0, 0, 0, 0.9999997, 0, 60.48266, -0.56385106)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=612269617]
 stream = ExtResource("2_3f3mc")

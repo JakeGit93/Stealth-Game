@@ -9,7 +9,6 @@ func fire() -> void:
 	var bullet = bullet_scene.instantiate()
 	get_tree().root.add_child(bullet)
 	bullet.global_position = muzzle.global_position
-	bullet.global_transform = muzzle.global_transform
-	bullet.scale = Vector3(2.0,2.0,2.0)
-	bullet.linear_velocity =  bullet_speed * Vector3.ONE
+	bullet.global_rotation = muzzle.global_rotation
+	bullet.linear_velocity =  muzzle.global_transform.basis.y * bullet_speed
 	audio_stream.play()
