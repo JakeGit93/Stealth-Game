@@ -298,8 +298,14 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_uj7xd")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vx4cp"]
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jcxqk"]
+material = SubResource("StandardMaterial3D_vx4cp")
+
 [node name="PistolWeapon" type="Node3D" unique_id=80177126 node_paths=PackedStringArray("muzzle", "audio_stream")]
-transform = Transform3D(0.009999999, 0, 0, 0, 0.01, 0, 0, 0, 0.009999999, 0, 0, 0)
+transform = Transform3D(0.009999998, 0, 0, 0, 0.01, 0, 0, 0, 0.009999998, 0, 0, 0)
 script = ExtResource("1_qjq33")
 bullet_scene = ExtResource("2_ql3dr")
 muzzle = NodePath("Muzzle")
@@ -313,43 +319,48 @@ sound = ExtResource("2_3f3mc")
 [node name="Mesh" type="Node3D" parent="." unique_id=2110456254]
 
 [node name="SPP_SPP_Silencer_0" type="MeshInstance3D" parent="Mesh" unique_id=695289964]
-transform = Transform3D(-7.5497924e-06, 100.00003, -1.5099576e-05, 100.00003, 7.5497924e-06, 0, 1.139987e-12, -1.5099585e-05, -99.99997, 0, 0, 0)
+transform = Transform3D(-3.30012e-13, 4.3711393e-06, 99.99999, 100.00008, 7.5497906e-06, -3.308722e-20, -7.549796e-06, 100.00001, -4.3711384e-06, 0, 0, 0)
 layers = 511
 mesh = SubResource("ArrayMesh_q4wy2")
 skeleton = NodePath("")
 
 [node name="SPP_SPP_Magazine_0" type="MeshInstance3D" parent="Mesh" unique_id=195616599]
-transform = Transform3D(-7.5497924e-06, 100.00003, -1.5099576e-05, 100.00003, 7.5497924e-06, 0, 1.139987e-12, -1.5099585e-05, -99.99997, 0, 0, 0)
+transform = Transform3D(-3.30012e-13, 4.3711393e-06, 99.99999, 100.00008, 7.5497906e-06, -3.308722e-20, -7.549796e-06, 100.00001, -4.3711384e-06, 0, 0, 0)
 layers = 511
 mesh = SubResource("ArrayMesh_s1hf2")
 skeleton = NodePath("")
 
 [node name="SPP_SPP_Laser_0" type="MeshInstance3D" parent="Mesh" unique_id=1131228175]
-transform = Transform3D(-7.5497924e-06, 100.00003, -1.5099576e-05, 100.00003, 7.5497924e-06, 0, 1.139987e-12, -1.5099585e-05, -99.99997, 0, 0, 0)
+transform = Transform3D(-3.30012e-13, 4.3711393e-06, 99.99999, 100.00008, 7.5497906e-06, -3.308722e-20, -7.549796e-06, 100.00001, -4.3711384e-06, 0, 0, 0)
 layers = 511
 mesh = SubResource("ArrayMesh_6lw8v")
 skeleton = NodePath("")
 
 [node name="SPP_SPP_Bullet_0" type="MeshInstance3D" parent="Mesh" unique_id=1266314071]
-transform = Transform3D(-7.5497924e-06, 100.00003, -1.5099576e-05, 100.00003, 7.5497924e-06, 0, 1.139987e-12, -1.5099585e-05, -99.99997, 0, 0, 0)
+transform = Transform3D(-3.30012e-13, 4.3711393e-06, 99.99999, 100.00008, 7.5497906e-06, -3.308722e-20, -7.549796e-06, 100.00001, -4.3711384e-06, 0, 0, 0)
 layers = 511
 mesh = SubResource("ArrayMesh_k0oj1")
 skeleton = NodePath("")
 
 [node name="SPP_SPP_Upper_0" type="MeshInstance3D" parent="Mesh" unique_id=1420914585]
-transform = Transform3D(-7.5497924e-06, 100.00003, -1.5099576e-05, 100.00003, 7.5497924e-06, 0, 1.139987e-12, -1.5099585e-05, -99.99997, 0, 0, 0)
+transform = Transform3D(-3.30012e-13, 4.3711393e-06, 99.99999, 100.00008, 7.5497906e-06, -3.308722e-20, -7.549796e-06, 100.00001, -4.3711384e-06, 0, 0, 0)
 layers = 511
 mesh = SubResource("ArrayMesh_averq")
 skeleton = NodePath("")
 
 [node name="SPP_SPP_Lower_0" type="MeshInstance3D" parent="Mesh" unique_id=671712658]
-transform = Transform3D(-7.5497924e-06, 100.00003, -1.5099576e-05, 100.00003, 7.5497924e-06, 0, 1.139987e-12, -1.5099585e-05, -99.99997, 0, 0, 0)
+transform = Transform3D(-3.30012e-13, 4.3711393e-06, 99.99999, 100.00008, 7.5497906e-06, -3.308722e-20, -7.549796e-06, 100.00001, -4.3711384e-06, 0, 0, 0)
 layers = 511
 mesh = SubResource("ArrayMesh_ttmh5")
 skeleton = NodePath("")
 
 [node name="Muzzle" type="Node3D" parent="." unique_id=1094100580]
-transform = Transform3D(0.9999997, 0, 0, 0, 1, 0, 0, 0, 0.9999997, 0, 60.48266, -0.56385106)
+transform = Transform3D(0.9961946, -0.08715579, 0, 0.086824074, 0.9924045, -0.08715574, 0.0075961216, 0.086824134, 0.9961947, -20.919193, 39.480286, 1.5696291)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Muzzle" unique_id=1984843101]
+transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 0, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_jcxqk")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=612269617]
 stream = ExtResource("2_3f3mc")

@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dmobhvxqf2v56" path="res://Assets/Models/Weapons/bullet_9_mm_0.png" id="1_8bitv"]
 [ext_resource type="Script" uid="uid://dha2wgsjmr3is" path="res://Scenes/Weapons/bullet.gd" id="1_jxgah"]
+[ext_resource type="Texture2D" uid="uid://teo4l0d1f1tk" path="res://Assets/Textures/bullet_hole.png" id="2_5e4cv"]
 [ext_resource type="Texture2D" uid="uid://bylp3vwleupgs" path="res://Assets/Models/Weapons/bullet_9_mm_1.png" id="2_jxgah"]
 [ext_resource type="Texture2D" uid="uid://ck430g8gu3j72" path="res://Assets/Models/Weapons/bullet_9_mm_2.png" id="3_5e4cv"]
 
@@ -59,12 +60,13 @@ shadow_mesh = SubResource("ArrayMesh_xxtmc")
 [node name="Bullet" type="RigidBody3D" unique_id=384123804]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 script = ExtResource("1_jxgah")
+bullet_hole = ExtResource("2_5e4cv")
 
 [node name="Bullet_bullet_0" type="MeshInstance3D" parent="." unique_id=1433535246]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+transform = Transform3D(-4.3711386e-09, 0.1, -4.3247796e-09, -0.1, -4.371139e-09, -4.3708934e-09, -4.370894e-09, 4.324779e-09, 0.1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_ql3ar")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1945894577]
-transform = Transform3D(-4.371139e-09, -0.1, 0, 0.1, -4.371139e-09, 0, 0, 0, 0.1, 0, 0, 0)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 shape = SubResource("CylinderShape3D_jcxqk")

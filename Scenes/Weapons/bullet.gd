@@ -1,7 +1,6 @@
 extends RigidBody3D
 @export var bullet_hole: Texture2D
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	continuous_cd = true
@@ -11,13 +10,13 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node) -> void:
 	print("hit", body.name)
-	#queue_free()
+	queue_free()
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	for i in state.get_contact_count():
 		var normal = state.get_contact_local_normal(i)
 		var position = state.get_contact_local_position(i)
-		#spawn_decal(position, normal)
+		spawn_decal(position, normal)
 
 func spawn_decal(position: Vector3, normal: Vector3) -> void:
 	var decal = Decal.new()

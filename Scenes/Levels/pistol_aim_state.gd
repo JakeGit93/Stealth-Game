@@ -7,7 +7,9 @@ extends State
 @export var spring_arm: SpringArm3D
 @export var camera: Camera3D
 @export var crosshair: Control
-@export var look_at : LookAtModifier3D
+@export var spine_look_at : LookAtModifier3D
+@export var right_two_bone : TwoBoneIK3D
+@export var left_two_bone : TwoBoneIK3D
 @export var look_at_target : Marker3D
 
 @export_group("Movement variables")
@@ -22,10 +24,14 @@ func enter() -> void:
 	playback.travel("Pistol_Aim_Neutral")
 	camera_pivot.set_aiming(true)
 	crosshair.visible = true
-	look_at.active = true
+	spine_look_at.active = true
+	right_two_bone.active = true
+	left_two_bone.active = true
 
 func exit() -> void:
-	look_at.active = false
+	spine_look_at.active = false
+	right_two_bone.active = false
+	left_two_bone.active = false
 	camera.attributes.dof_blur_near_distance = 0.0
 	camera.attributes.dof_blur_amount = 0.0
 	crosshair.visible = false
