@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d1mn2cleojrc8"]
 
-[ext_resource type="PackedScene" uid="uid://60ku4wmsxdt8" path="res://Scenes/Levels/test.tscn" id="1_2qtxk"]
 [ext_resource type="Texture2D" uid="uid://cq65ljadawc2p" path="res://Assets/Textures/vecteezy_glowing-fiery-solar-orb-in-the-cosmic-universe-shining_58272351.png" id="1_r5xhu"]
+[ext_resource type="PackedScene" uid="uid://n4p6g1gmkwo3" path="res://Scenes/Levels/testnewanimations.tscn" id="2_r5xhu"]
 
 [sub_resource type="Environment" id="Environment_r5xhu"]
 ambient_light_color = Color(0.3019608, 0.5568628, 1, 1)
@@ -111,10 +111,10 @@ transform = Transform3D(0.023527248, -0.4874178, 0.8728519, 0.013133312, 0.87316
 shadow_enabled = true
 spot_range = 19.247
 
-[node name="Player" parent="." unique_id=1317407140 instance=ExtResource("1_2qtxk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.03268, 0, 0)
-
 [node name="FogVolume" type="FogVolume" parent="." unique_id=906882972]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 57.57861, 0, 0)
 shape = 0
 material = SubResource("FogMaterial_spsxx")
+
+[node name="Player" parent="." unique_id=1317407140 instance=ExtResource("2_r5xhu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.922666, 1.1920929e-07, 0.22778511)
