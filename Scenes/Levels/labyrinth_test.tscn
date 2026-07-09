@@ -1,14 +1,12 @@
 [gd_scene format=3 uid="uid://d1mn2cleojrc8"]
 
-[ext_resource type="Texture2D" uid="uid://cq65ljadawc2p" path="res://Assets/Textures/vecteezy_glowing-fiery-solar-orb-in-the-cosmic-universe-shining_58272351.png" id="1_r5xhu"]
+[ext_resource type="AudioStream" uid="uid://c850mx1bl5pgq" path="res://Assets/Audio/universfield-glass-bottle-breaking-351297.mp3" id="2_0ef7t"]
 [ext_resource type="PackedScene" uid="uid://n4p6g1gmkwo3" path="res://Scenes/Levels/testnewanimations.tscn" id="2_r5xhu"]
+[ext_resource type="PackedScene" uid="uid://b4hgym2hd8bej" path="res://Scenes/Misc/breakable_light.tscn" id="2_spsxx"]
 
 [sub_resource type="Environment" id="Environment_r5xhu"]
 ambient_light_color = Color(0.3019608, 0.5568628, 1, 1)
-fog_enabled = true
-fog_density = 0.0
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.0
+volumetric_fog_density = 0.01
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m3rag"]
 albedo_color = Color(1, 0.5764706, 0.3647059, 1)
@@ -35,37 +33,28 @@ environment = SubResource("Environment_r5xhu")
 
 [node name="Lights" type="Node3D" parent="." unique_id=1358212187]
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Lights" unique_id=539639503]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.38357, 10.060993, 586.04846)
-shadow_enabled = true
-omni_range = 125.379
+[node name="BreakableLight" parent="Lights" unique_id=207026395 node_paths=PackedStringArray("audio") instance=ExtResource("2_spsxx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.043253, 3.8898277, -0.38537216)
+audio = NodePath("AudioStreamPlayer3D")
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="Lights" unique_id=1693689475]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.060993, 232.65636)
-shadow_enabled = true
-omni_range = 125.379
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="Lights/BreakableLight" unique_id=235672470]
+transform = Transform3D(5, 0, 0, 0, 0.25, 0, 0, 0, 5, 0, -4.199848, 0)
 
-[node name="OmniLight3D3" type="OmniLight3D" parent="Lights" unique_id=697321992]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1111.9866, 10.060993, 0)
-shadow_enabled = true
-omni_range = 125.379
+[node name="GPUParticlesCollisionBox3D2" type="GPUParticlesCollisionBox3D" parent="Lights/BreakableLight" unique_id=1270221450]
+transform = Transform3D(2.873214, 0, 0, 0, -4.371139e-09, -5, 0, 0.1, -2.1855695e-07, 3.2891636, -4.199848, -2.4770675)
 
-[node name="OmniLight3D4" type="OmniLight3D" parent="Lights" unique_id=444144649]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.060993, -347.52017)
-shadow_enabled = true
-omni_range = 125.379
+[node name="GPUParticlesCollisionBox3D3" type="GPUParticlesCollisionBox3D" parent="Lights/BreakableLight" unique_id=1331381221]
+transform = Transform3D(2.873214, 0, 0, 0, -4.371139e-09, -5, 0, 0.1, -2.1855695e-07, 3.2891636, -4.199848, 2.5623603)
 
-[node name="OmniLight3D5" type="OmniLight3D" parent="Lights" unique_id=2057911412]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -359.0625, 10.060993, -2.9768372)
-shadow_enabled = true
-omni_range = 125.379
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Lights/BreakableLight" unique_id=2105048478]
+stream = ExtResource("2_0ef7t")
+volume_db = 80.0
 
-[node name="AreaLight3D" type="AreaLight3D" parent="Lights" unique_id=680966695]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 2.2209117, 0)
-light_size = 0.0
+[node name="SpotLight3D" type="SpotLight3D" parent="Lights" unique_id=514372573]
+transform = Transform3D(1, 0, 0, 0, 0.69275177, 0.7211761, 0, -0.7211761, 0.69275177, -4.7528296, 4.9816456, 6.2851615)
 shadow_enabled = true
-area_range = 10.0
-area_texture = ExtResource("1_r5xhu")
+spot_range = 20.0
+spot_attenuation = 0.0
 
 [node name="Level Geometry" type="Node3D" parent="." unique_id=1237627614]
 
@@ -105,11 +94,6 @@ material = SubResource("StandardMaterial3D_gp1mj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.060404, 1.1726074, -0.5201416)
 operation = 2
 size = Vector3(5.553711, 3.3452148, 4.845459)
-
-[node name="SpotLight3D" type="SpotLight3D" parent="Level Geometry/Middle Room" unique_id=309687676]
-transform = Transform3D(0.023527248, -0.4874178, 0.8728519, 0.013133312, 0.8731689, 0.48724085, -0.99963695, 0, 0.02694467, 14.490498, 5.1989403, 0)
-shadow_enabled = true
-spot_range = 19.247
 
 [node name="FogVolume" type="FogVolume" parent="." unique_id=906882972]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 57.57861, 0, 0)

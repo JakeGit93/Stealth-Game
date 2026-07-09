@@ -16,7 +16,8 @@ extends State
 
 @onready var right_rays: Array[RayCast3D] = _ray_array(right_detection)
 @onready var left_rays: Array[RayCast3D] = _ray_array(left_detection)
-@onready var new_target: Marker3D
+@export var new_target: Marker3D
+@onready var target_bool := false
 
 var playback: AnimationNodeStateMachinePlayback
 
@@ -24,6 +25,13 @@ var playback: AnimationNodeStateMachinePlayback
 func enter() -> void:
 	playback = animation_tree.get("parameters/playback")
 	playback.travel("Walk")
+
+	for rays in left_rays:
+		rays.enabled = true
+	
+	for rays in right_rays:
+		rays.enabled = true
+	
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -58,7 +66,7 @@ func _ray_array(parent: Node) -> Array[RayCast3D]:
 	return rays
 
 #returns shortest ray collision point and normal
-func _ray_collision(rays: Array[RayCast3D]) -> Dictionary:
+func ray_collision(rays: Array[RayCast3D]) -> Dictionary:
 	var best_dist := INF
 	var best_hit := {}
 
@@ -126,19 +134,10 @@ func physics_update(delta: float) -> void:
 	if not character.is_on_floor():
 		character.velocity.y -= gravity * delta
 
-	
-	#ray collision shit
-	#this is poorly written. Please fix, collision.get("point") returns null. Unsafe
-	if left_body_list.is_empty():
-		for ray in left_rays:
-			ray.enabled = false
-	else:
-		for ray in left_rays:
-			ray.enabled = true
-		var collision = _ray_collision(left_rays)
-		print(collision)
-		new_target.position = collision.get("point")
-		left_two_bone.set_target_node(0, new_target.get_path())
+	#RAY SHIT ~~~~~~~~~~~~~~~~
+	#new_target.position = left_rays[0].get_collision_point()
+	#left_two_bone.set_target_node(0, new_target.get_path())
+		
 
 
 

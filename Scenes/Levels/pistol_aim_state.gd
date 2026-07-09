@@ -11,6 +11,8 @@ extends State
 @export var right_two_bone : TwoBoneIK3D
 @export var left_two_bone : TwoBoneIK3D
 @export var look_at_target : Marker3D
+@export var weapon_handler : Node3D
+@export var camera_ray : RayCast3D
 
 @export_group("Movement variables")
 @export var walk_speed : float = 2.0
@@ -82,6 +84,12 @@ func physics_update(delta: float) -> void:
 
 	if not character.is_on_floor():
 		character.velocity.y -= gravity * delta
+
+
+	look_at_target.global_position = camera_ray.get_collision_point()
+	#why tf is weapon handler not rotating with the camera?????
+	weapon_handler.look_at(look_at_target.global_position)
+	#weapon_handler.get_child(0).rotation = weapon_handler.rotation
 
 	
 
