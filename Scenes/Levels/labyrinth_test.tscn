@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b4hgym2hd8bej" path="res://Scenes/Misc/breakable_light.tscn" id="2_spsxx"]
 
 [sub_resource type="Environment" id="Environment_r5xhu"]
+ambient_light_source = 1
 ambient_light_color = Color(0.3019608, 0.5568628, 1, 1)
 volumetric_fog_density = 0.01
 
@@ -33,6 +34,12 @@ environment = SubResource("Environment_r5xhu")
 
 [node name="Lights" type="Node3D" parent="." unique_id=1358212187]
 
+[node name="SpotLight3D" type="SpotLight3D" parent="Lights" unique_id=514372573]
+transform = Transform3D(1, 0, 0, 0, 0.6927518, 0.72117615, 0, -0.72117615, 0.6927518, -29.913715, 4.9816456, 6.2851615)
+shadow_enabled = true
+spot_range = 20.0
+spot_attenuation = 0.0
+
 [node name="BreakableLight" parent="Lights" unique_id=207026395 node_paths=PackedStringArray("audio") instance=ExtResource("2_spsxx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.043253, 3.8898277, -0.38537216)
 audio = NodePath("AudioStreamPlayer3D")
@@ -49,12 +56,6 @@ transform = Transform3D(2.873214, 0, 0, 0, -4.371139e-09, -5, 0, 0.1, -2.1855695
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Lights/BreakableLight" unique_id=2105048478]
 stream = ExtResource("2_0ef7t")
 volume_db = 80.0
-
-[node name="SpotLight3D" type="SpotLight3D" parent="Lights" unique_id=514372573]
-transform = Transform3D(1, 0, 0, 0, 0.69275177, 0.7211761, 0, -0.7211761, 0.69275177, -4.7528296, 4.9816456, 6.2851615)
-shadow_enabled = true
-spot_range = 20.0
-spot_attenuation = 0.0
 
 [node name="Level Geometry" type="Node3D" parent="." unique_id=1237627614]
 
