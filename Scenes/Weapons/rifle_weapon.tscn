@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://b4l4ufmi5alyj"]
+
+[ext_resource type="Script" uid="uid://t7s3f38wb2se" path="res://Scenes/Weapons/rifle_weapon.gd" id="1_hu0j8"]
+[ext_resource type="PackedScene" uid="uid://coniogthtu18g" path="res://Scenes/Weapons/bullet.tscn" id="2_ub57m"]
+[ext_resource type="AudioStream" uid="uid://bqxwyqn1qi545" path="res://Assets/Audio/pistol.mp3" id="3_iv36u"]
+[ext_resource type="PackedScene" uid="uid://cg5x06xho1why" path="res://Assets/Weapons/WeaponsModelsFBX_1.12/SniperRifle/SniperRifle5_02.fbx" id="4_5tr3m"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vx4cp"]
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jcxqk"]
+material = SubResource("StandardMaterial3D_vx4cp")
+
+[node name="PistolWeapon" type="Node3D" unique_id=80177126 node_paths=PackedStringArray("muzzle", "audio_stream")]
+transform = Transform3D(0.009999998, 0, 0, 0, 0.01, 0, 0, 0, 0.009999998, 0, 0, 0)
+script = ExtResource("1_hu0j8")
+bullet_scene = ExtResource("2_ub57m")
+muzzle = NodePath("Muzzle")
+bullet_speed = 200000
+audio_stream = NodePath("AudioStreamPlayer3D")
+
+[node name="SniperRifle5_02" parent="." unique_id=684721432 instance=ExtResource("4_5tr3m")]
+transform = Transform3D(-4.37114e-06, 0, 100.00004, 0, 100.00005, 0, -100.00004, 0, -4.37114e-06, 0, 0, 0)
+
+[node name="Muzzle" type="Node3D" parent="." unique_id=1094100580]
+transform = Transform3D(-0.9999998, 0, -8.742277e-08, 0, 1.0000007, 0, 8.742276e-08, 0, -0.9999999, 0, 6.0000005, -102.58785)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Muzzle" unique_id=1984843101]
+transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 0, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_jcxqk")
+
+[node name="RayCast3D" type="RayCast3D" parent="Muzzle" unique_id=1563863129]
+target_position = Vector3(0, 200000, 0)
+debug_shape_custom_color = Color(0, 0, 1, 1)
+debug_shape_thickness = 5
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=612269617]
+stream = ExtResource("3_iv36u")
+max_polyphony = 100
+
+[node name="IKL" type="Marker3D" parent="." unique_id=413564746]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -41.14633)
+
+[node name="IKR" type="Marker3D" parent="." unique_id=1741848105]
+unique_name_in_owner = true

@@ -18,6 +18,11 @@ albedo_color = Color(0.25882354, 0.68235296, 1, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gp1mj"]
 albedo_color = Color(0.8392157, 0.49019608, 0.32156864, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_spsxx"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 10.0
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_2qtxk"]
 
 [sub_resource type="NoiseTexture3D" id="NoiseTexture3D_r5xhu"]
@@ -54,6 +59,193 @@ transform = Transform3D(2.873214, 0, 0, 0, -4.371139e-09, -5, 0, 0.1, -2.1855695
 transform = Transform3D(2.873214, 0, 0, 0, -4.371139e-09, -5, 0, 0.1, -2.1855695e-07, 3.2891636, -4.199848, 2.5623603)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Lights/BreakableLight" unique_id=2105048478]
+stream = ExtResource("2_0ef7t")
+volume_db = 80.0
+
+[node name="BreakableLight2" parent="Lights" unique_id=260310406 node_paths=PackedStringArray("audio") instance=ExtResource("2_spsxx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.043253, 3.8898277, 11.444629)
+audio = NodePath("AudioStreamPlayer3D")
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="Lights/BreakableLight2" unique_id=764335232]
+transform = Transform3D(5, 0, 0, 0, 0.25, 0, 0, 0, 5, 0, -4.199848, 0)
+
+[node name="GPUParticlesCollisionBox3D2" type="GPUParticlesCollisionBox3D" parent="Lights/BreakableLight2" unique_id=856395055]
+transform = Transform3D(2.873214, 0, 0, 0, -4.371139e-09, -5, 0, 0.1, -2.1855695e-07, 3.2891636, -4.199848, -2.4770675)
+
+[node name="GPUParticlesCollisionBox3D3" type="GPUParticlesCollisionBox3D" parent="Lights/BreakableLight2" unique_id=1931705749]
+transform = Transform3D(2.873214, 0, 0, 0, -4.371139e-09, -5, 0, 0.1, -2.1855695e-07, 3.2891636, -4.199848, 2.5623603)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Lights/BreakableLight2" unique_id=734941510]
+stream = ExtResource("2_0ef7t")
+volume_db = 80.0
+
+[node name="BreakableLight3" parent="Lights" unique_id=1125559 node_paths=PackedStringArray("audio") instance=ExtResource("2_spsxx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.043253, 3.8898277, -13.595165)
+audio = NodePath("AudioStreamPlayer3D")
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="Lights/BreakableLight3" unique_id=933355637]
+transform = Transform3D(5, 0, 0, 0, 0.25, 0, 0, 0, 5, 0, -4.199848, 0)
+
+[node name="GPUParticlesCollisionBox3D2" type="GPUParticlesCollisionBox3D" parent="Lights/BreakableLight3" unique_id=1630367727]
+transform = Transform3D(2.873214, 0, 0, 0, -4.371139e-09, -5, 0, 0.1, -2.1855695e-07, 3.2891636, -4.199848, -2.4770675)
+
+[node name="GPUParticlesCollisionBox3D3" type="GPUParticlesCollisionBox3D" parent="Lights/BreakableLight3" unique_id=1065068527]
+transform = Transform3D(2.873214, 0, 0, 0, -4.371139e-09, -5, 0, 0.1, -2.1855695e-07, 3.2891636, -4.199848, 2.5623603)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Lights/BreakableLight3" unique_id=1778814663]
+stream = ExtResource("2_0ef7t")
+volume_db = 80.0
+
+[node name="BreakableLight4" parent="Lights" unique_id=1577795048 node_paths=PackedStringArray("audio") instance=ExtResource("2_spsxx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.043253, 3.8898277, 24.603876)
+audio = NodePath("AudioStreamPlayer3D")
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="Lights/BreakableLight4" unique_id=1242835703]
+transform = Transform3D(5, 0, 0, 0, 0.25, 0, 0, 0, 5, 0, -4.199848, 0)
+
+[node name="GPUParticlesCollisionBox3D2" type="GPUParticlesCollisionBox3D" parent="Lights/BreakableLight4" unique_id=1483960338]
+transform = Transform3D(2.873214, 0, 0, 0, -4.371139e-09, -5, 0, 0.1, -2.1855695e-07, 3.2891636, -4.199848, -2.4770675)
+
+[node name="GPUParticlesCollisionBox3D3" type="GPUParticlesCollisionBox3D" parent="Lights/BreakableLight4" unique_id=623186188]
+transform = Transform3D(2.873214, 0, 0, 0, -4.371139e-09, -5, 0, 0.1, -2.1855695e-07, 3.2891636, -4.199848, 2.5623603)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Lights/BreakableLight4" unique_id=646021302]
+stream = ExtResource("2_0ef7t")
+volume_db = 80.0
+
+[node name="BreakableLight5" parent="Lights" unique_id=1536996286 node_paths=PackedStringArray("audio") instance=ExtResource("2_spsxx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.043253, 3.8898277, -24.882868)
+audio = NodePath("AudioStreamPlayer3D")
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="Lights/BreakableLight5" unique_id=675707979]
+transform = Transform3D(5, 0, 0, 0, 0.25, 0, 0, 0, 5, 0, -4.199848, 0)
+
+[node name="GPUParticlesCollisionBox3D2" type="GPUParticlesCollisionBox3D" parent="Lights/BreakableLight5" unique_id=2079662790]
+transform = Transform3D(2.873214, 0, 0, 0, -4.371139e-09, -5, 0, 0.1, -2.1855695e-07, 3.2891636, -4.199848, -2.4770675)
+
+[node name="GPUParticlesCollisionBox3D3" type="GPUParticlesCollisionBox3D" parent="Lights/BreakableLight5" unique_id=1622129421]
+transform = Transform3D(2.873214, 0, 0, 0, -4.371139e-09, -5, 0, 0.1, -2.1855695e-07, 3.2891636, -4.199848, 2.5623603)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Lights/BreakableLight5" unique_id=641932922]
+stream = ExtResource("2_0ef7t")
+volume_db = 80.0
+
+[node name="BreakableLight6" parent="Lights" unique_id=1316875559 node_paths=PackedStringArray("audio") instance=ExtResource("2_spsxx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.043253, 3.8898277, -73.84977)
+audio = NodePath("AudioStreamPlayer3D")
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="Lights/BreakableLight6" unique_id=2145443316]
+transform = Transform3D(5, 0, 0, 0, 0.25, 0, 0, 0, 5, 0, -4.199848, 0)
+
+[node name="GPUParticlesCollisionBox3D2" type="GPUParticlesCollisionBox3D" parent="Lights/BreakableLight6" unique_id=1801481909]
+transform = Transform3D(2.873214, 0, 0, 0, -4.371139e-09, -5, 0, 0.1, -2.1855695e-07, 3.2891636, -4.199848, -2.4770675)
+
+[node name="GPUParticlesCollisionBox3D3" type="GPUParticlesCollisionBox3D" parent="Lights/BreakableLight6" unique_id=1417661334]
+transform = Transform3D(2.873214, 0, 0, 0, -4.371139e-09, -5, 0, 0.1, -2.1855695e-07, 3.2891636, -4.199848, 2.5623603)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Lights/BreakableLight6" unique_id=1723744283]
+stream = ExtResource("2_0ef7t")
+volume_db = 80.0
+
+[node name="BreakableLight7" parent="Lights" unique_id=566692681 node_paths=PackedStringArray("audio") instance=ExtResource("2_spsxx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.043253, 3.8898277, -49.61846)
+audio = NodePath("AudioStreamPlayer3D")
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="Lights/BreakableLight7" unique_id=693613246]
+transform = Transform3D(5, 0, 0, 0, 0.25, 0, 0, 0, 5, 0, -4.199848, 0)
+
+[node name="GPUParticlesCollisionBox3D2" type="GPUParticlesCollisionBox3D" parent="Lights/BreakableLight7" unique_id=1201663265]
+transform = Transform3D(2.873214, 0, 0, 0, -4.371139e-09, -5, 0, 0.1, -2.1855695e-07, 3.2891636, -4.199848, -2.4770675)
+
+[node name="GPUParticlesCollisionBox3D3" type="GPUParticlesCollisionBox3D" parent="Lights/BreakableLight7" unique_id=218269185]
+transform = Transform3D(2.873214, 0, 0, 0, -4.371139e-09, -5, 0, 0.1, -2.1855695e-07, 3.2891636, -4.199848, 2.5623603)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Lights/BreakableLight7" unique_id=1338402933]
+stream = ExtResource("2_0ef7t")
+volume_db = 80.0
+
+[node name="BreakableLight8" parent="Lights" unique_id=2136098107 node_paths=PackedStringArray("audio") instance=ExtResource("2_spsxx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.043253, 3.8898277, -88.73482)
+audio = NodePath("AudioStreamPlayer3D")
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="Lights/BreakableLight8" unique_id=1490316249]
+transform = Transform3D(5, 0, 0, 0, 0.25, 0, 0, 0, 5, 0, -4.199848, 0)
+
+[node name="GPUParticlesCollisionBox3D2" type="GPUParticlesCollisionBox3D" parent="Lights/BreakableLight8" unique_id=32213686]
+transform = Transform3D(2.873214, 0, 0, 0, -4.371139e-09, -5, 0, 0.1, -2.1855695e-07, 3.2891636, -4.199848, -2.4770675)
+
+[node name="GPUParticlesCollisionBox3D3" type="GPUParticlesCollisionBox3D" parent="Lights/BreakableLight8" unique_id=170470304]
+transform = Transform3D(2.873214, 0, 0, 0, -4.371139e-09, -5, 0, 0.1, -2.1855695e-07, 3.2891636, -4.199848, 2.5623603)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Lights/BreakableLight8" unique_id=953022662]
+stream = ExtResource("2_0ef7t")
+volume_db = 80.0
+
+[node name="BreakableLight9" parent="Lights" unique_id=854015506 node_paths=PackedStringArray("audio") instance=ExtResource("2_spsxx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.043253, 3.8898277, -173.28459)
+audio = NodePath("AudioStreamPlayer3D")
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="Lights/BreakableLight9" unique_id=489979780]
+transform = Transform3D(5, 0, 0, 0, 0.25, 0, 0, 0, 5, 0, -4.199848, 0)
+
+[node name="GPUParticlesCollisionBox3D2" type="GPUParticlesCollisionBox3D" parent="Lights/BreakableLight9" unique_id=406031141]
+transform = Transform3D(2.873214, 0, 0, 0, -4.371139e-09, -5, 0, 0.1, -2.1855695e-07, 3.2891636, -4.199848, -2.4770675)
+
+[node name="GPUParticlesCollisionBox3D3" type="GPUParticlesCollisionBox3D" parent="Lights/BreakableLight9" unique_id=586712926]
+transform = Transform3D(2.873214, 0, 0, 0, -4.371139e-09, -5, 0, 0.1, -2.1855695e-07, 3.2891636, -4.199848, 2.5623603)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Lights/BreakableLight9" unique_id=1052491986]
+stream = ExtResource("2_0ef7t")
+volume_db = 80.0
+
+[node name="BreakableLight10" parent="Lights" unique_id=1571265553 node_paths=PackedStringArray("audio") instance=ExtResource("2_spsxx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.043253, 3.8898277, 63.343216)
+audio = NodePath("AudioStreamPlayer3D")
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="Lights/BreakableLight10" unique_id=114606190]
+transform = Transform3D(5, 0, 0, 0, 0.25, 0, 0, 0, 5, 0, -4.199848, 0)
+
+[node name="GPUParticlesCollisionBox3D2" type="GPUParticlesCollisionBox3D" parent="Lights/BreakableLight10" unique_id=1945320910]
+transform = Transform3D(2.873214, 0, 0, 0, -4.371139e-09, -5, 0, 0.1, -2.1855695e-07, 3.2891636, -4.199848, -2.4770675)
+
+[node name="GPUParticlesCollisionBox3D3" type="GPUParticlesCollisionBox3D" parent="Lights/BreakableLight10" unique_id=944953150]
+transform = Transform3D(2.873214, 0, 0, 0, -4.371139e-09, -5, 0, 0.1, -2.1855695e-07, 3.2891636, -4.199848, 2.5623603)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Lights/BreakableLight10" unique_id=584762823]
+stream = ExtResource("2_0ef7t")
+volume_db = 80.0
+
+[node name="BreakableLight11" parent="Lights" unique_id=1036069818 node_paths=PackedStringArray("audio") instance=ExtResource("2_spsxx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.043253, 3.8898277, 122.18819)
+audio = NodePath("AudioStreamPlayer3D")
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="Lights/BreakableLight11" unique_id=1476547064]
+transform = Transform3D(5, 0, 0, 0, 0.25, 0, 0, 0, 5, 0, -4.199848, 0)
+
+[node name="GPUParticlesCollisionBox3D2" type="GPUParticlesCollisionBox3D" parent="Lights/BreakableLight11" unique_id=893521007]
+transform = Transform3D(2.873214, 0, 0, 0, -4.371139e-09, -5, 0, 0.1, -2.1855695e-07, 3.2891636, -4.199848, -2.4770675)
+
+[node name="GPUParticlesCollisionBox3D3" type="GPUParticlesCollisionBox3D" parent="Lights/BreakableLight11" unique_id=829409489]
+transform = Transform3D(2.873214, 0, 0, 0, -4.371139e-09, -5, 0, 0.1, -2.1855695e-07, 3.2891636, -4.199848, 2.5623603)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Lights/BreakableLight11" unique_id=817678607]
+stream = ExtResource("2_0ef7t")
+volume_db = 80.0
+
+[node name="BreakableLight12" parent="Lights" unique_id=1771801895 node_paths=PackedStringArray("audio") instance=ExtResource("2_spsxx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.043253, 3.8898277, 177.1753)
+audio = NodePath("AudioStreamPlayer3D")
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="Lights/BreakableLight12" unique_id=868810073]
+transform = Transform3D(5, 0, 0, 0, 0.25, 0, 0, 0, 5, 0, -4.199848, 0)
+
+[node name="GPUParticlesCollisionBox3D2" type="GPUParticlesCollisionBox3D" parent="Lights/BreakableLight12" unique_id=1114980792]
+transform = Transform3D(2.873214, 0, 0, 0, -4.371139e-09, -5, 0, 0.1, -2.1855695e-07, 3.2891636, -4.199848, -2.4770675)
+
+[node name="GPUParticlesCollisionBox3D3" type="GPUParticlesCollisionBox3D" parent="Lights/BreakableLight12" unique_id=424896583]
+transform = Transform3D(2.873214, 0, 0, 0, -4.371139e-09, -5, 0, 0.1, -2.1855695e-07, 3.2891636, -4.199848, 2.5623603)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Lights/BreakableLight12" unique_id=1053324057]
 stream = ExtResource("2_0ef7t")
 volume_db = 80.0
 
@@ -95,6 +287,10 @@ material = SubResource("StandardMaterial3D_gp1mj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.060404, 1.1726074, -0.5201416)
 operation = 2
 size = Vector3(5.553711, 3.3452148, 4.845459)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Level Geometry" unique_id=293836441]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -31.252932, 1.9099426, -2.535698)
+material = SubResource("StandardMaterial3D_spsxx")
 
 [node name="FogVolume" type="FogVolume" parent="." unique_id=906882972]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 57.57861, 0, 0)

@@ -32,8 +32,8 @@ func enter() -> void:
 
 func exit() -> void:
 	spine_look_at.active = false
-	right_two_bone.active = false
-	left_two_bone.active = false
+	#right_two_bone.active = false
+	#left_two_bone.active = false
 	camera.attributes.dof_blur_near_distance = 0.0
 	camera.attributes.dof_blur_amount = 0.0
 	crosshair.visible = false
