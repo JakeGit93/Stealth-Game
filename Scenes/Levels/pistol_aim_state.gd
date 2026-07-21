@@ -27,7 +27,7 @@ func enter() -> void:
 	camera_pivot.set_aiming(true)
 	crosshair.visible = true
 	spine_look_at.active = true
-	right_two_bone.active = true
+	#right_two_bone.active = true
 	left_two_bone.active = true
 
 func exit() -> void:
@@ -87,9 +87,9 @@ func physics_update(delta: float) -> void:
 
 
 	look_at_target.global_position = camera_ray.get_collision_point()
-	#why tf is weapon handler not rotating with the camera?????
+
 	weapon_handler.look_at(look_at_target.global_position)
-	#weapon_handler.get_child(0).rotation = weapon_handler.rotation
+
 
 	
 

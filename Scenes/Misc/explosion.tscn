@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://ckdwfea7is1f1"]
+
+[ext_resource type="Shader" uid="uid://gltk2nqw18ju" path="res://Assets/Shaders/shockwave.gdshader" id="1_01qty"]
+[ext_resource type="Script" uid="uid://3d4v6q7ehsd1" path="res://Scenes/Misc/explosion.gd" id="2_01qty"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_jcxqk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jcxqk"]
+render_priority = 0
+shader = ExtResource("1_01qty")
+shader_parameter/distortion_strength = 0.1810000085975
+shader_parameter/noise_scale = 8.0
+shader_parameter/scroll_speed = 0.0
+shader_parameter/turbulence_speed = 0.0
+shader_parameter/edge_fade = 0.4
+
+[sub_resource type="SphereMesh" id="SphereMesh_jcxqk"]
+material = SubResource("ShaderMaterial_jcxqk")
+
+[node name="Root" type="Node3D" unique_id=576245379]
+
+[node name="TestBox" type="MeshInstance3D" parent="." unique_id=798584227]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.360504, 0, -1.5682011)
+mesh = SubResource("BoxMesh_jcxqk")
+skeleton = NodePath("../Explosion")
+
+[node name="Explosion" type="MeshInstance3D" parent="." unique_id=2133761972]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3080926, 0, 0)
+mesh = SubResource("SphereMesh_jcxqk")
+script = ExtResource("2_01qty")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1704688413]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.929302, 0, 4.907856)
+current = true

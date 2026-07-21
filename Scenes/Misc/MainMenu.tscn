@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://d0jehldap7fjf"]
+
+[ext_resource type="Theme" uid="uid://dhlc52dc6siur" path="res://Assets/Themes/main_menu_theme.tres" id="1_gr44w"]
+[ext_resource type="FontFile" uid="uid://gj8c6enjeb47" path="res://Assets/Fonts/Bebas_Neue/BebasNeue-Regular.ttf" id="1_v83rd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yrf70"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Theme" id="Theme_shsyx"]
+default_base_scale = 1.0
+default_font = ExtResource("1_v83rd")
+ItemList/colors/font_color = Color(0, 0, 0, 1)
+ItemList/colors/font_hovered_color = Color(0.047058824, 0.22352941, 0.47843137, 1)
+ItemList/styles/panel = SubResource("StyleBoxFlat_yrf70")
+
+[node name="Control" type="Control" unique_id=1319952924]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1604983023]
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=482417917]
+texture_repeat = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_gr44w")
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Panel" unique_id=1007462227]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 160.0
+offset_bottom = 460.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_gr44w")
+columns = 4
+
+[node name="ItemList" type="ItemList" parent="CanvasLayer/Panel/GridContainer" unique_id=2023850734]
+custom_minimum_size = Vector2(200, 500)
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+theme = SubResource("Theme_shsyx")
+theme_override_colors/font_color = Color(1, 0.9764706, 0.8352941, 1)
+theme_override_font_sizes/font_size = 32
+item_count = 3
+item_0/text = "START"
+item_1/text = "OPTIONS"
+item_2/text = "EXIT"

@@ -1,0 +1,10 @@
+[gd_resource type="Theme" format=3 uid="uid://dhlc52dc6siur"]
+
+[ext_resource type="FontFile" uid="uid://gj8c6enjeb47" path="res://Assets/Fonts/Bebas_Neue/BebasNeue-Regular.ttf" id="1_lwh5d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jcxqk"]
+bg_color = Color(0.047058824, 0.22352941, 0.47843137, 1)
+
+[resource]
+default_font = ExtResource("1_lwh5d")
+Panel/styles/panel = SubResource("StyleBoxFlat_jcxqk")

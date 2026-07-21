@@ -7,7 +7,13 @@
 [sub_resource type="Environment" id="Environment_r5xhu"]
 ambient_light_source = 1
 ambient_light_color = Color(0.3019608, 0.5568628, 1, 1)
-volumetric_fog_density = 0.01
+glow_enabled = true
+glow_bloom = 0.29
+fog_enabled = true
+fog_sun_scatter = 0.5
+fog_density = 0.0182
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0182
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m3rag"]
 albedo_color = Color(1, 0.5764706, 0.3647059, 1)
