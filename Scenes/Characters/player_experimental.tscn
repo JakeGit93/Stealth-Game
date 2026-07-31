@@ -1,21 +1,22 @@
-[gd_scene format=4 uid="uid://ufollyiygu1i"]
+[gd_scene format=4 uid="uid://cydb44sb646aw"]
 
-[ext_resource type="Script" uid="uid://bfr6pa0tkl7sh" path="res://Scenes/Levels/state_machine.gd" id="1_dxpk4"]
-[ext_resource type="Script" uid="uid://jndhuvsei84o" path="res://Scenes/Levels/idle_state.gd" id="2_15c3i"]
-[ext_resource type="Script" uid="uid://cwu2tsln83hpb" path="res://Scenes/Levels/jump_state.gd" id="3_yt1oc"]
-[ext_resource type="Script" uid="uid://d20aucgbjnjt6" path="res://Scenes/Levels/walk_state.gd" id="4_jnx77"]
-[ext_resource type="Script" uid="uid://bff0p3gxh54wp" path="res://Scenes/Levels/fall_state.gd" id="5_hy8lp"]
-[ext_resource type="Script" uid="uid://bwb5hkntrigr7" path="res://Scenes/Levels/sprint_state.gd" id="6_uxymp"]
-[ext_resource type="Script" uid="uid://bbtb7tgh2xehb" path="res://Scenes/Levels/crouch_state.gd" id="7_fepmq"]
-[ext_resource type="Script" uid="uid://i85osp3dkq3i" path="res://Scenes/Levels/crouch_idle_state.gd" id="8_ddhxa"]
-[ext_resource type="Script" uid="uid://nivhcc8fg6db" path="res://Scenes/Levels/pistol_aim_state.gd" id="9_3k74t"]
-[ext_resource type="Script" uid="uid://cjqebn6koo2r4" path="res://Scenes/Levels/roll_state.gd" id="10_v8iml"]
-[ext_resource type="Script" uid="uid://cva6kd86dgrp4" path="res://Scenes/Characters/light_detection.gd" id="11_ojpki"]
-[ext_resource type="Script" uid="uid://co7agu88v6bus" path="res://Assets/Weapons/Scripts/Weapon_Controller.gd" id="12_rv8bj"]
-[ext_resource type="PackedScene" uid="uid://b4l4ufmi5alyj" path="res://Scenes/Weapons/rifle_weapon.tscn" id="13_inlw8"]
-[ext_resource type="Script" uid="uid://d2stqw38ra7jn" path="res://Scripts/Characters/SpringArmPivot.gd" id="14_f2s78"]
-[ext_resource type="Script" uid="uid://c7t7uf3pfao15" path="res://Scenes/Characters/crosshair.gd" id="15_hwltk"]
-[ext_resource type="Shader" uid="uid://c2em1djgsl320" path="res://Scenes/Misc/NoiseTest.gdshader" id="16_hhnlt"]
+[ext_resource type="Script" uid="uid://bfr6pa0tkl7sh" path="res://Scenes/Levels/state_machine.gd" id="1_r0152"]
+[ext_resource type="Script" uid="uid://jndhuvsei84o" path="res://Scenes/Levels/idle_state.gd" id="2_eg7gl"]
+[ext_resource type="Script" uid="uid://cwu2tsln83hpb" path="res://Scenes/Levels/jump_state.gd" id="3_tep56"]
+[ext_resource type="Script" uid="uid://d20aucgbjnjt6" path="res://Scenes/Levels/walk_state.gd" id="4_xs16u"]
+[ext_resource type="Script" uid="uid://bff0p3gxh54wp" path="res://Scenes/Levels/fall_state.gd" id="5_ghwgs"]
+[ext_resource type="Script" uid="uid://bwb5hkntrigr7" path="res://Scenes/Levels/sprint_state.gd" id="6_xoe52"]
+[ext_resource type="Script" uid="uid://bbtb7tgh2xehb" path="res://Scenes/Levels/crouch_state.gd" id="7_d827m"]
+[ext_resource type="Script" uid="uid://i85osp3dkq3i" path="res://Scenes/Levels/crouch_idle_state.gd" id="8_tcequ"]
+[ext_resource type="Script" uid="uid://nivhcc8fg6db" path="res://Scenes/Levels/pistol_aim_state.gd" id="9_hm5dl"]
+[ext_resource type="Script" uid="uid://cjqebn6koo2r4" path="res://Scenes/Levels/roll_state.gd" id="10_4p604"]
+[ext_resource type="Script" uid="uid://cva6kd86dgrp4" path="res://Scenes/Characters/light_detection.gd" id="11_3i0ke"]
+[ext_resource type="Script" uid="uid://co7agu88v6bus" path="res://Assets/Weapons/Scripts/Weapon_Controller.gd" id="12_b2dy6"]
+[ext_resource type="PackedScene" uid="uid://b4l4ufmi5alyj" path="res://Scenes/Weapons/rifle_weapon.tscn" id="13_minoj"]
+[ext_resource type="Script" uid="uid://c0017dfdddoya" path="res://Scripts/Characters/AimExperimental.gd" id="14_r0152"]
+[ext_resource type="Script" uid="uid://c7t7uf3pfao15" path="res://Scenes/Characters/crosshair.gd" id="15_2ci86"]
+[ext_resource type="Shader" uid="uid://c2em1djgsl320" path="res://Scenes/Misc/NoiseTest.gdshader" id="16_tu5le"]
+[ext_resource type="Script" uid="uid://cl5m0w5pxmic2" path="res://Scenes/Characters/aimer.gd" id="17_eg7gl"]
 
 [sub_resource type="Animation" id="Animation_otpsb"]
 resource_name = "A_TPose"
@@ -49446,12 +49447,12 @@ animation = &"Walk"
 advance_mode = 0
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_x2ky3"]
-xfade_time = 0.5
+xfade_time = 10.0
 switch_mode = 2
 advance_mode = 0
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_y8ow1"]
-xfade_time = 0.5
+xfade_time = 10.0
 switch_mode = 2
 advance_mode = 0
 
@@ -49472,25 +49473,25 @@ xfade_time = 0.5
 advance_mode = 0
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tolk3"]
-xfade_time = 0.5
+xfade_time = 10.0
 switch_mode = 2
 advance_mode = 0
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ffkd8"]
-xfade_time = 0.5
+xfade_time = 10.0
 switch_mode = 2
 advance_mode = 0
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r158q"]
-xfade_time = 1.0
+xfade_time = 10.0
 advance_mode = 0
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_abyvx"]
-xfade_time = 1.0
+xfade_time = 10.0
 advance_mode = 0
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b125x"]
-xfade_time = 2.0
+xfade_time = 10.0
 advance_mode = 0
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mjbb8"]
@@ -49503,7 +49504,7 @@ switch_mode = 2
 advance_mode = 0
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lmd47"]
-xfade_time = 0.5
+xfade_time = 10.0
 switch_mode = 2
 advance_mode = 0
 
@@ -49533,9 +49534,11 @@ switch_mode = 2
 advance_mode = 0
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2nyeu"]
+xfade_time = 0.5
 advance_mode = 0
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dutva"]
+xfade_time = 0.5
 advance_mode = 0
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2l8ja"]
@@ -49569,6 +49572,7 @@ advance_mode = 0
 advance_mode = 0
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wr1ll"]
+xfade_time = 10.0
 advance_mode = 0
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xhewr"]
@@ -49623,19 +49627,21 @@ advance_mode = 0
 advance_mode = 0
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yqcgt"]
+xfade_time = 10.0
 advance_mode = 0
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uho3a"]
+xfade_time = 10.0
 advance_mode = 0
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_pgtsq"]
 states/Crouch_Fwd/node = SubResource("AnimationNodeAnimation_x2ky3")
-states/Crouch_Fwd/position = Vector2(331.96997, 9.632519)
+states/Crouch_Fwd/position = Vector2(295.96997, -54.233437)
 states/Crouch_Idle/node = SubResource("AnimationNodeAnimation_y8ow1")
 states/Crouch_Idle/position = Vector2(594.0767, 175.45782)
 states/End/position = Vector2(1080, -54)
 states/Idle/node = SubResource("AnimationNodeAnimation_x0mv3")
-states/Idle/position = Vector2(320.5, 93)
+states/Idle/position = Vector2(320.125, 93)
 states/Jump/node = SubResource("AnimationNodeStateMachine_m14gl")
 states/Jump/position = Vector2(744.6778, 66.414925)
 states/Pistol_Aim_Neutral/node = SubResource("AnimationNodeAnimation_2bnbj")
@@ -49646,9 +49652,9 @@ states/Sprint/node = SubResource("AnimationNodeAnimation_g018d")
 states/Sprint/position = Vector2(438.46997, 175.06625)
 states/Start/position = Vector2(106, 42)
 states/Walk/node = SubResource("AnimationNodeAnimation_pgtsq")
-states/Walk/position = Vector2(320, 174)
+states/Walk/position = Vector2(301.5, 281.5)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_g018d"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_x2ky3"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_y8ow1"), "Idle", "Sprint", SubResource("AnimationNodeStateMachineTransition_2bnbj"), "Sprint", "Idle", SubResource("AnimationNodeStateMachineTransition_27pap"), "Walk", "Sprint", SubResource("AnimationNodeStateMachineTransition_i4cts"), "Sprint", "Walk", SubResource("AnimationNodeStateMachineTransition_etx6e"), "Idle", "Crouch_Fwd", SubResource("AnimationNodeStateMachineTransition_tolk3"), "Crouch_Fwd", "Idle", SubResource("AnimationNodeStateMachineTransition_ffkd8"), "Sprint", "Crouch_Fwd", SubResource("AnimationNodeStateMachineTransition_r158q"), "Crouch_Fwd", "Sprint", SubResource("AnimationNodeStateMachineTransition_abyvx"), "Walk", "Crouch_Fwd", SubResource("AnimationNodeStateMachineTransition_b125x"), "Crouch_Fwd", "Walk", SubResource("AnimationNodeStateMachineTransition_mjbb8"), "Crouch_Fwd", "Crouch_Idle", SubResource("AnimationNodeStateMachineTransition_j8554"), "Crouch_Idle", "Crouch_Fwd", SubResource("AnimationNodeStateMachineTransition_lmd47"), "Idle", "Crouch_Idle", SubResource("AnimationNodeStateMachineTransition_rgm34"), "Crouch_Idle", "Idle", SubResource("AnimationNodeStateMachineTransition_o0rtd"), "Sprint", "Crouch_Idle", SubResource("AnimationNodeStateMachineTransition_alptr"), "Crouch_Idle", "Sprint", SubResource("AnimationNodeStateMachineTransition_sjgsb"), "Walk", "Crouch_Idle", SubResource("AnimationNodeStateMachineTransition_mu51h"), "Crouch_Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_tceav"), "Crouch_Fwd", "Pistol_Aim_Neutral", SubResource("AnimationNodeStateMachineTransition_2nyeu"), "Pistol_Aim_Neutral", "Crouch_Fwd", SubResource("AnimationNodeStateMachineTransition_dutva"), "Pistol_Aim_Neutral", "Idle", SubResource("AnimationNodeStateMachineTransition_2l8ja"), "Idle", "Pistol_Aim_Neutral", SubResource("AnimationNodeStateMachineTransition_7hyjf"), "Walk", "Pistol_Aim_Neutral", SubResource("AnimationNodeStateMachineTransition_txhkb"), "Pistol_Aim_Neutral", "Walk", SubResource("AnimationNodeStateMachineTransition_yy6il"), "Sprint", "Pistol_Aim_Neutral", SubResource("AnimationNodeStateMachineTransition_f64oi"), "Pistol_Aim_Neutral", "Sprint", SubResource("AnimationNodeStateMachineTransition_n3sy3"), "Crouch_Idle", "Pistol_Aim_Neutral", SubResource("AnimationNodeStateMachineTransition_1sp6l"), "Pistol_Aim_Neutral", "Crouch_Idle", SubResource("AnimationNodeStateMachineTransition_j1at4"), "Idle", "Roll", SubResource("AnimationNodeStateMachineTransition_iql2o"), "Roll", "Idle", SubResource("AnimationNodeStateMachineTransition_todur"), "Crouch_Fwd", "Roll", SubResource("AnimationNodeStateMachineTransition_wr1ll"), "Roll", "Crouch_Fwd", SubResource("AnimationNodeStateMachineTransition_xhewr"), "Pistol_Aim_Neutral", "Roll", SubResource("AnimationNodeStateMachineTransition_oeqib"), "Roll", "Pistol_Aim_Neutral", SubResource("AnimationNodeStateMachineTransition_ygh42"), "Crouch_Idle", "Roll", SubResource("AnimationNodeStateMachineTransition_qkg3b"), "Roll", "Crouch_Idle", SubResource("AnimationNodeStateMachineTransition_coukk"), "Sprint", "Roll", SubResource("AnimationNodeStateMachineTransition_w6twp"), "Roll", "Sprint", SubResource("AnimationNodeStateMachineTransition_i7sae"), "Walk", "Roll", SubResource("AnimationNodeStateMachineTransition_8v3v1"), "Roll", "Walk", SubResource("AnimationNodeStateMachineTransition_x1355"), "Crouch_Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_fww8l"), "Jump", "Crouch_Idle", SubResource("AnimationNodeStateMachineTransition_iumw2"), "Sprint", "Jump", SubResource("AnimationNodeStateMachineTransition_we37b"), "Jump", "Sprint", SubResource("AnimationNodeStateMachineTransition_8e4c5"), "Walk", "Jump", SubResource("AnimationNodeStateMachineTransition_eycwb"), "Jump", "Walk", SubResource("AnimationNodeStateMachineTransition_2v8xk"), "Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_pmmrs"), "Jump", "Idle", SubResource("AnimationNodeStateMachineTransition_l1aob"), "Crouch_Fwd", "Jump", SubResource("AnimationNodeStateMachineTransition_yqcgt"), "Jump", "Crouch_Fwd", SubResource("AnimationNodeStateMachineTransition_uho3a")]
-graph_offset = Vector2(176.44278, -55.66117)
+graph_offset = Vector2(176.48497, -209.8534)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_57ap8"]
 resource_name = "M_Main"
@@ -49896,6 +49902,12 @@ bind/64/name = &"ball_leaf_r"
 bind/64/bone = -1
 bind/64/pose = Transform3D(-1.0000001, -6.9388815e-18, -1.05879106e-22, 4.879777e-15, -1.490116e-07, 0.9999998, -5.8207675e-11, 1.0000001, -3.5527135e-15, -0.08900002, -0.19209997, -0.015200032)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vx4cp"]
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_jcxqk"]
+material = SubResource("StandardMaterial3D_vx4cp")
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bwlui"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xdf7"]
@@ -49935,6 +49947,12 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_gvcfr")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_coo58"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_vx4cp"]
+material = SubResource("StandardMaterial3D_coo58")
+
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_y8ow1"]
 dof_blur_far_enabled = true
 dof_blur_near_enabled = true
@@ -49946,7 +49964,7 @@ bg_color = Color(1, 0.28970638, 0.5443885, 1)
 border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jcxqk"]
-shader = ExtResource("16_hhnlt")
+shader = ExtResource("16_tu5le")
 shader_parameter/threshold = 0.990000047025
 
 [node name="Root" type="Node3D" unique_id=1317407140]
@@ -49955,19 +49973,19 @@ shader_parameter/threshold = 0.990000047025
 collision_layer = 32768
 
 [node name="State Machine" type="Node" parent="Player" unique_id=1922062355 node_paths=PackedStringArray("animation_tree", "initial_state", "character")]
-script = ExtResource("1_dxpk4")
+script = ExtResource("1_r0152")
 animation_tree = NodePath("../AnimationTree")
 initial_state = NodePath("Idle_State")
 character = NodePath("..")
 
 [node name="Idle_State" type="Node" parent="Player/State Machine" unique_id=164837558 node_paths=PackedStringArray("character", "animation_tree", "camera")]
-script = ExtResource("2_15c3i")
+script = ExtResource("2_eg7gl")
 character = NodePath("../..")
 animation_tree = NodePath("../../AnimationTree")
-camera = NodePath("../../../CameraPivot/SpringArm3D/Camera3D")
+camera = NodePath("../../../Head/CameraPivot/SpringArm3D/Camera3D")
 
 [node name="Jump_State" type="Node" parent="Player/State Machine" unique_id=1835780876 node_paths=PackedStringArray("character", "animation_tree")]
-script = ExtResource("3_yt1oc")
+script = ExtResource("3_tep56")
 character = NodePath("../..")
 animation_tree = NodePath("../../AnimationTree")
 metadata/_custom_type_script = "uid://bk4mf5tajg1fd"
@@ -49979,60 +49997,60 @@ metadata/_custom_type_script = "uid://bk4mf5tajg1fd"
 [node name="Jump_Land" type="Node" parent="Player/State Machine/Jump_State" unique_id=359067844]
 
 [node name="Walk_State" type="Node" parent="Player/State Machine" unique_id=1809395860 node_paths=PackedStringArray("character", "animation_tree", "camera_pivot", "right_two_bone", "left_two_bone")]
-script = ExtResource("4_jnx77")
+script = ExtResource("4_xs16u")
 character = NodePath("../..")
 animation_tree = NodePath("../../AnimationTree")
-camera_pivot = NodePath("../../../CameraPivot")
+camera_pivot = NodePath("../../../Head/CameraPivot")
 right_two_bone = NodePath("../../Armature/GeneralSkeleton/RightArmTwoBoneIK")
 left_two_bone = NodePath("../../Armature/GeneralSkeleton/LeftArmTwoBoneIK")
 metadata/_custom_type_script = "uid://bk4mf5tajg1fd"
 
 [node name="Fall_State" type="Node" parent="Player/State Machine" unique_id=1490302451 node_paths=PackedStringArray("character", "animation_tree")]
-script = ExtResource("5_hy8lp")
+script = ExtResource("5_ghwgs")
 character = NodePath("../..")
 animation_tree = NodePath("../../AnimationTree")
 metadata/_custom_type_script = "uid://bk4mf5tajg1fd"
 
 [node name="Sprint_State" type="Node" parent="Player/State Machine" unique_id=2044888986 node_paths=PackedStringArray("character", "animation_tree", "camera_pivot")]
-script = ExtResource("6_uxymp")
+script = ExtResource("6_xoe52")
 character = NodePath("../..")
 animation_tree = NodePath("../../AnimationTree")
-camera_pivot = NodePath("../../../CameraPivot")
+camera_pivot = NodePath("../../../Head/CameraPivot")
 
 [node name="Crouch_State" type="Node" parent="Player/State Machine" unique_id=525155774 node_paths=PackedStringArray("character", "animation_tree", "camera_pivot", "light_detection")]
-script = ExtResource("7_fepmq")
+script = ExtResource("7_d827m")
 character = NodePath("../..")
 animation_tree = NodePath("../../AnimationTree")
-camera_pivot = NodePath("../../../CameraPivot")
+camera_pivot = NodePath("../../../Head/CameraPivot")
 light_detection = NodePath("../../LightDetection")
 
 [node name="Crouch_Idle_State" type="Node" parent="Player/State Machine" unique_id=386904130 node_paths=PackedStringArray("character", "animation_tree", "camera_pivot", "light_detection")]
-script = ExtResource("8_ddhxa")
+script = ExtResource("8_tcequ")
 character = NodePath("../..")
 animation_tree = NodePath("../../AnimationTree")
-camera_pivot = NodePath("../../../CameraPivot")
+camera_pivot = NodePath("../../../Head/CameraPivot")
 light_detection = NodePath("../../LightDetection")
 
 [node name="Pistol_Aim_State" type="Node" parent="Player/State Machine" unique_id=1702726448 node_paths=PackedStringArray("character", "animation_tree", "camera_pivot", "spring_arm", "camera", "crosshair", "spine_look_at", "right_two_bone", "left_two_bone", "look_at_target", "weapon_handler", "camera_ray")]
-script = ExtResource("9_3k74t")
+script = ExtResource("9_hm5dl")
 character = NodePath("../..")
 animation_tree = NodePath("../../AnimationTree")
-camera_pivot = NodePath("../../../CameraPivot")
-spring_arm = NodePath("../../../CameraPivot/SpringArm3D")
-camera = NodePath("../../../CameraPivot/SpringArm3D/Camera3D")
-crosshair = NodePath("../../../CameraPivot/SpringArm3D/Camera3D/CrosshairUI/Crosshair")
+camera_pivot = NodePath("../../../Head/CameraPivot")
+spring_arm = NodePath("../../../Head/CameraPivot/SpringArm3D")
+camera = NodePath("../../../Head/CameraPivot/SpringArm3D/Camera3D")
+crosshair = NodePath("../../../Head/CameraPivot/SpringArm3D/Camera3D/CrosshairUI/Crosshair")
 spine_look_at = NodePath("../../Armature/GeneralSkeleton/ADSRotator")
 right_two_bone = NodePath("../../Armature/GeneralSkeleton/RightArmTwoBoneIK")
 left_two_bone = NodePath("../../Armature/GeneralSkeleton/LeftArmTwoBoneIK")
-look_at_target = NodePath("../../../CameraPivot/SpringArm3D/Camera3D/ADSTarget")
+look_at_target = NodePath("../../../Head/CameraPivot/SpringArm3D/Camera3D/ADSTarget")
 weapon_handler = NodePath("../../BoneAttachment3D/WeaponHandler")
-camera_ray = NodePath("../../../CameraPivot/SpringArm3D/Camera3D/RayCast3D")
+camera_ray = NodePath("../../../Head/CameraPivot/SpringArm3D/Camera3D/RayCast3D")
 aim_speed = 5.0
 
 [node name="Roll_State" type="Node" parent="Player/State Machine" unique_id=1914367648 node_paths=PackedStringArray("character", "camera_pivot", "animation_tree")]
-script = ExtResource("10_v8iml")
+script = ExtResource("10_4p604")
 character = NodePath("../..")
-camera_pivot = NodePath("../../../CameraPivot")
+camera_pivot = NodePath("../../../Head/CameraPivot")
 animation_tree = NodePath("../../AnimationTree")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player" unique_id=473651602]
@@ -50512,7 +50530,7 @@ skin = SubResource("Skin_yaitv")
 
 [node name="SpineRotator" type="LookAtModifier3D" parent="Player/Armature/GeneralSkeleton" unique_id=1115596246]
 influence = 0.8
-target_node = NodePath("../../../../CameraPivot/SpineTarget")
+target_node = NodePath("../../../../Head/CameraPivot/SpineTarget")
 bone_name = "Spine"
 bone = 2
 duration = 0.3
@@ -50525,15 +50543,14 @@ secondary_damp_threshold = 1.0
 
 [node name="ADSRotator" type="LookAtModifier3D" parent="Player/Armature/GeneralSkeleton" unique_id=1367735386]
 active = false
-target_node = NodePath("../../../../CameraPivot/SpringArm3D/Camera3D/ADSTarget")
+target_node = NodePath("../../../../Head/CameraPivot/SpringArm3D/Camera3D/ADSTarget")
 bone_name = "Chest"
 bone = 3
 
 [node name="RightArmTwoBoneIK" type="TwoBoneIK3D" parent="Player/Armature/GeneralSkeleton" unique_id=207741189]
-active = false
 mutable_bone_axes = false
 setting_count = 1
-settings/0/target_node = NodePath("")
+settings/0/target_node = NodePath("../../../IKTestTargetR")
 settings/0/pole_node = NodePath("../RightArmTwoBoneIKPole")
 settings/0/root_bone_name = "RightUpperArm"
 settings/0/root_bone = 32
@@ -50546,12 +50563,15 @@ settings/0/use_virtual_end = false
 settings/0/extend_end_bone = false
 
 [node name="RightArmTwoBoneIKPole" type="Marker3D" parent="Player/Armature/GeneralSkeleton" unique_id=1303929732]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5293038, 1.1291604, -0.33343118)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5293038, 1.1291604, -0.6429872)
+
+[node name="PoleMesh" type="MeshInstance3D" parent="Player/Armature/GeneralSkeleton/RightArmTwoBoneIKPole" unique_id=783211328]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = SubResource("SphereMesh_jcxqk")
 
 [node name="LeftArmTwoBoneIK" type="TwoBoneIK3D" parent="Player/Armature/GeneralSkeleton" unique_id=1782606746]
-active = false
 setting_count = 1
-settings/0/target_node = NodePath("")
+settings/0/target_node = NodePath("../../../IKTestTargetL")
 settings/0/pole_node = NodePath("../LeftArmTwoBoneIKPole")
 settings/0/root_bone_name = "LeftUpperArm"
 settings/0/root_bone = 8
@@ -50566,19 +50586,46 @@ settings/0/extend_end_bone = false
 [node name="LeftArmTwoBoneIKPole" type="Marker3D" parent="Player/Armature/GeneralSkeleton" unique_id=101129301]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.31337655, 0.91506886, -0.4738016)
 
+[node name="PoleMesh" type="MeshInstance3D" parent="Player/Armature/GeneralSkeleton/LeftArmTwoBoneIKPole" unique_id=58797104]
+mesh = SubResource("SphereMesh_jcxqk")
+
+[node name="CopyTransformRightHand" type="CopyTransformModifier3D" parent="Player/Armature/GeneralSkeleton" unique_id=614389468]
+setting_count = 1
+settings/0/amount = 1.0
+settings/0/apply_bone_name = "RightHand"
+settings/0/apply_bone = 34
+settings/0/reference_type = 1
+settings/0/reference_node = NodePath("../../../IKTestTargetR")
+settings/0/copy = 2
+settings/0/axes = 7
+settings/0/invert = 0
+settings/0/additive = false
+
+[node name="CopyTransformLeftHand" type="CopyTransformModifier3D" parent="Player/Armature/GeneralSkeleton" unique_id=1907005249]
+setting_count = 1
+settings/0/amount = 1.0
+settings/0/apply_bone_name = "LeftHand"
+settings/0/apply_bone = 10
+settings/0/reference_type = 1
+settings/0/reference_node = NodePath("../../../IKTestTargetL")
+settings/0/copy = 2
+settings/0/axes = 7
+settings/0/invert = 0
+settings/0/additive = false
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=741843240]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9683974, 0)
 shape = SubResource("CapsuleShape3D_bwlui")
 
 [node name="LightDetection" type="Node3D" parent="Player" unique_id=1681476158 node_paths=PackedStringArray("actual_top_camera", "actual_bot_camera", "top_camera", "bot_camera", "player", "progress_bar")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.79869246, 0)
-script = ExtResource("11_ojpki")
+script = ExtResource("11_3i0ke")
 actual_top_camera = NodePath("TopCamViewport/TopCamera")
 actual_bot_camera = NodePath("BotCamViewport/BotCamera")
 top_camera = NodePath("TopCamViewport")
 bot_camera = NodePath("BotCamViewport")
 player = NodePath("..")
-progress_bar = NodePath("../../CameraPivot/SpringArm3D/Camera3D/LightViewer/Control2/ProgressBar")
+progress_bar = NodePath("../../Head/CameraPivot/SpringArm3D/Camera3D/LightViewer/Control2/ProgressBar")
 
 [node name="Octahedron" type="MeshInstance3D" parent="Player/LightDetection" unique_id=1925152116]
 transform = Transform3D(0.353553, -0.353553, -1.54543e-08, 0, -2.18557e-08, 0.5, -0.353553, -0.353553, -1.54543e-08, 0, 0, 0)
@@ -50611,7 +50658,7 @@ size = 0.7
 near = 0.001
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Player" unique_id=370280312]
-transform = Transform3D(0, -1, 0, -0.034187447, 0, -0.99941546, 0.99941546, 0, -0.034187447, -0.73889995, 1.4422745, -0.052027643)
+transform = Transform3D(-0.011316553, 0.13940047, 0.99017143, 0.996721, 0.08091313, 2.3841858e-07, -0.08011782, 0.98692477, -0.13985914, -0.14612368, 1.395844, 0.2612478)
 bone_name = "RightHand"
 bone_idx = 34
 use_external_skeleton = true
@@ -50619,42 +50666,54 @@ external_skeleton = NodePath("../Armature/GeneralSkeleton")
 
 [node name="WeaponHandler" type="Node3D" parent="Player/BoneAttachment3D" unique_id=1997174964 node_paths=PackedStringArray("weapon_handler", "bone_attach", "two_bone_L", "two_bone_R")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00095870346, 0.021743655, 0.028026462)
-script = ExtResource("12_rv8bj")
+script = ExtResource("12_b2dy6")
 weapon_handler = NodePath(".")
-weapon = ExtResource("13_inlw8")
+weapon = ExtResource("13_minoj")
 bone_attach = NodePath("..")
 two_bone_L = NodePath("../../Armature/GeneralSkeleton/LeftArmTwoBoneIK")
 two_bone_R = NodePath("../../Armature/GeneralSkeleton/RightArmTwoBoneIK")
 
-[node name="DebugCam" type="Camera3D" parent="Player" unique_id=49496661]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.396327, 2.2849188)
+[node name="IKTestTargetR" type="Marker3D" parent="Player" unique_id=187655874]
+transform = Transform3D(-0.011316437, 0.13940045, 0.99017155, 0.99672127, 0.08091317, 0, -0.0801179, 0.9869248, -0.13985902, -0.1461237, 1.395844, 0.261248)
 
-[node name="CameraPivot" type="Node3D" parent="." unique_id=343115399 node_paths=PackedStringArray("spring_arm", "camera", "target", "skeleton", "model", "spine_rotator", "IK_target")]
-script = ExtResource("14_f2s78")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/IKTestTargetR" unique_id=1849283902]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = SubResource("SphereMesh_vx4cp")
+
+[node name="IKTestTargetL" type="Marker3D" parent="Player" unique_id=791736703]
+transform = Transform3D(0.004230625, 0.115837336, -0.9932592, -0.99933374, 0.036497787, 0, 0.03625176, 0.9925974, 0.11591457, 0.1994428, 1.2799959, 0.4624058)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/IKTestTargetL" unique_id=1448806919]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = SubResource("SphereMesh_vx4cp")
+
+[node name="Head" type="Node3D" parent="." unique_id=1237132308]
+
+[node name="CameraPivot" type="Node3D" parent="Head" unique_id=343115399 node_paths=PackedStringArray("head", "spring_arm", "camera", "character", "skeleton", "model", "spine_rotator", "IK_target")]
+script = ExtResource("14_r0152")
+head = NodePath(".")
 spring_arm = NodePath("SpringArm3D")
 camera = NodePath("SpringArm3D/Camera3D")
-target = NodePath("../Player")
-skeleton = NodePath("../Player/Armature/GeneralSkeleton")
-model = NodePath("../Player/Armature/GeneralSkeleton/Mannequin")
-spine_rotator = NodePath("../Player/Armature/GeneralSkeleton/SpineRotator")
+character = NodePath("../../Player")
+skeleton = NodePath("../../Player/Armature/GeneralSkeleton")
+model = NodePath("../../Player/Armature/GeneralSkeleton/Mannequin")
+spine_rotator = NodePath("../../Player/Armature/GeneralSkeleton/SpineRotator")
 IK_target = NodePath("SpineTarget")
 
-[node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot" unique_id=1790106472]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.1963956, 0)
-spring_length = 5.0
+[node name="SpringArm3D" type="SpringArm3D" parent="Head/CameraPivot" unique_id=1790106472]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1, -1.212)
 margin = 0.05
 
-[node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D" unique_id=423055329]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5004578e-07, 0.8196087, 2.5252786)
+[node name="Camera3D" type="Camera3D" parent="Head/CameraPivot/SpringArm3D" unique_id=423055329]
 cull_mask = 1048063
 attributes = SubResource("CameraAttributesPractical_y8ow1")
 current = true
 fov = 37.849285
 
-[node name="CrosshairUI" type="CanvasLayer" parent="CameraPivot/SpringArm3D/Camera3D" unique_id=1679067965]
+[node name="CrosshairUI" type="CanvasLayer" parent="Head/CameraPivot/SpringArm3D/Camera3D" unique_id=1679067965]
 follow_viewport_enabled = true
 
-[node name="Crosshair" type="Control" parent="CameraPivot/SpringArm3D/Camera3D/CrosshairUI" unique_id=1734775640]
+[node name="Crosshair" type="Control" parent="Head/CameraPivot/SpringArm3D/Camera3D/CrosshairUI" unique_id=1734775640]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -50663,11 +50722,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("15_hwltk")
+script = ExtResource("15_2ci86")
 
-[node name="LightViewer" type="CanvasLayer" parent="CameraPivot/SpringArm3D/Camera3D" unique_id=98172279]
+[node name="LightViewer" type="CanvasLayer" parent="Head/CameraPivot/SpringArm3D/Camera3D" unique_id=98172279]
 
-[node name="Control2" type="Control" parent="CameraPivot/SpringArm3D/Camera3D/LightViewer" unique_id=96376197]
+[node name="Control2" type="Control" parent="Head/CameraPivot/SpringArm3D/Camera3D/LightViewer" unique_id=96376197]
 custom_minimum_size = Vector2(100, 600)
 layout_mode = 3
 anchors_preset = 2
@@ -50677,7 +50736,7 @@ offset_top = -40.0
 offset_right = 40.0
 grow_vertical = 0
 
-[node name="ProgressBar" type="ProgressBar" parent="CameraPivot/SpringArm3D/Camera3D/LightViewer/Control2" unique_id=815724778]
+[node name="ProgressBar" type="ProgressBar" parent="Head/CameraPivot/SpringArm3D/Camera3D/LightViewer/Control2" unique_id=815724778]
 custom_minimum_size = Vector2(100, 600)
 layout_mode = 0
 offset_right = 4.0
@@ -50690,19 +50749,19 @@ step = 0.001
 value = 1.0
 fill_mode = 3
 
-[node name="ADSTarget" type="Marker3D" parent="CameraPivot/SpringArm3D/Camera3D" unique_id=1842083660]
+[node name="ADSTarget" type="Marker3D" parent="Head/CameraPivot/SpringArm3D/Camera3D" unique_id=1842083660]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.404169e-07, 0, -9.613249)
 
-[node name="RayCast3D" type="RayCast3D" parent="CameraPivot/SpringArm3D/Camera3D" unique_id=221685867]
+[node name="RayCast3D" type="RayCast3D" parent="Head/CameraPivot/SpringArm3D/Camera3D" unique_id=221685867]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7221318e-07, 0, -1.9698892)
 target_position = Vector3(0, 0, -1000000)
 debug_shape_custom_color = Color(1, 0, 0, 1)
 
-[node name="NightVisionLayer" type="CanvasLayer" parent="CameraPivot/SpringArm3D/Camera3D" unique_id=1357257116]
+[node name="NightVisionLayer" type="CanvasLayer" parent="Head/CameraPivot/SpringArm3D/Camera3D" unique_id=1357257116]
 layer = 0
 visible = false
 
-[node name="ColorRect" type="ColorRect" parent="CameraPivot/SpringArm3D/Camera3D/NightVisionLayer" unique_id=2035813593]
+[node name="ColorRect" type="ColorRect" parent="Head/CameraPivot/SpringArm3D/Camera3D/NightVisionLayer" unique_id=2035813593]
 material = SubResource("ShaderMaterial_jcxqk")
 anchors_preset = 15
 anchor_right = 1.0
@@ -50711,7 +50770,16 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="SpineTarget" type="Marker3D" parent="CameraPivot" unique_id=884442712]
+[node name="SpineTarget" type="Marker3D" parent="Head/CameraPivot" unique_id=884442712]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.80146813, 5.8071623)
 
-[connection signal="modification_processed" from="Player/Armature/GeneralSkeleton/SpineRotator" to="CameraPivot" method="_on_spine_rotator_modification_processed"]
+[node name="Aimer" type="Node" parent="." unique_id=1881630642 node_paths=PackedStringArray("character", "head", "camera_pivot", "spring_arm")]
+script = ExtResource("17_eg7gl")
+character = NodePath("../Player")
+head = NodePath("../Head")
+camera_pivot = NodePath("../Head/CameraPivot")
+spring_arm = NodePath("../Head/CameraPivot/SpringArm3D")
+max_pitch = 45.0
+min_pitch = -45.0
+
+[connection signal="modification_processed" from="Player/Armature/GeneralSkeleton/SpineRotator" to="Head/CameraPivot" method="_on_spine_rotator_modification_processed"]
