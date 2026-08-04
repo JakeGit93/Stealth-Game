@@ -153,19 +153,19 @@ transform = Transform3D(0.0020859018, -0.22656545, 0.9739936, -0.9971259, 0.0732
 mesh = SubResource("RibbonTrailMesh_coo58")
 
 [node name="Cable4" type="MeshInstance3D" parent="Control/CanvasLayer/SubViewportContainer/SubViewport/3DRoot" unique_id=777866393]
-transform = Transform3D(-0.005720989, -0.13366038, 0.99101055, -0.99908507, 0.04276324, 0, -0.04237883, -0.99010414, -0.13378273, -8.878376, 5.981892, -119.46518)
+transform = Transform3D(0.9999998, 0, 0, 0, -4.371139e-08, -0.9999999, 0, 1, -4.3711385e-08, 0, 5.9581623, 0)
 mesh = SubResource("TubeTrailMesh_3u7ps")
 
 [node name="Cable5" type="MeshInstance3D" parent="Control/CanvasLayer/SubViewportContainer/SubViewport/3DRoot" unique_id=1123530054]
-transform = Transform3D(-0.0075129527, -0.17552638, 0.984446, -0.99908507, 0.04276324, 0, -0.042098105, -0.9835455, -0.17568702, -15.146259, 5.981892, -117.8808)
+transform = Transform3D(0.9999998, 0, 0, 0, -4.3711385e-08, -0.9999999, 0, 0.99999994, -4.3711385e-08, 0, 5.5714626, 0)
 mesh = SubResource("TubeTrailMesh_3u7ps")
 
 [node name="Cable6" type="MeshInstance3D" parent="Control/CanvasLayer/SubViewportContainer/SubViewport/3DRoot" unique_id=491200073]
-transform = Transform3D(-0.006093941, -0.14237379, 0.9897942, -0.9990852, 0.042763244, 4.584184e-10, -0.042326808, -0.98888874, -0.14250407, -12.143671, 5.981892, -133.58035)
+transform = Transform3D(0.99973285, 0.023110893, 1.0102092e-09, 0, -4.3711385e-08, 0.99999994, 0.023110893, -0.99973285, -4.369971e-08, 0, 4.4296265, 0)
 mesh = SubResource("TubeTrailMesh_3u7ps")
 
 [node name="Cable7" type="MeshInstance3D" parent="Control/CanvasLayer/SubViewportContainer/SubViewport/3DRoot" unique_id=315254573]
-transform = Transform3D(-0.0052170316, -0.12188637, 0.99253035, -0.9990852, 0.042763244, 9.168368e-10, -0.04244382, -0.9916224, -0.12199789, -8.81069, 5.981892, -123.67117)
+transform = Transform3D(-7.253682e-10, -0.0165945, -0.9998622, 0.99999994, -4.371139e-08, 3.571276e-15, -4.3705363e-08, -0.9998622, 0.0165945, 0, 6.64081, 0)
 mesh = SubResource("TubeTrailMesh_3u7ps")
 
 [node name="Cable8" type="MeshInstance3D" parent="Control/CanvasLayer/SubViewportContainer/SubViewport/3DRoot" unique_id=1715690939]
