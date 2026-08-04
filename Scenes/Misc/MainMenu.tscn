@@ -1,58 +1,255 @@
 [gd_scene format=3 uid="uid://d0jehldap7fjf"]
 
 [ext_resource type="Theme" uid="uid://dhlc52dc6siur" path="res://Assets/Themes/main_menu_theme.tres" id="1_gr44w"]
-[ext_resource type="FontFile" uid="uid://gj8c6enjeb47" path="res://Assets/Fonts/Bebas_Neue/BebasNeue-Regular.ttf" id="1_v83rd"]
+[ext_resource type="Shader" uid="uid://cuab8gehfy87w" path="res://Scenes/Misc/ballpoint.gdshader" id="4_3u7ps"]
+[ext_resource type="Script" uid="uid://cdfud3mdgdfub" path="res://Scenes/Misc/button.gd" id="4_41one"]
+[ext_resource type="PackedScene" uid="uid://coveb77xl0oma" path="res://Assets/Models/Misc/japanese_electric_pole.glb" id="4_yrf70"]
+[ext_resource type="Script" uid="uid://4muvo4brk7ns" path="res://Scenes/Misc/button_multiplayer.gd" id="5_3mwxu"]
+[ext_resource type="AudioStream" uid="uid://b16l4dbyxx4x2" path="res://Scenes/Misc/sounds/menu_click.mp3" id="5_uwekm"]
+[ext_resource type="Script" uid="uid://e3orfe1lrrtw" path="res://Scenes/Misc/button_options.gd" id="6_ui71n"]
+[ext_resource type="Script" uid="uid://cgdiat45vqno4" path="res://Scenes/Misc/button_quit.gd" id="7_t2eyl"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yrf70"]
-bg_color = Color(1, 1, 1, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yrf70"]
+shader = ExtResource("4_3u7ps")
+shader_parameter/ink_color = Color(0.1, 0.2, 0.6, 1)
+shader_parameter/paper_color = Color(1, 1, 1, 1)
+shader_parameter/shade_levels = 5.0
+shader_parameter/posterize = true
 
-[sub_resource type="Theme" id="Theme_shsyx"]
-default_base_scale = 1.0
-default_font = ExtResource("1_v83rd")
-ItemList/colors/font_color = Color(0, 0, 0, 1)
-ItemList/colors/font_hovered_color = Color(0.047058824, 0.22352941, 0.47843137, 1)
-ItemList/styles/panel = SubResource("StyleBoxFlat_yrf70")
+[sub_resource type="Environment" id="Environment_jcxqk"]
+background_mode = 1
+background_color = Color(1, 1, 1, 1)
 
-[node name="Control" type="Control" unique_id=1319952924]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jcxqk"]
+particle_flag_align_y = true
+angular_velocity_min = -1.6093254e-05
+angular_velocity_max = 1.9999839
+turbulence_enabled = true
+turbulence_noise_strength = 20.0
+turbulence_noise_scale = 0.1
+turbulence_noise_speed = Vector3(0.2, 0.2, 0.2)
+turbulence_noise_speed_random = 0.5
+turbulence_initial_displacement_min = -9.999999
+turbulence_initial_displacement_max = 10.000002
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uwekm"]
+transparency = 1
+albedo_color = Color(0, 0, 0, 1)
+metallic_specular = 1.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_41one"]
+material = SubResource("StandardMaterial3D_uwekm")
+size = Vector2(0.02, 0.02)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_vx4cp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p760q"]
+albedo_color = Color(0, 0, 0, 1)
+metallic_specular = 0.0
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_coo58"]
+material = SubResource("StandardMaterial3D_p760q")
+size = 0.05
+sections = 100
+section_length = 0.5
+section_segments = 10
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_41one"]
+albedo_color = Color(0, 0, 0, 1)
+metallic_specular = 0.0
+
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_3u7ps"]
+material = SubResource("StandardMaterial3D_41one")
+radius = 0.01
+sections = 128
+section_length = 2.0
+
+[node name="Root" type="Node" unique_id=2052168324]
+
+[node name="Control" type="Control" parent="." unique_id=1319952924]
+custom_minimum_size = Vector2(1000, 1000)
+propagate_maximum_size = true
 layout_mode = 3
-anchors_preset = 0
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1604983023]
-
-[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=482417917]
-texture_repeat = 2
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_right = 1.3590001
+anchor_bottom = 1.48
+offset_bottom = 40.95996
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource("1_gr44w")
+size_flags_stretch_ratio = 5.0
 
-[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Panel" unique_id=1007462227]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 160.0
-offset_bottom = 460.0
+[node name="CanvasLayer" type="CanvasLayer" parent="Control" unique_id=1604983023]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Control/CanvasLayer" unique_id=1877830528]
+material = SubResource("ShaderMaterial_yrf70")
+custom_minimum_size = Vector2(1000, 1000)
+anchors_preset = -1
+anchor_right = 1.7010001
+anchor_bottom = 1.508
+offset_left = -10.0
+offset_top = -493.0
+offset_right = 1174.4359
+offset_bottom = 529.816
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource("1_gr44w")
-columns = 4
 
-[node name="ItemList" type="ItemList" parent="CanvasLayer/Panel/GridContainer" unique_id=2023850734]
-custom_minimum_size = Vector2(200, 500)
+[node name="SubViewport" type="SubViewport" parent="Control/CanvasLayer/SubViewportContainer" unique_id=344300525]
+handle_input_locally = false
+size = Vector2i(3200, 2500)
+render_target_update_mode = 4
+
+[node name="3DRoot" type="Node3D" parent="Control/CanvasLayer/SubViewportContainer/SubViewport" unique_id=562028603]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Control/CanvasLayer/SubViewportContainer/SubViewport/3DRoot" unique_id=1864221565]
+environment = SubResource("Environment_jcxqk")
+
+[node name="Pole" parent="Control/CanvasLayer/SubViewportContainer/SubViewport/3DRoot" unique_id=1966498466 instance=ExtResource("4_yrf70")]
+transform = Transform3D(0.7712822, 0, 0.6364933, 0, 1, 0, -0.6364933, 0, 0.7712822, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Control/CanvasLayer/SubViewportContainer/SubViewport/3DRoot" unique_id=802081514]
+transform = Transform3D(0.9923727, 0.005923874, -0.12313155, -0.06030363, 0.8945013, -0.4429795, 0.10751718, 0.44702607, 0.8880359, -3.3266983, 2.525115, 5.6345654)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Control/CanvasLayer/SubViewportContainer/SubViewport/3DRoot" unique_id=1531633314]
+transform = Transform3D(1, 0, 0, 0, 0.97692084, 0.21360248, 0, -0.21360248, 0.97692084, -2.3429646, 12.540419, -2.4765768)
+amount = 128
+lifetime = 20.0
+speed_scale = 0.3
+explosiveness = 0.7
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_jcxqk")
+draw_pass_1 = SubResource("PlaneMesh_41one")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Control/CanvasLayer/SubViewportContainer/SubViewport/3DRoot/GPUParticles3D" unique_id=703777069]
+visible = false
+mesh = SubResource("CapsuleMesh_vx4cp")
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="Control/CanvasLayer/SubViewportContainer/SubViewport/3DRoot" unique_id=612205648]
+transform = Transform3D(1, 0, 0, 0, 0.97692084, 0.21360248, 0, -0.21360248, 0.97692084, -4.4083815, 12.540419, -2.3351212)
+amount = 128
+lifetime = 20.0
+speed_scale = 0.3
+explosiveness = 0.7
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_jcxqk")
+draw_pass_1 = SubResource("PlaneMesh_41one")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Control/CanvasLayer/SubViewportContainer/SubViewport/3DRoot/GPUParticles3D3" unique_id=1878364532]
+visible = false
+mesh = SubResource("CapsuleMesh_vx4cp")
+
+[node name="Cable" type="MeshInstance3D" parent="Control/CanvasLayer/SubViewportContainer/SubViewport/3DRoot" unique_id=1570527436]
+transform = Transform3D(0.0031972323, 0.074697495, -0.99720114, -0.9990853, 0.042763248, 9.131402e-10, 0.042643566, 0.99628913, 0.07476589, -1.776155, 5.9818845, -13.260181)
+mesh = SubResource("RibbonTrailMesh_coo58")
+
+[node name="Cable2" type="MeshInstance3D" parent="Control/CanvasLayer/SubViewportContainer/SubViewport/3DRoot" unique_id=1561960457]
+transform = Transform3D(-0.24224319, 0.7931191, 0.5588206, -0.9698969, -0.18320106, -0.16042835, -0.02486225, -0.58086115, 0.81362295, -0.053717732, 5.981892, 0.084308624)
+mesh = SubResource("RibbonTrailMesh_coo58")
+
+[node name="Cable3" type="MeshInstance3D" parent="Control/CanvasLayer/SubViewportContainer/SubViewport/3DRoot" unique_id=1374844458]
+transform = Transform3D(0.0020859018, -0.22656545, 0.9739936, -0.9971259, 0.07329144, 0.01918408, -0.07573187, -0.97123474, -0.22576162, -1.5295328, 5.981892, -13.5749)
+mesh = SubResource("RibbonTrailMesh_coo58")
+
+[node name="Cable4" type="MeshInstance3D" parent="Control/CanvasLayer/SubViewportContainer/SubViewport/3DRoot" unique_id=777866393]
+transform = Transform3D(-0.005720989, -0.13366038, 0.99101055, -0.99908507, 0.04276324, 0, -0.04237883, -0.99010414, -0.13378273, -8.878376, 5.981892, -119.46518)
+mesh = SubResource("TubeTrailMesh_3u7ps")
+
+[node name="Cable5" type="MeshInstance3D" parent="Control/CanvasLayer/SubViewportContainer/SubViewport/3DRoot" unique_id=1123530054]
+transform = Transform3D(-0.0075129527, -0.17552638, 0.984446, -0.99908507, 0.04276324, 0, -0.042098105, -0.9835455, -0.17568702, -15.146259, 5.981892, -117.8808)
+mesh = SubResource("TubeTrailMesh_3u7ps")
+
+[node name="Cable6" type="MeshInstance3D" parent="Control/CanvasLayer/SubViewportContainer/SubViewport/3DRoot" unique_id=491200073]
+transform = Transform3D(-0.006093941, -0.14237379, 0.9897942, -0.9990852, 0.042763244, 4.584184e-10, -0.042326808, -0.98888874, -0.14250407, -12.143671, 5.981892, -133.58035)
+mesh = SubResource("TubeTrailMesh_3u7ps")
+
+[node name="Cable7" type="MeshInstance3D" parent="Control/CanvasLayer/SubViewportContainer/SubViewport/3DRoot" unique_id=315254573]
+transform = Transform3D(-0.0052170316, -0.12188637, 0.99253035, -0.9990852, 0.042763244, 9.168368e-10, -0.04244382, -0.9916224, -0.12199789, -8.81069, 5.981892, -123.67117)
+mesh = SubResource("TubeTrailMesh_3u7ps")
+
+[node name="Cable8" type="MeshInstance3D" parent="Control/CanvasLayer/SubViewportContainer/SubViewport/3DRoot" unique_id=1715690939]
+transform = Transform3D(0.032031137, 0.7483491, 0.6625312, -0.9990852, 0.042763244, 4.471247e-10, -0.028331991, -0.6619252, 0.74903435, 0.056237936, 5.981892, 0.02801323)
+mesh = SubResource("TubeTrailMesh_3u7ps")
+
+[node name="Cable9" type="MeshInstance3D" parent="Control/CanvasLayer/SubViewportContainer/SubViewport/3DRoot" unique_id=185444982]
+transform = Transform3D(0.03164263, 0.7392724, 0.6726626, -0.9990852, 0.042763244, 2.2894346e-09, -0.02876524, -0.6720473, 0.7399494, 0.056237936, 5.981892, 0.084308624)
+mesh = SubResource("TubeTrailMesh_3u7ps")
+
+[node name="Cable10" type="MeshInstance3D" parent="Control/CanvasLayer/SubViewportContainer/SubViewport/3DRoot" unique_id=448932528]
+transform = Transform3D(0.033136375, 0.77417105, 0.6321085, -0.9990851, 0.04276324, 3.162911e-10, -0.027031016, -0.6315303, 0.77487993, 0.056237936, 7.570907, 0.084308624)
+mesh = SubResource("TubeTrailMesh_3u7ps")
+
+[node name="Cable11" type="MeshInstance3D" parent="Control/CanvasLayer/SubViewportContainer/SubViewport/3DRoot" unique_id=1765677740]
+transform = Transform3D(0.033136375, 0.77417105, 0.6321085, -0.9990851, 0.04276324, 3.162911e-10, -0.027031016, -0.6315303, 0.77487993, 0.056237936, 7.570907, 0.21033823)
+mesh = SubResource("TubeTrailMesh_3u7ps")
+
+[node name="Cable12" type="MeshInstance3D" parent="Control/CanvasLayer/SubViewportContainer/SubViewport/3DRoot" unique_id=958512762]
+transform = Transform3D(0.033136375, 0.77417105, 0.6321085, -0.9990851, 0.04276324, 3.162911e-10, -0.027031016, -0.6315303, 0.77487993, 0.056237936, 7.570907, 0.33289695)
+mesh = SubResource("TubeTrailMesh_3u7ps")
+
+[node name="Cable13" type="MeshInstance3D" parent="Control/CanvasLayer/SubViewportContainer/SubViewport/3DRoot" unique_id=841731200]
+transform = Transform3D(0.033136375, 0.77417105, 0.6321085, -0.9990851, 0.04276324, 3.162911e-10, -0.027031016, -0.6315303, 0.77487993, 0.056237936, 7.570907, -0.08937359)
+mesh = SubResource("TubeTrailMesh_3u7ps")
+
+[node name="Cable14" type="MeshInstance3D" parent="Control/CanvasLayer/SubViewportContainer/SubViewport/3DRoot" unique_id=1205349622]
+transform = Transform3D(0.033136375, 0.77417105, 0.6321085, -0.9990851, 0.04276324, 3.162911e-10, -0.027031016, -0.6315303, 0.77487993, 0.056237936, 7.570907, -0.23666298)
+mesh = SubResource("TubeTrailMesh_3u7ps")
+
+[node name="Cable15" type="MeshInstance3D" parent="Control/CanvasLayer/SubViewportContainer/SubViewport/3DRoot" unique_id=739022641]
+transform = Transform3D(0.033136375, 0.77417105, 0.6321085, -0.9990851, 0.04276324, 3.162911e-10, -0.027031016, -0.6315303, 0.77487993, 0.056237936, 7.570907, -0.37541342)
+mesh = SubResource("TubeTrailMesh_3u7ps")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="Control" unique_id=1709322045]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CanvasLayer2" unique_id=1805377339]
+custom_minimum_size = Vector2(300, 500)
+offset_right = 100.0
+offset_bottom = 200.0
+size_flags_vertical = 3
+theme = ExtResource("1_gr44w")
+theme_override_constants/separation = 20
+
+[node name="ButtonStart" type="Button" parent="Control/CanvasLayer2/VBoxContainer" unique_id=1405602813 node_paths=PackedStringArray("player")]
 layout_mode = 2
-size_flags_vertical = 3
-focus_mode = 0
-theme = SubResource("Theme_shsyx")
-theme_override_colors/font_color = Color(1, 0.9764706, 0.8352941, 1)
-theme_override_font_sizes/font_size = 32
-item_count = 3
-item_0/text = "START"
-item_1/text = "OPTIONS"
-item_2/text = "EXIT"
+size_flags_horizontal = 0
+theme = ExtResource("1_gr44w")
+theme_type_variation = &"FlatButton"
+text = "START"
+script = ExtResource("4_41one")
+player = NodePath("../AudioStreamPlayer")
+
+[node name="ButtonMultiplayer" type="Button" parent="Control/CanvasLayer2/VBoxContainer" unique_id=335843891 node_paths=PackedStringArray("player")]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("1_gr44w")
+theme_type_variation = &"FlatButton"
+text = "MULTIPLAYER"
+script = ExtResource("5_3mwxu")
+player = NodePath("../AudioStreamPlayer")
+
+[node name="ButtonOptions" type="Button" parent="Control/CanvasLayer2/VBoxContainer" unique_id=1962069206 node_paths=PackedStringArray("player")]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("1_gr44w")
+theme_type_variation = &"FlatButton"
+text = "OPTIONS"
+script = ExtResource("6_ui71n")
+player = NodePath("../AudioStreamPlayer")
+
+[node name="ButtonQuit" type="Button" parent="Control/CanvasLayer2/VBoxContainer" unique_id=9974240 node_paths=PackedStringArray("player")]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("1_gr44w")
+theme_type_variation = &"FlatButton"
+text = "QUIT"
+script = ExtResource("7_t2eyl")
+player = NodePath("../AudioStreamPlayer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control/CanvasLayer2/VBoxContainer" unique_id=572943065]
+stream = ExtResource("5_uwekm")
+
+[connection signal="mouse_entered" from="Control/CanvasLayer2/VBoxContainer/ButtonStart" to="Control/CanvasLayer2/VBoxContainer/ButtonStart" method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="Control/CanvasLayer2/VBoxContainer/ButtonMultiplayer" to="Control/CanvasLayer2/VBoxContainer/ButtonMultiplayer" method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="Control/CanvasLayer2/VBoxContainer/ButtonOptions" to="Control/CanvasLayer2/VBoxContainer/ButtonOptions" method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="Control/CanvasLayer2/VBoxContainer/ButtonQuit" to="Control/CanvasLayer2/VBoxContainer/ButtonQuit" method="_on_mouse_entered"]
