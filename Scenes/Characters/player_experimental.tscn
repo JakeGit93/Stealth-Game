@@ -50770,6 +50770,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[node name="AudioListener3D" type="AudioListener3D" parent="Head/CameraPivot/SpringArm3D/Camera3D" unique_id=78120257]
+
 [node name="SpineTarget" type="Marker3D" parent="Head/CameraPivot" unique_id=884442712]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.80146813, 5.8071623)
 

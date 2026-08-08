@@ -16,9 +16,13 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="Chaos Theory 2"
 config/tags=PackedStringArray("templates")
-run/main_scene="uid://d0jehldap7fjf"
+run/main_scene="uid://d1mn2cleojrc8"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
+
+[audio]
+
+buses/default_bus_layout="uid://d1pplljopcpiq"
 
 [display]
 
@@ -28,6 +32,10 @@ window/size/mode=4
 
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/raytraced_audio/plugin.cfg")
 
 [input]
 
@@ -91,6 +99,11 @@ fire={
 
 3d/physics_engine="Jolt Physics"
 3d/default_gravity=9.799999999999995
+
+[raytraced_audio]
+
+reverb_bus=&"RaytracedReverb"
+ambient_bus=&"RaytracedAmbient"
 
 [rendering]
 

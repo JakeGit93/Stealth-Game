@@ -3,6 +3,8 @@
 [ext_resource type="AudioStream" uid="uid://c850mx1bl5pgq" path="res://Assets/Audio/universfield-glass-bottle-breaking-351297.mp3" id="2_0ef7t"]
 [ext_resource type="PackedScene" uid="uid://b4hgym2hd8bej" path="res://Scenes/Misc/breakable_light.tscn" id="2_spsxx"]
 [ext_resource type="PackedScene" uid="uid://cydb44sb646aw" path="res://Scenes/Characters/player_experimental.tscn" id="3_spsxx"]
+[ext_resource type="AudioStream" uid="uid://bwukydfft5t16" path="res://Assets/Audio/london.wav" id="3_uqkqx"]
+[ext_resource type="Script" uid="uid://dkb8ltjc6067n" path="res://Addons/raytraced_audio/raytraced_audio_player_3d.gd" id="4_tbx8p"]
 
 [sub_resource type="Environment" id="Environment_r5xhu"]
 ambient_light_source = 2
@@ -107,6 +109,13 @@ material = SubResource("StandardMaterial3D_gp1mj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.060404, 1.1726074, -0.5201416)
 operation = 2
 size = Vector3(5.553711, 3.3452148, 4.845459)
+
+[node name="RaytracedAudioPlayer3D" type="AudioStreamPlayer3D" parent="Level Geometry/Middle Room" unique_id=834002189]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.344437, 0, 0)
+stream = ExtResource("3_uqkqx")
+autoplay = true
+script = ExtResource("4_tbx8p")
+metadata/_custom_type_script = "uid://dkb8ltjc6067n"
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Level Geometry" unique_id=293836441]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -31.252932, 1.9099426, -2.535698)

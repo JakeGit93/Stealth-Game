@@ -10,4 +10,5 @@ default_font = ExtResource("1_lwh5d")
 default_font_size = 64
 Button/colors/font_color = Color(0.047058824, 0.22352941, 0.47843137, 1)
 Button/colors/font_hover_color = Color(0.9490196, 0.13333334, 0.26666668, 1)
+Button/colors/font_hover_pressed_color = Color(1, 0, 0, 1)
 Panel/styles/panel = SubResource("StyleBoxFlat_jcxqk")
