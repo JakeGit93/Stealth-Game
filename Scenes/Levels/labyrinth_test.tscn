@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b4hgym2hd8bej" path="res://Scenes/Misc/breakable_light.tscn" id="2_spsxx"]
 [ext_resource type="PackedScene" uid="uid://cydb44sb646aw" path="res://Scenes/Characters/player_experimental.tscn" id="3_spsxx"]
 [ext_resource type="AudioStream" uid="uid://bwukydfft5t16" path="res://Assets/Audio/london.wav" id="3_uqkqx"]
-[ext_resource type="Script" uid="uid://dkb8ltjc6067n" path="res://Addons/raytraced_audio/raytraced_audio_player_3d.gd" id="4_tbx8p"]
+[ext_resource type="Script" uid="uid://dkb8ltjc6067n" path="res://Addons/raytraced-audio-895a33fbf3c53b64bc63f20103eea3402b626262/raytraced-audio-895a33fbf3c53b64bc63f20103eea3402b626262/addons/raytraced_audio/raytraced_audio_player_3d.gd" id="4_tbx8p"]
 
 [sub_resource type="Environment" id="Environment_r5xhu"]
 ambient_light_source = 2
@@ -25,9 +25,10 @@ albedo_color = Color(0.25882354, 0.68235296, 1, 1)
 albedo_color = Color(0.8392157, 0.49019608, 0.32156864, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_spsxx"]
-emission_enabled = true
-emission = Color(1, 1, 1, 1)
-emission_energy_multiplier = 10.0
+albedo_color = Color(0.8776157, 0.8776158, 0.8776157, 1)
+metallic = 1.0
+metallic_specular = 1.0
+roughness = 0.0
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_2qtxk"]
 
@@ -46,7 +47,8 @@ environment = SubResource("Environment_r5xhu")
 [node name="Lights" type="Node3D" parent="." unique_id=1358212187]
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Lights" unique_id=514372573]
-transform = Transform3D(1, 0, 0, 0, 0.6927518, 0.72117615, 0, -0.72117615, 0.6927518, -29.913715, 4.9816456, 6.2851615)
+transform = Transform3D(0.123827584, -0.71562576, 0.68742025, 0, 0.6927518, 0.7211761, -0.9923037, -0.0893015, 0.08578179, -23.863085, 5.40016, -1.9251547)
+layers = 513
 shadow_enabled = true
 spot_range = 20.0
 spot_attenuation = 0.0
@@ -69,6 +71,7 @@ stream = ExtResource("2_0ef7t")
 volume_db = 80.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lights" unique_id=1787317844]
+layers = 513
 shadow_enabled = true
 
 [node name="Level Geometry" type="Node3D" parent="." unique_id=1237627614]
@@ -136,8 +139,14 @@ transform = Transform3D(19.83, 0, 0, 0, 19.83, 0, 0, 0, 19.83, -160.08163, 5.933
 operation = 2
 size = Vector3(0.9506382, 0.6142578, 0.36706543)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Level Geometry" unique_id=293836441]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -31.252932, 1.9099426, -2.535698)
+[node name="ReflectionProbe" type="ReflectionProbe" parent="Level Geometry/Middle Room" unique_id=1160992539]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.570747, 8.647481, -5.3100357)
+box_projection = true
+interior = true
+enable_shadows = true
+
+[node name="RandomCube" type="CSGBox3D" parent="Level Geometry/Middle Room/ReflectionProbe" unique_id=293836441]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0.31781578, -6.7375383, 2.7743378)
 material = SubResource("StandardMaterial3D_spsxx")
 
 [node name="FogVolume" type="FogVolume" parent="." unique_id=906882972]

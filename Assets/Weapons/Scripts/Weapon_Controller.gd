@@ -27,8 +27,14 @@ func equip(scene: PackedScene) -> void:
 	#two_bone_L.set_target_node(0,path)
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("fire"):
-		current_weapon.fire()
 
+	if current_weapon.full_auto == true:
+
+		if Input.is_action_pressed("fire"):
+			current_weapon.fire()
+		
+	else:
+		if Input.is_action_just_pressed("fire"):
+			current_weapon.fire()
 
 	
