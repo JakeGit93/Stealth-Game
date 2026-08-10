@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cjqijr5kb3f4v"
+path="res://.godot/imported/ShotgunShellDropWood_BW.590.wav-b6a6b2d11e8b9c3ec33b949187c9bc42.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Shotguns and Rifles [Blastwave FX]/ShotgunShellDropWood_BW.590.wav"
+dest_files=["res://.godot/imported/ShotgunShellDropWood_BW.590.wav-b6a6b2d11e8b9c3ec33b949187c9bc42.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dubsa2rn2l3m8"
+path="res://.godot/imported/GunshotShotgun_BW.58108.wav-290784f9f92f52f67fcc4b0e167f1869.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Shotguns and Rifles [Blastwave FX]/GunshotShotgun_BW.58108.wav"
+dest_files=["res://.godot/imported/GunshotShotgun_BW.58108.wav-290784f9f92f52f67fcc4b0e167f1869.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

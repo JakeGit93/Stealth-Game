@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cqucfn3kw6ieu"
+path="res://.godot/imported/ShotgunShellDropMetal_BW.59.wav-a112d52c1a66e8323c87415d13b70766.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Shotguns and Rifles [Blastwave FX]/ShotgunShellDropMetal_BW.59.wav"
+dest_files=["res://.godot/imported/ShotgunShellDropMetal_BW.59.wav-a112d52c1a66e8323c87415d13b70766.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

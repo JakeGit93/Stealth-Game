@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://diox4dkhp8th6"
+path="res://.godot/imported/ShotgunShellDropCement_BW_2.wav-0ed19414943fec60c50f278433e5878c.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Shotguns and Rifles [Blastwave FX]/ShotgunShellDropCement_BW_2.wav"
+dest_files=["res://.godot/imported/ShotgunShellDropCement_BW_2.wav-0ed19414943fec60c50f278433e5878c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

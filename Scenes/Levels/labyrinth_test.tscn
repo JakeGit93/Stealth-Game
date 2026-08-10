@@ -110,12 +110,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.060404, 1.1726074, -0.52014
 operation = 2
 size = Vector3(5.553711, 3.3452148, 4.845459)
 
-[node name="RaytracedAudioPlayer3D" type="AudioStreamPlayer3D" parent="Level Geometry/Middle Room" unique_id=834002189]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.344437, 0, 0)
+[node name="CSGBox3D2" type="CSGBox3D" parent="Level Geometry/Middle Room" unique_id=1832052859]
+transform = Transform3D(20.155, 0, 0, 0, 20.155, 0, 0, 0, 20.155, -161.05649, 10.3, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Level Geometry/Middle Room/CSGBox3D2" unique_id=1043278021]
+transform = Transform3D(0.04961548, 0, 0, 0, 0.04961548, 0, 0, 0, 0.04961548, 0, -0.36541134, 0)
+omni_range = 17.489
+omni_attenuation = -0.075
+
+[node name="RaytracedAudioPlayer3D" type="AudioStreamPlayer3D" parent="Level Geometry/Middle Room/CSGBox3D2" unique_id=834002189]
+transform = Transform3D(0.04961548, 0, 0, 0, 0.04961548, 0, 0, 0, 0.04961548, -0.06975794, -0.24498755, 0)
 stream = ExtResource("3_uqkqx")
+attenuation_model = 1
+volume_db = -10.0
 autoplay = true
 script = ExtResource("4_tbx8p")
 metadata/_custom_type_script = "uid://dkb8ltjc6067n"
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Level Geometry/Middle Room" unique_id=2147137934]
+transform = Transform3D(19.83, 0, 0, 0, 19.83, 0, 0, 0, 19.83, -161.05649, 10.3, 0)
+operation = 2
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Level Geometry/Middle Room" unique_id=570634142]
+transform = Transform3D(19.83, 0, 0, 0, 19.83, 0, 0, 0, 19.83, -160.08163, 5.93314, -0.7818041)
+operation = 2
+size = Vector3(0.9506382, 0.6142578, 0.36706543)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Level Geometry" unique_id=293836441]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -31.252932, 1.9099426, -2.535698)

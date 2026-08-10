@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://coniogthtu18g" path="res://Scenes/Weapons/bullet.tscn" id="2_ub57m"]
 [ext_resource type="AudioStream" uid="uid://bqxwyqn1qi545" path="res://Assets/Audio/pistol.mp3" id="3_iv36u"]
 [ext_resource type="PackedScene" uid="uid://cg5x06xho1why" path="res://Assets/Weapons/WeaponsModelsFBX_1.12/SniperRifle/SniperRifle5_02.fbx" id="4_5tr3m"]
+[ext_resource type="Script" uid="uid://dkb8ltjc6067n" path="res://Addons/raytraced_audio/raytraced_audio_player_3d.gd" id="5_ide6p"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vx4cp"]
 albedo_color = Color(0, 0, 1, 1)
@@ -35,9 +36,12 @@ target_position = Vector3(0, 200000, 0)
 debug_shape_custom_color = Color(0, 0, 1, 1)
 debug_shape_thickness = 5
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=612269617]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=10102983]
 stream = ExtResource("3_iv36u")
+volume_db = -10.0
 max_polyphony = 100
+script = ExtResource("5_ide6p")
+metadata/_custom_type_script = "uid://dkb8ltjc6067n"
 
 [node name="IKL" type="Marker3D" parent="." unique_id=413564746]
 unique_name_in_owner = true

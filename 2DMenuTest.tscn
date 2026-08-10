@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://gre5ktcfnsku"]
+
+[ext_resource type="Shader" path="res://menutest.gdshader" id="1_v8y5m"]
+[ext_resource type="Texture2D" path="res://Assets/Textures/new_noise_texture_2d.tres" id="2_qu0nk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l61iu"]
+shader = ExtResource("1_v8y5m")
+shader_parameter/noise_texture = ExtResource("2_qu0nk")
+
+[node name="Control" type="Control" unique_id=100091905]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1476050947]
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1894367992]
+material = SubResource("ShaderMaterial_l61iu")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
