@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ue3vh5nlvtss"
+path="res://.godot/imported/seam_hr_1.obj-40c3b8cebcaacecd624d5ba450d5701b.mesh"
+
+[deps]
+
+files=["res://.godot/imported/seam_hr_1.obj-40c3b8cebcaacecd624d5ba450d5701b.mesh"]
+
+source_file="res://Assets/PSX Mega Pack II/Models/other-formats/OBJ/Modular Structures/seam_hr_1.obj"
+dest_files=["res://.godot/imported/seam_hr_1.obj-40c3b8cebcaacecd624d5ba450d5701b.mesh", "res://.godot/imported/seam_hr_1.obj-40c3b8cebcaacecd624d5ba450d5701b.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

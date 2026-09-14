@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://rioqonwm0d4a"
+path="res://.godot/imported/wall_hr_1_t_1.obj-ea32b108eba51525b07a12e1b0bb121e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/wall_hr_1_t_1.obj-ea32b108eba51525b07a12e1b0bb121e.mesh"]
+
+source_file="res://Assets/PSX Mega Pack II/Models/other-formats/OBJ/Modular Structures/wall_hr_1_t_1.obj"
+dest_files=["res://.godot/imported/wall_hr_1_t_1.obj-ea32b108eba51525b07a12e1b0bb121e.mesh", "res://.godot/imported/wall_hr_1_t_1.obj-ea32b108eba51525b07a12e1b0bb121e.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

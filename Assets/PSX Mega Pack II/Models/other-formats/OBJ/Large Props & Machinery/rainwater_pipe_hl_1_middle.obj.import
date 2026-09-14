@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://1r735felk6il"
+path="res://.godot/imported/rainwater_pipe_hl_1_middle.obj-6f78ee3855d42e1574428ae5ad010a46.mesh"
+
+[deps]
+
+files=["res://.godot/imported/rainwater_pipe_hl_1_middle.obj-6f78ee3855d42e1574428ae5ad010a46.mesh"]
+
+source_file="res://Assets/PSX Mega Pack II/Models/other-formats/OBJ/Large Props & Machinery/rainwater_pipe_hl_1_middle.obj"
+dest_files=["res://.godot/imported/rainwater_pipe_hl_1_middle.obj-6f78ee3855d42e1574428ae5ad010a46.mesh", "res://.godot/imported/rainwater_pipe_hl_1_middle.obj-6f78ee3855d42e1574428ae5ad010a46.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

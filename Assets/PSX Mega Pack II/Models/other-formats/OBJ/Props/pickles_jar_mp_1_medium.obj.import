@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dvoi8g6tk8qp5"
+path="res://.godot/imported/pickles_jar_mp_1_medium.obj-ff1c83d90ec98b169e3e983f7c737482.mesh"
+
+[deps]
+
+files=["res://.godot/imported/pickles_jar_mp_1_medium.obj-ff1c83d90ec98b169e3e983f7c737482.mesh"]
+
+source_file="res://Assets/PSX Mega Pack II/Models/other-formats/OBJ/Props/pickles_jar_mp_1_medium.obj"
+dest_files=["res://.godot/imported/pickles_jar_mp_1_medium.obj-ff1c83d90ec98b169e3e983f7c737482.mesh", "res://.godot/imported/pickles_jar_mp_1_medium.obj-ff1c83d90ec98b169e3e983f7c737482.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

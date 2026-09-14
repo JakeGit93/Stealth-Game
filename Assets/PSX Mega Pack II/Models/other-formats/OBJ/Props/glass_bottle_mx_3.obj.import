@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://blfa05dnqcpc4"
+path="res://.godot/imported/glass_bottle_mx_3.obj-e2e8e833d353d379b8d95d9a54a8e099.mesh"
+
+[deps]
+
+files=["res://.godot/imported/glass_bottle_mx_3.obj-e2e8e833d353d379b8d95d9a54a8e099.mesh"]
+
+source_file="res://Assets/PSX Mega Pack II/Models/other-formats/OBJ/Props/glass_bottle_mx_3.obj"
+dest_files=["res://.godot/imported/glass_bottle_mx_3.obj-e2e8e833d353d379b8d95d9a54a8e099.mesh", "res://.godot/imported/glass_bottle_mx_3.obj-e2e8e833d353d379b8d95d9a54a8e099.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
