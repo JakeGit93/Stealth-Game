@@ -3,13 +3,9 @@ extends Weapon
 @export var bullet_scene: PackedScene
 @export var muzzle: Node3D
 @export var bullet_speed: int
-<<<<<<< HEAD
 @export var audio_stream: AudioStreamPlayer3D
-=======
-@export var audio_stream: RaytracedAudioPlayer3D
 @export var timer: Timer
 @export var fire_rate: float
->>>>>>> 178ae4a5c77f56ab60eb4f1d5f721b6779585f60
 
 @onready var ik_attachL: Node3D = %IKL
 @onready var ik_attachR: Node3D = %IKR
